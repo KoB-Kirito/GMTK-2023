@@ -247,13 +247,14 @@ func join_character(character:DialogicCharacter, portrait:String,  position_idx:
 	
 	dialogic.current_state_info['portraits'][character.resource_path] = {'portrait':portrait, 'node':character_node, 'position_index':position_idx, 'custom_mirror':mirrored}
 	
+	var info := {'character':character}
+	info.merge(dialogic.current_state_info['portraits'][character.resource_path])
+	character_joined.emit(info)
+	
 	_change_portrait_mirror(character_node, mirrored)
 	_change_portrait_extradata(character_node, extra_data)
 	_change_portrait_z_index(character_node, z_index)
 	
-	var info := {'character':character}
-	info.merge(dialogic.current_state_info['portraits'][character.resource_path])
-	character_joined.emit(info)
 	
 	if animation_name.is_empty():
 		animation_name = ProjectSettings.get_setting('dialogic/animations/join_default', 
@@ -378,6 +379,8 @@ func leave_character(character:DialogicCharacter, animation_name :String = "", a
 	if !is_character_joined(character):
 		return
 	
+	character_left.emit({'character':character})
+
 	if animation_name.is_empty():
 		animation_name = ProjectSettings.get_setting('dialogic/animations/leave_default', 
 				get_script().resource_path.get_base_dir().path_join('DefaultAnimations/fade_out_down.gd'))
@@ -418,7 +421,6 @@ func remove_character(character:DialogicCharacter) -> void:
 		return
 	if dialogic.current_state_info['portraits'][character.resource_path].node is Node:
 		_remove_portrait(dialogic.current_state_info['portraits'][character.resource_path].node)
-		character_left.emit({'character':character})
 	dialogic.current_state_info['portraits'].erase(character.resource_path)
 
 

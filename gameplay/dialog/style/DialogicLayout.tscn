@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cugj8odcvwcd0"]
+[gd_scene load_steps=7 format=3 uid="uid://cugj8odcvwcd0"]
 
+[ext_resource type="Script" path="res://gameplay/dialog/style/DialogicLayout.gd" id="1_15xbm"]
 [ext_resource type="Script" path="res://addons/dialogic/Modules/Character/node_portrait_container.gd" id="2_lwc7v"]
 [ext_resource type="Script" path="res://addons/dialogic/Modules/Text/node_name_label.gd" id="3_j7xwo"]
 [ext_resource type="Script" path="res://addons/dialogic/Modules/Text/node_dialog_text.gd" id="4_dhbm5"]
@@ -10,6 +11,8 @@ skew = Vector2(-0.5, 0)
 
 [node name="RPG_ExampleNode" type="CanvasLayer"]
 layer = 3
+script = ExtResource("1_15xbm")
+animation_duration = 0.8
 
 [node name="TextContainer" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(0, 80)
@@ -20,34 +23,36 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="TextContainer"]
+[node name="TextMargin" type="MarginContainer" parent="TextContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/margin_left = 144
 theme_override_constants/margin_right = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TextContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TextContainer/TextMargin"]
 layout_mode = 2
 
-[node name="DialogicNode_DialogText" type="RichTextLabel" parent="TextContainer/MarginContainer/VBoxContainer"]
+[node name="DialogicNode_DialogText" type="RichTextLabel" parent="TextContainer/TextMargin/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 14
 text = "Some Text that explains the choices"
 fit_content = true
 script = ExtResource("4_dhbm5")
 
-[node name="DialogicNode_ChoiceButton" type="Button" parent="TextContainer/MarginContainer/VBoxContainer"]
+[node name="DialogicNode_ChoiceButton" type="Button" parent="TextContainer/TextMargin/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 11
 text = "Choice 1"
 script = ExtResource("5_06dcw")
 
-[node name="DialogicNode_ChoiceButton2" type="Button" parent="TextContainer/MarginContainer/VBoxContainer"]
+[node name="DialogicNode_ChoiceButton2" type="Button" parent="TextContainer/TextMargin/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 11
 text = "Choice 2"
 script = ExtResource("5_06dcw")
 
 [node name="NameContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -58,11 +63,11 @@ offset_bottom = -80.0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_otkb7")
 
-[node name="MarginContainer" type="MarginContainer" parent="NameContainer"]
+[node name="NameMargin" type="MarginContainer" parent="NameContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 152
 
-[node name="DialogicNode_NameLabel" type="Label" parent="NameContainer/MarginContainer"]
+[node name="DialogicNode_NameLabel" type="Label" parent="NameContainer/NameMargin"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "Name"
