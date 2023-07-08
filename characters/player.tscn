@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://d3mklqtc7tjww"]
+[gd_scene load_steps=22 format=3 uid="uid://d3mklqtc7tjww"]
 
 [ext_resource type="Script" path="res://characters/player.gd" id="1_g54x2"]
 [ext_resource type="Texture2D" uid="uid://b5pu7gjc32j0c" path="res://assets/characters/vampire.png" id="1_hr2po"]
+[ext_resource type="PackedScene" uid="uid://coaan7m4e1471" path="res://menu/menu.tscn" id="3_tps5g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dmvol"]
 radius = 8.0
@@ -185,3 +186,8 @@ sprite_frames = SubResource("SpriteFrames_4okou")
 animation = &"idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Menu" parent="CanvasLayer" instance=ExtResource("3_tps5g")]
+ingame_menu = true
