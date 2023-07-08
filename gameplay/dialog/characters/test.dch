@@ -1,0 +1,27 @@
+{
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+"color": Color(0.277344, 0.546875, 0.746094, 1),
+"custom_info": {
+"sound_mood_default": "",
+"sound_moods": {},
+"style": ""
+},
+"default_portrait": "default",
+"description": "",
+"display_name": "Mr. Godot",
+"mirror": false,
+"nicknames": [""],
+"offset": Vector2(0, 0),
+"portraits": {
+"default": {
+"ignore_char_scale": false,
+"image": "res://icon.svg",
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 0.75,
+"scene": ""
+}
+},
+"scale": 1.0
+}

@@ -1,0 +1,12 @@
+Join test 0
+test: Hello!\
+This is some text that could be a dialog. Bla bla bla..
+test: Whasup?
+- Not much
+	test: You picked choice 1. It is a very good choice indeed.
+	bla bla bla
+- A lot
+	test: You picked choice 2. It's also quite good.
+Leave test
+And so the choices were picked..
+[style]
