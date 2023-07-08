@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://cktenhbydatec"]
+
+[ext_resource type="Script" path="res://menu/setting_screen.gd" id="1_dqr2w"]
+
+[node name="SettingScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_dqr2w")
+
+[node name="SettingsRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SettingsBackButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="pressed" from="SettingsBackButton" to="." method="_on_settings_back_button_pressed"]

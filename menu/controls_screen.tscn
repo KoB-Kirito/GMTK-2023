@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfh6uhorh4r0f"]
+
+[ext_resource type="Script" path="res://menu/controls_screen.gd" id="1_342at"]
+
+[node name="ControlsScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_342at")
+
+[node name="ControlsRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ControlsBackButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="pressed" from="ControlsBackButton" to="." method="_on_controls_back_button_pressed"]
