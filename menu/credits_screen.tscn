@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://uov2070uvrsk"]
+[gd_scene load_steps=3 format=3 uid="uid://uov2070uvrsk"]
 
 [ext_resource type="Script" path="res://menu/credits_screen.gd" id="1_b5awn"]
+[ext_resource type="Texture2D" uid="uid://bx08sqdo0gh7x" path="res://assets/ui/platzhalter.png" id="2_g85ii"]
 
 [node name="CreditsScreen" type="Control"]
 layout_mode = 3
@@ -18,5 +19,6 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+texture_normal = ExtResource("2_g85ii")
 
 [connection signal="pressed" from="CreditsBackButton" to="." method="_on_credits_back_button_pressed"]

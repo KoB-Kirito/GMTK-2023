@@ -1,12 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://cktenhbydatec"]
+[gd_scene load_steps=3 format=3 uid="uid://cktenhbydatec"]
 
 [ext_resource type="Script" path="res://menu/setting_screen.gd" id="1_dqr2w"]
+[ext_resource type="Texture2D" uid="uid://bx08sqdo0gh7x" path="res://assets/ui/platzhalter.png" id="2_nx18t"]
 
 [node name="SettingScreen" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_dqr2w")
 
 [node name="SettingsRect" type="TextureRect" parent="."]
@@ -14,9 +17,58 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="SettingsBackButton" type="TextureButton" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="FullScreen" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Full Screen"
+
+[node name="VSync" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "VSync"
+
+[node name="MasterVolume" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Master Volume"
+
+[node name="VolumeSlider" type="HSlider" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="FullScreenCheckBox" type="CheckBox" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="VSyncCheckBox" type="CheckBox" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="SettingsBackButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -137.0
+offset_bottom = -194.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("2_nx18t")
+
+[connection signal="value_changed" from="CenterContainer/HBoxContainer/VBoxContainer/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="toggled" from="CenterContainer/HBoxContainer/VBoxContainer2/FullScreenCheckBox" to="." method="_on_full_screen_check_box_toggled"]
+[connection signal="toggled" from="CenterContainer/HBoxContainer/VBoxContainer2/VSyncCheckBox" to="." method="_on_v_sync_check_box_toggled"]
 [connection signal="pressed" from="SettingsBackButton" to="." method="_on_settings_back_button_pressed"]

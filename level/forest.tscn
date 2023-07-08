@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://d26qr7hybpd5m"]
+[gd_scene load_steps=8 format=3 uid="uid://d26qr7hybpd5m"]
 
 [ext_resource type="Texture2D" uid="uid://dhcp87xdovcl8" path="res://assets/tilesets/forest.png" id="1_wbop8"]
 [ext_resource type="Texture2D" uid="uid://b0dhyx3funlrp" path="res://assets/tilesets/forest_objects.png" id="2_ndjtb"]
-[ext_resource type="PackedScene" path="res://characters/player.tscn" id="3_l3vqa"]
+[ext_resource type="PackedScene" uid="uid://d3mklqtc7tjww" path="res://characters/player.tscn" id="3_l3vqa"]
+[ext_resource type="PackedScene" uid="uid://coaan7m4e1471" path="res://menu/menu.tscn" id="4_7jdmd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7si12"]
 texture = ExtResource("1_wbop8")
@@ -317,3 +318,8 @@ layer_2/tile_data = PackedInt32Array(393241, 1, 0, 458781, 1, 0, 917527, 327681,
 
 [node name="Player" parent="." instance=ExtResource("3_l3vqa")]
 position = Vector2(350, 224)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Menu" parent="CanvasLayer" instance=ExtResource("4_7jdmd")]
+ingame_menu = true

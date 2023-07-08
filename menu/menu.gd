@@ -1,33 +1,38 @@
 extends Control
 
 @export var ingame_menu = false
-var switch = true
+@onready var switch = true
 
 
 func _ready():
 	if ingame_menu == true:
 		hide()
-		$CenterContainer/VBoxContainer/StartButton.set_texture_normal("")
-		$CenterContainer/VBoxContainer/StartButton.set_texture_pressed("")
+#		$CenterContainer/VBoxContainer/StartButton.set_texture_normal("")
+#		$CenterContainer/VBoxContainer/StartButton.set_texture_pressed("")
+#		$CenterContainer/VBoxContainer/StartButton.set_texture_hover("")
 
 
 func _process(delta):
-	esc_to_menu()
+	if Input.is_action_just_pressed("esc_menu") and ingame_menu == true:
+		esc_to_menu()
 
 
 func esc_to_menu():
-	if Input.is_action_pressed("esc_menu") and ingame_menu and switch:
-		show()
-		switch = false
-		if switch == false and Input.is_action_pressed("esc_menu") and ingame_menu:
-			hide()
-			switch = true
+	visible = !visible
+	get_tree().paused = visible
+#	if Input.is_action_just_pressed("esc_menu") and ingame_menu and switch:
+#		show()
+#		switch != switch #false
+#
+#	if Input.is_action_just_pressed("esc_menu") and switch == false and ingame_menu:
+#		hide()
+#		switch != switch #true
 		
 		
 
 
 func _on_start_button_pressed():
-	get_tree().unload_current_scene()
+#	get_tree().unload_current_scene()
 	get_tree().change_scene_to_file("res://level/forest.tscn")
 
 

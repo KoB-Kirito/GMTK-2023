@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfh6uhorh4r0f"]
+[gd_scene load_steps=3 format=3 uid="uid://dfh6uhorh4r0f"]
 
 [ext_resource type="Script" path="res://menu/controls_screen.gd" id="1_342at"]
+[ext_resource type="Texture2D" uid="uid://bx08sqdo0gh7x" path="res://assets/ui/platzhalter.png" id="2_kljkr"]
 
 [node name="ControlsScreen" type="Control"]
 layout_mode = 3
@@ -18,5 +19,6 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+texture_normal = ExtResource("2_kljkr")
 
 [connection signal="pressed" from="ControlsBackButton" to="." method="_on_controls_back_button_pressed"]
