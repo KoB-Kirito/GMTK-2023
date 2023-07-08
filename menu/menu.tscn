@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://coaan7m4e1471"]
+[gd_scene load_steps=14 format=3 uid="uid://coaan7m4e1471"]
 
 [ext_resource type="Script" path="res://menu/menu.gd" id="1_dcw3v"]
 [ext_resource type="PackedScene" uid="uid://dfh6uhorh4r0f" path="res://menu/controls_screen.tscn" id="2_6wnys"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://uov2070uvrsk" path="res://menu/credits_screen.tscn" id="4_1aiy0"]
 [ext_resource type="Texture2D" uid="uid://crj35m4tjw7io" path="res://assets/ui/PlayButton_hover.png" id="4_dtnmp"]
 [ext_resource type="Texture2D" uid="uid://behatgf6a38ip" path="res://assets/ui/ExitButton.png" id="4_kr3rp"]
-[ext_resource type="Texture2D" uid="uid://bx08sqdo0gh7x" path="res://assets/ui/platzhalter.png" id="5_2l3bs"]
 [ext_resource type="Texture2D" uid="uid://dys2p2wal5s7" path="res://assets/ui/CreditsButton_pressed.png" id="6_b806m"]
 [ext_resource type="Texture2D" uid="uid://dh0nx0668fiqu" path="res://assets/ui/CreditsButton_hover.png" id="7_8ahec"]
 [ext_resource type="Texture2D" uid="uid://brglntmyttdab" path="res://assets/ui/ExitButton_pressed.png" id="9_vamt5"]
@@ -25,48 +24,59 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dcw3v")
 
-[node name="Background" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.215686, 0.215686, 0.215686, 0.501961)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-layout_mode = 2
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 51.0
+offset_top = 22.0
+offset_right = 51.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
 alignment = 1
 
-[node name="StartButton" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+[node name="StartButton" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("2_ro2i8")
 texture_pressed = ExtResource("3_xdv08")
 texture_hover = ExtResource("4_dtnmp")
 stretch_mode = 3
 
-[node name="ControlsButton" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+[node name="ControlsButton" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("5_2l3bs")
+texture_normal = ExtResource("7_8ahec")
 stretch_mode = 3
 
-[node name="SettingsButton" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+[node name="SettingsButton" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("5_2l3bs")
+texture_normal = ExtResource("7_8ahec")
 stretch_mode = 3
 
-[node name="CreditsButton" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+[node name="CreditsButton" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("3_elsjk")
 texture_pressed = ExtResource("6_b806m")
 texture_hover = ExtResource("7_8ahec")
 stretch_mode = 3
 
-[node name="QuitButton" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+[node name="QuitButton" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("4_kr3rp")
 texture_pressed = ExtResource("9_vamt5")
@@ -101,8 +111,8 @@ grow_vertical = 2
 
 [node name="MenuMusicPlayer" type="AudioStreamPlayer" parent="."]
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/ControlsButton" to="." method="_on_controls_button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ControlsButton" to="." method="_on_controls_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

@@ -7,6 +7,7 @@ extends Control
 func _ready():
 	if ingame_menu == true:
 		hide()
+		$Background.queue_free()
 #		$CenterContainer/VBoxContainer/StartButton.set_texture_normal("")
 #		$CenterContainer/VBoxContainer/StartButton.set_texture_pressed("")
 #		$CenterContainer/VBoxContainer/StartButton.set_texture_hover("")
