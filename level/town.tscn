@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dy8wsehbghl2l"]
+[gd_scene load_steps=14 format=3 uid="uid://dy8wsehbghl2l"]
 
 [ext_resource type="Texture2D" uid="uid://btobussw6cu61" path="res://assets/tilesets/town.png" id="1_371pt"]
 [ext_resource type="PackedScene" uid="uid://d3mklqtc7tjww" path="res://characters/player.tscn" id="2_llgaa"]
+[ext_resource type="PackedScene" uid="uid://d0pwq4rvak3ri" path="res://npc/npc.tscn" id="2_yrs6g"]
 [ext_resource type="AudioStream" uid="uid://pc51k3maae41" path="res://assets/bgm/village_theme.mp3" id="3_7jssq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ga4f5"]
@@ -744,6 +745,48 @@ terrain_set_0/terrain_3/name = "Fence"
 terrain_set_0/terrain_3/color = Color(1, 1, 0.25098, 1)
 sources/0 = SubResource("TileSetAtlasSource_ga4f5")
 
+[sub_resource type="Curve2D" id="Curve2D_s6r0p"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 781, 735, 0, 0, 0, 0, 594, 735, 0, 0, 0, 0, 591, 484, 0, 0, 0, 0, 619, 422, 0, 0, 0, 0, 552, 415, 0, 0, 0, 0, 557, 377, 0, 0, 0, 0, 570, 439, 0, 0, 0, 0, 603, 473, 0, 0, 0, 0, 586, 525, 0, 0, 0, 0, 593, 741, 0, 0, 0, 0, 781, 731, 0, 0, 0, 0, 781, 735, 0, 0, 0, 0, 566, 619)
+}
+point_count = 13
+
+[sub_resource type="Curve2D" id="Curve2D_41o3e"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 412, 585, 0, 0, 0, 0, 413, 619, 0, 0, 0, 0, 594, 621, 0, 0, 0, 0, 583, 523, 0, 0, 0, 0, 324, 523, 0, 0, 0, 0, 319, 479, 0, 0, 0, 0, 314, 526, 0, 0, 0, 0, 595, 530, 0, 0, 0, 0, 586, 623, 0, 0, 0, 0, 424, 627, 0, 0, 0, 0, 420, 592, 0, 0, 0, 0, 412, 585)
+}
+point_count = 12
+
+[sub_resource type="Curve2D" id="Curve2D_ofekb"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 763, 426, 0, 0, 0, 0, 768, 477, 0, 0, 0, 0, 598, 481, 0, 0, 0, 0, 597, 606, 0, 0, 0, 0, 831, 608, 0, 0, 0, 0, 834, 572, 0, 0, 0, 0, 839, 599, 0, 0, 0, 0, 731, 610, 0, 0, 0, 0, 624, 599, 0, 0, 0, 0, 589, 607, 0, 0, 0, 0, 581, 480, 0, 0, 0, 0, 772, 484, 0, 0, 0, 0, 772, 437, 0, 0, 0, 0, 763, 426)
+}
+point_count = 14
+
+[sub_resource type="Curve2D" id="Curve2D_a4dkb"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 941, 427, 0, 0, 0, 0, 944, 480, 0, 0, 0, 0, 457, 479, 0, 0, 0, 0, 450, 288, 0, 0, 0, 0, 783, 282, 0, 0, 0, 0, 784, 232, 0, 0, 0, 0, 794, 283, 0, 0, 0, 0, 442, 285, 0, 0, 0, 0, 446, 483, 0, 0, 0, 0, 944, 468, 0, 0, 0, 0, 951, 429, 0, 0, 0, 0, 941, 427)
+}
+point_count = 12
+
+[sub_resource type="Curve2D" id="Curve2D_xlm87"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 574, 240, 0, 0, 0, 0, 571, 287, 0, 0, 0, 0, 1004, 291, 0, 0, 0, 0, 1004, 144, 0, 0, 0, 0, 1145, 142, 0, 0, 0, 0, 1009, 136, 0, 0, 0, 0, 1009, 280, 0, 0, 0, 0, 577, 273, 0, 0, 0, 0, 582, 242, 0, 0, 0, 0, 574, 240)
+}
+point_count = 10
+
+[sub_resource type="Curve2D" id="Curve2D_wbql4"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 451, 451, 0, 0, 0, 0, 449, 280, 0, 0, 0, 0, 226, 288, 0, 0, 0, 0, 218, 320, 0, 0, 0, 0, 194, 317, 0, 0, 0, 0, 194, 296, 0, 0, 0, 0, 226, 320, 0, 0, 0, 0, 230, 289, 0, 0, 0, 0, 447, 286, 0, 0, 0, 0, 441, 448, 0, 0, 0, 0, 451, 451)
+}
+point_count = 11
+
+[sub_resource type="Curve2D" id="Curve2D_sy6nv"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 122, 513, 0, 0, 0, 0, 125, 707, 0, 0, 0, 0, 135, 704, 0, 0, 0, 0, 134, 519, 0, 0, 0, 0, 122, 513)
+}
+point_count = 5
+
 [node name="Town" type="TileMap"]
 tile_set = SubResource("TileSet_mxptp")
 format = 2
@@ -770,3 +813,57 @@ position = Vector2(590, 740)
 [node name="bgm" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_7jssq")
 autoplay = true
+
+[node name="PathHolder" type="Node2D" parent="."]
+
+[node name="Mann1Path" type="Path2D" parent="PathHolder"]
+curve = SubResource("Curve2D_s6r0p")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="PathHolder/Mann1Path"]
+position = Vector2(642.53, 735)
+rotation = 3.14159
+progress = 138.46
+
+[node name="NPC" parent="PathHolder/Mann1Path/PathFollow2D" instance=ExtResource("2_yrs6g")]
+
+[node name="MetzgerPath" type="Path2D" parent="PathHolder"]
+curve = SubResource("Curve2D_41o3e")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="PathHolder/MetzgerPath"]
+position = Vector2(412, 585)
+rotation = 1.54139
+
+[node name="AltFrauMannPath" type="Path2D" parent="PathHolder"]
+curve = SubResource("Curve2D_ofekb")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="PathHolder/AltFrauMannPath"]
+position = Vector2(763, 426)
+rotation = 1.47307
+
+[node name="WaisenPath" type="Path2D" parent="PathHolder"]
+curve = SubResource("Curve2D_a4dkb")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="PathHolder/WaisenPath"]
+position = Vector2(941, 427)
+rotation = 1.51425
+
+[node name="OmaKindPath" type="Path2D" parent="PathHolder"]
+curve = SubResource("Curve2D_xlm87")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="PathHolder/OmaKindPath"]
+position = Vector2(574, 240)
+rotation = 1.63454
+
+[node name="2FrauenKindPath" type="Path2D" parent="PathHolder"]
+curve = SubResource("Curve2D_wbql4")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="PathHolder/2FrauenKindPath"]
+position = Vector2(451, 451)
+rotation = -1.58249
+
+[node name="FamielieKindPath" type="Path2D" parent="PathHolder"]
+curve = SubResource("Curve2D_sy6nv")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="PathHolder/FamielieKindPath"]
+position = Vector2(122, 513)
+rotation = 1.55533
