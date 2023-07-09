@@ -1,10 +1,17 @@
-[gd_scene load_steps=15 format=3 uid="uid://dy8wsehbghl2l"]
+[gd_scene load_steps=22 format=3 uid="uid://dy8wsehbghl2l"]
 
 [ext_resource type="Texture2D" uid="uid://btobussw6cu61" path="res://assets/tilesets/town.png" id="1_371pt"]
 [ext_resource type="TileSet" uid="uid://fwtbdlu5tfhr" path="res://level/tilesets/town.tres" id="2_ad5c8"]
 [ext_resource type="PackedScene" uid="uid://d3mklqtc7tjww" path="res://characters/player.tscn" id="2_llgaa"]
 [ext_resource type="PackedScene" uid="uid://d0pwq4rvak3ri" path="res://npc/npc.tscn" id="2_yrs6g"]
 [ext_resource type="AudioStream" uid="uid://pc51k3maae41" path="res://assets/bgm/village_theme.mp3" id="3_7jssq"]
+[ext_resource type="Script" path="res://level/PathHolder.gd" id="5_5b10v"]
+[ext_resource type="PackedScene" uid="uid://dgf4wiy0gu42m" path="res://npc/metzger.tscn" id="7_tened"]
+[ext_resource type="PackedScene" uid="uid://7kgtk3qbr85e" path="res://npc/alt_frau_mann.tscn" id="8_h0efh"]
+[ext_resource type="PackedScene" uid="uid://cel0juvbytdx1" path="res://npc/waisen.tscn" id="9_0ves0"]
+[ext_resource type="PackedScene" uid="uid://timci6afwupa" path="res://npc/oma_kind.tscn" id="10_e5lkm"]
+[ext_resource type="PackedScene" uid="uid://bv4n2obv2v6nu" path="res://npc/2_frauen_kind.tscn" id="11_1434k"]
+[ext_resource type="PackedScene" uid="uid://c8sj162ujbtp0" path="res://npc/familie_kind.tscn" id="12_gd5le"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ga4f5"]
 texture = ExtResource("1_371pt")
@@ -748,9 +755,9 @@ sources/0 = SubResource("TileSetAtlasSource_ga4f5")
 
 [sub_resource type="Curve2D" id="Curve2D_s6r0p"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 781, 735, 0, 0, 0, 0, 594, 735, 0, 0, 0, 0, 591, 484, 0, 0, 0, 0, 619, 422, 0, 0, 0, 0, 552, 415, 0, 0, 0, 0, 557, 377, 0, 0, 0, 0, 570, 439, 0, 0, 0, 0, 603, 473, 0, 0, 0, 0, 586, 525, 0, 0, 0, 0, 593, 741, 0, 0, 0, 0, 781, 731, 0, 0, 0, 0, 781, 735, 0, 0, 0, 0, 566, 619)
+"points": PackedVector2Array(0, 0, 0, 0, 781, 735, 0, 0, 0, 0, 594, 735, 0, 0, 0, 0, 591, 484, 0, 0, 0, 0, 619, 422, 0, 0, 0, 0, 552, 415, 0, 0, 0, 0, 557, 377, 0, 0, 0, 0, 570, 439, 0, 0, 0, 0, 603, 473, 0, 0, 0, 0, 586, 525, 0, 0, 0, 0, 593, 741, 0, 0, 0, 0, 781, 731, 0, 0, 0, 0, 781, 735)
 }
-point_count = 13
+point_count = 12
 
 [sub_resource type="Curve2D" id="Curve2D_41o3e"]
 _data = {
@@ -832,7 +839,6 @@ layer_2/z_index = 1
 layer_2/tile_data = PackedInt32Array()
 
 [node name="Player" parent="NewTileMap" instance=ExtResource("2_llgaa")]
-visible = false
 position = Vector2(590, 740)
 
 [node name="bgm" type="AudioStreamPlayer" parent="NewTileMap"]
@@ -840,56 +846,67 @@ stream = ExtResource("3_7jssq")
 autoplay = true
 
 [node name="PathHolder" type="Node2D" parent="NewTileMap"]
-visible = false
+script = ExtResource("5_5b10v")
 
 [node name="Mann1Path" type="Path2D" parent="NewTileMap/PathHolder"]
 curve = SubResource("Curve2D_s6r0p")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="NewTileMap/PathHolder/Mann1Path"]
-position = Vector2(642.53, 735)
+[node name="Mann1PathFollow" type="PathFollow2D" parent="NewTileMap/PathHolder/Mann1Path"]
+position = Vector2(781, 735)
 rotation = 3.14159
-progress = 138.46
 
-[node name="NPC" parent="NewTileMap/PathHolder/Mann1Path/PathFollow2D" instance=ExtResource("2_yrs6g")]
+[node name="Mann1" parent="NewTileMap/PathHolder/Mann1Path/Mann1PathFollow" instance=ExtResource("2_yrs6g")]
 
 [node name="MetzgerPath" type="Path2D" parent="NewTileMap/PathHolder"]
 curve = SubResource("Curve2D_41o3e")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="NewTileMap/PathHolder/MetzgerPath"]
+[node name="MetzgerPathFollow" type="PathFollow2D" parent="NewTileMap/PathHolder/MetzgerPath"]
 position = Vector2(412, 585)
 rotation = 1.54139
+
+[node name="Metzger" parent="NewTileMap/PathHolder/MetzgerPath/MetzgerPathFollow" instance=ExtResource("7_tened")]
 
 [node name="AltFrauMannPath" type="Path2D" parent="NewTileMap/PathHolder"]
 curve = SubResource("Curve2D_ofekb")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="NewTileMap/PathHolder/AltFrauMannPath"]
+[node name="AltFrauMannPathFollow" type="PathFollow2D" parent="NewTileMap/PathHolder/AltFrauMannPath"]
 position = Vector2(763, 426)
 rotation = 1.47307
+
+[node name="AltFrauMann" parent="NewTileMap/PathHolder/AltFrauMannPath/AltFrauMannPathFollow" instance=ExtResource("8_h0efh")]
 
 [node name="WaisenPath" type="Path2D" parent="NewTileMap/PathHolder"]
 curve = SubResource("Curve2D_a4dkb")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="NewTileMap/PathHolder/WaisenPath"]
+[node name="WaisenPathFollow" type="PathFollow2D" parent="NewTileMap/PathHolder/WaisenPath"]
 position = Vector2(941, 427)
 rotation = 1.51425
+
+[node name="Waisen" parent="NewTileMap/PathHolder/WaisenPath/WaisenPathFollow" instance=ExtResource("9_0ves0")]
 
 [node name="OmaKindPath" type="Path2D" parent="NewTileMap/PathHolder"]
 curve = SubResource("Curve2D_xlm87")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="NewTileMap/PathHolder/OmaKindPath"]
+[node name="OmaKindPathFollow" type="PathFollow2D" parent="NewTileMap/PathHolder/OmaKindPath"]
 position = Vector2(574, 240)
 rotation = 1.63454
+
+[node name="OmaKind" parent="NewTileMap/PathHolder/OmaKindPath/OmaKindPathFollow" instance=ExtResource("10_e5lkm")]
 
 [node name="2FrauenKindPath" type="Path2D" parent="NewTileMap/PathHolder"]
 curve = SubResource("Curve2D_wbql4")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="NewTileMap/PathHolder/2FrauenKindPath"]
+[node name="2FrauenKindPathFollow" type="PathFollow2D" parent="NewTileMap/PathHolder/2FrauenKindPath"]
 position = Vector2(451, 451)
 rotation = -1.58249
+
+[node name="2FrauenKind" parent="NewTileMap/PathHolder/2FrauenKindPath/2FrauenKindPathFollow" instance=ExtResource("11_1434k")]
 
 [node name="FamielieKindPath" type="Path2D" parent="NewTileMap/PathHolder"]
 curve = SubResource("Curve2D_sy6nv")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="NewTileMap/PathHolder/FamielieKindPath"]
+[node name="FamilieKindPathFollow" type="PathFollow2D" parent="NewTileMap/PathHolder/FamielieKindPath"]
 position = Vector2(122, 513)
 rotation = 1.55533
+
+[node name="FamilieKind" parent="NewTileMap/PathHolder/FamielieKindPath/FamilieKindPathFollow" instance=ExtResource("12_gd5le")]
