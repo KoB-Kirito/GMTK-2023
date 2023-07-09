@@ -1,9 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://dy8wsehbghl2l"]
+[gd_scene load_steps=33 format=3 uid="uid://dy8wsehbghl2l"]
 
 [ext_resource type="TileSet" uid="uid://fwtbdlu5tfhr" path="res://level/tilesets/town.tres" id="2_ad5c8"]
 [ext_resource type="PackedScene" uid="uid://d3mklqtc7tjww" path="res://characters/player.tscn" id="2_llgaa"]
 [ext_resource type="PackedScene" uid="uid://d0pwq4rvak3ri" path="res://npc/npc.tscn" id="2_yrs6g"]
-[ext_resource type="AudioStream" uid="uid://pc51k3maae41" path="res://assets/bgm/village_theme.mp3" id="3_7jssq"]
+[ext_resource type="Script" path="res://level/music.gd" id="4_0siu3"]
+[ext_resource type="AudioStream" uid="uid://mt6vpm8560rn" path="res://assets/bgm/village_theme.ogg" id="5_qwac7"]
+[ext_resource type="AudioStream" uid="uid://da0q1ml2a4ddg" path="res://assets/bgm/house_theme.ogg" id="6_pqk03"]
+[ext_resource type="AudioStream" uid="uid://dnaw0ck2knteg" path="res://assets/bgm/woods_theme.ogg" id="7_4tutb"]
+[ext_resource type="Texture2D" uid="uid://cmgshtawbbvfm" path="res://assets/characters/portraits/boy_2.png" id="8_t4hxv"]
+[ext_resource type="Script" path="res://level/boy_end.gd" id="9_lu8s3"]
 
 [sub_resource type="Curve2D" id="Curve2D_s6r0p"]
 _data = {
@@ -46,6 +51,54 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 122, 513, 0, 0, 0, 0, 125, 707, 0, 0, 0, 0, 135, 704, 0, 0, 0, 0, 134, 519, 0, 0, 0, 0, 122, 513)
 }
 point_count = 5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eg1n3"]
+size = Vector2(600, 300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2a6f"]
+size = Vector2(72, 54)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a4l35"]
+size = Vector2(76, 46)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8p71p"]
+size = Vector2(266, 180)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_enqvq"]
+size = Vector2(94, 54)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4njgw"]
+size = Vector2(74, 58)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vq7be"]
+size = Vector2(72, 84)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rowyj"]
+size = Vector2(88, 54)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u7dx0"]
+size = Vector2(78, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yxsrg"]
+size = Vector2(104, 58)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oe2pf"]
+size = Vector2(140, 76)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mxjfv"]
+size = Vector2(180, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6hsl"]
+size = Vector2(128, 92)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y63ni"]
+size = Vector2(58, 90)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nbcad"]
+size = Vector2(74, 76)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0mu6d"]
+radius = 20.0693
 
 [node name="Town" type="TileMap"]
 tile_set = ExtResource("2_ad5c8")
@@ -157,17 +210,104 @@ position = Vector2(122, 513)
 rotation = 1.55533
 
 [node name="Music" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("4_0siu3")
 
 [node name="bgm_village" type="AudioStreamPlayer" parent="Music"]
-stream = ExtResource("3_7jssq")
-autoplay = true
+stream = ExtResource("5_qwac7")
 
 [node name="bgm_house" type="AudioStreamPlayer" parent="Music"]
-stream = ExtResource("3_7jssq")
-autoplay = true
+stream = ExtResource("6_pqk03")
 
 [node name="bgm_forest" type="AudioStreamPlayer" parent="Music"]
-stream = ExtResource("3_7jssq")
-autoplay = true
+stream = ExtResource("7_4tutb")
+
+[node name="ForestArea" type="Area2D" parent="Music"]
+position = Vector2(303, 1012)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Music/ForestArea"]
+shape = SubResource("RectangleShape2D_eg1n3")
+
+[node name="HouseArea" type="Area2D" parent="Music"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Music/HouseArea"]
+position = Vector2(457, 672)
+shape = SubResource("RectangleShape2D_c2a6f")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Music/HouseArea"]
+position = Vector2(776, 677)
+shape = SubResource("RectangleShape2D_a4l35")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Music/HouseArea"]
+position = Vector2(212, 620)
+shape = SubResource("RectangleShape2D_8p71p")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Music/HouseArea"]
+position = Vector2(311, 448)
+shape = SubResource("RectangleShape2D_enqvq")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Music/HouseArea"]
+position = Vector2(104, 329)
+shape = SubResource("RectangleShape2D_4njgw")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Music/HouseArea"]
+position = Vector2(119, 455)
+shape = SubResource("RectangleShape2D_vq7be")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Music/HouseArea"]
+position = Vector2(273, 283)
+shape = SubResource("RectangleShape2D_rowyj")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Music/HouseArea"]
+position = Vector2(582, 210)
+shape = SubResource("RectangleShape2D_u7dx0")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Music/HouseArea"]
+position = Vector2(775, 204)
+shape = SubResource("RectangleShape2D_yxsrg")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Music/HouseArea"]
+position = Vector2(553, 355)
+shape = SubResource("RectangleShape2D_oe2pf")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="Music/HouseArea"]
+position = Vector2(792, 543)
+shape = SubResource("RectangleShape2D_mxjfv")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="Music/HouseArea"]
+position = Vector2(897, 379)
+shape = SubResource("RectangleShape2D_q6hsl")
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="Music/HouseArea"]
+position = Vector2(767, 378)
+shape = SubResource("RectangleShape2D_y63ni")
+
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="Music/HouseArea"]
+position = Vector2(456, 64)
+shape = SubResource("RectangleShape2D_nbcad")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Music/HouseArea"]
+polygon = PackedVector2Array(383, 550, 498, 550, 498, 593, 435, 593, 435, 586, 382, 587)
+
+[node name="VisionTarget" type="Node2D" parent="." groups=["vision_target"]]
+position = Vector2(424, 40)
+
+[node name="Boy2" type="Sprite2D" parent="."]
+position = Vector2(425, 33)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("8_t4hxv")
+script = ExtResource("9_lu8s3")
+
+[node name="Area2D" type="Area2D" parent="Boy2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boy2/Area2D"]
+position = Vector2(0, 6.66666)
+shape = SubResource("CircleShape2D_0mu6d")
+
+[connection signal="body_entered" from="Music/ForestArea" to="Music" method="_on_forest_area_body_entered"]
+[connection signal="body_exited" from="Music/ForestArea" to="Music" method="_on_forest_area_body_exited"]
+[connection signal="body_entered" from="Music/HouseArea" to="Music" method="_on_house_area_body_entered"]
+[connection signal="body_exited" from="Music/HouseArea" to="Music" method="_on_house_area_body_exited"]
+[connection signal="body_entered" from="Boy2/Area2D" to="Boy2" method="_on_area_2d_body_entered"]
 
 [editable path="Player"]

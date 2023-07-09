@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://by3glvnvgf64y"]
+
+[ext_resource type="Texture2D" uid="uid://bqwame6qttprc" path="res://assets/ui/credits.png" id="1_xoah8"]
+[ext_resource type="AudioStream" uid="uid://cdxni3x4u8cuj" path="res://assets/bgm/game_over.ogg" id="2_0w4dc"]
+
+[node name="EndScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_xoah8")
+
+[node name="bgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_0w4dc")
+autoplay = true

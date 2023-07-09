@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1025pc644u84"]
+
+[ext_resource type="Script" path="res://menu/title_screen.gd" id="1_bhiue"]
+[ext_resource type="Texture2D" uid="uid://da6yl7qjqu5da" path="res://assets/ui/title.png" id="2_dbyq3"]
+[ext_resource type="AudioStream" uid="uid://da0q1ml2a4ddg" path="res://assets/bgm/house_theme.ogg" id="3_vu2vr"]
+[ext_resource type="PackedScene" uid="uid://coaan7m4e1471" path="res://menu/menu.tscn" id="4_apyax"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bhiue")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_dbyq3")
+
+[node name="bgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_vu2vr")
+autoplay = true
+
+[node name="Menu" parent="." instance=ExtResource("4_apyax")]
+visible = false
+layout_mode = 1
+
+[connection signal="gui_input" from="TextureRect" to="." method="_on_texture_rect_gui_input"]

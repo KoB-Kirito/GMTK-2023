@@ -13,6 +13,11 @@ var butterfly_active: bool = false
 func _ready() -> void:
 	# to hide the menu in level editor
 	$MenuLayer.visible = true
+	
+	# enables dialogic pause
+	#Globals.enable_pause()
+	
+	Dialogic.start("intro2")
 
 
 func _process(delta: float) -> void:

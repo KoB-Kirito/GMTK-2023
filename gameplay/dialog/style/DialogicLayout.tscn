@@ -15,10 +15,12 @@ texture = ExtResource("2_bd3bs")
 texture = ExtResource("5_vnlsh")
 
 [node name="RPG_ExampleNode" type="CanvasLayer"]
+process_mode = 3
 layer = 3
 script = ExtResource("1_15xbm")
 
 [node name="TextContainer" type="PanelContainer" parent="."]
+process_mode = 3
 custom_minimum_size = Vector2(0, 80)
 anchors_preset = 12
 anchor_top = 1.0

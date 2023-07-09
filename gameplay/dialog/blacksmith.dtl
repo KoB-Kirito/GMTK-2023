@@ -1,0 +1,25 @@
+Join blacksmith 0
+blacksmith: You nasty Vampire! Sucking the life out of innocent people, spreading fear wherever you go! Begone!
+Leave blacksmith
+What do you reply?
+- Vampires are not malevolent beings!
+	Join vampire 0
+	vampire: I understand that the legends have painted our kind in a dark light, but vampires are not malevolent beings. I, for one, use my abilities to heal and save lives.
+	Join blacksmith 0 [animation="Instant In Or Out"]
+	blacksmith: Save lives? Ha! That's hard to believe. The stories I've heard—they're vicious monsters, feeding on humans to sustain themselves. You can't expect me to just accept your words.
+	Leave blacksmith
+	Join vampire 0 [animation="Instant In Or Out"]
+	vampire: You don’t have to accept my words but maybe you will see for yourself that vampires are not here to harm anybody.
+	vampire: Hatred can only be conquered through acts of compassion and understanding. It's the only way to break the cycle of fear and hatred.
+	Leave vampire
+	Join blacksmith 0 [animation="Instant In Or Out"]
+	blacksmith: Your words... they carry a weight I hadn't considered before. Perhaps there's more to this than meets the eye. But I still can't say I trust vampires completely.
+	Leave --All-- 
+	[color="#00ff00"]You made a good impression.
+- I heal people by infusing them with my blood..
+	Join vampire 0
+	vampire: Don’t accuse me of acts, you haven’t witnessed yourself! I heal people by infusing them with my blood, granting them strength and vitality.
+	Join blacksmith 0 [animation="Instant In Or Out"]
+	blacksmith: Infusing them with your blood? That's even worse! The burden you force on them by giving them your blood is too great! You pronounce their death sentence.
+	Leave --All-- 
+	[color="#ff0000"]You made a bad impression.

@@ -25,4 +25,4 @@ func on_dialogic_signal(argument: String):
 
 
 func on_timeline_ended():
-	get_tree().change_scene_to_file("res://level/forest.tscn")
+	get_tree().change_scene_to_file("res://level/town.tscn")

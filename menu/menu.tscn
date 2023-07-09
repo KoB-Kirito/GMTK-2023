@@ -60,11 +60,13 @@ texture_hover = ExtResource("4_dtnmp")
 stretch_mode = 3
 
 [node name="ControlsButton" type="TextureButton" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 texture_normal = ExtResource("7_8ahec")
 stretch_mode = 3
 
 [node name="SettingsButton" type="TextureButton" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 texture_normal = ExtResource("7_8ahec")
 stretch_mode = 3

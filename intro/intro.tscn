@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://intro/intro.gd" id="1_6lh8c"]
 [ext_resource type="Texture2D" uid="uid://bs3mnmpkdw0nk" path="res://intro/open_book.png" id="1_tb0gl"]
-[ext_resource type="AudioStream" uid="uid://batu67k55lwve" path="res://assets/bgm/house_theme.mp3" id="3_iqkgv"]
+[ext_resource type="AudioStream" uid="uid://b0gdsyrikuwpl" path="res://assets/bgm/intro.ogg" id="3_pja1f"]
 
 [node name="Intro" type="Node"]
 script = ExtResource("1_6lh8c")
@@ -28,7 +28,7 @@ one_shot = true
 autostart = true
 
 [node name="bgm" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_iqkgv")
+stream = ExtResource("3_pja1f")
 autoplay = true
 
 [connection signal="timeout" from="Book/Timer" to="." method="_on_timer_timeout"]

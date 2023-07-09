@@ -6,7 +6,7 @@ const portrait_default_margin: int = 4
 @export var animation_duration: float = 0.6
 
 
-func _ready() -> void:
+func _ready() -> void:	
 	Dialogic.Portraits.character_joined.connect(on_character_joined)
 	Dialogic.Portraits.character_left.connect(on_character_left)
 

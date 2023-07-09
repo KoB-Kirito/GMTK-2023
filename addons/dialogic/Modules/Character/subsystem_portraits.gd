@@ -419,6 +419,13 @@ func leave_all_characters(animation_name:String="", animation_length:float= 0, a
 func remove_character(character:DialogicCharacter) -> void:
 	if !is_character_joined(character):
 		return
+	
+	if dialogic.current_state_info['portraits'][character.resource_path].node == null:
+		return
+		
+	if not is_instance_valid(dialogic.current_state_info['portraits'][character.resource_path].node):
+		return
+		
 	if dialogic.current_state_info['portraits'][character.resource_path].node is Node:
 		_remove_portrait(dialogic.current_state_info['portraits'][character.resource_path].node)
 	dialogic.current_state_info['portraits'].erase(character.resource_path)
