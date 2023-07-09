@@ -4,9 +4,15 @@ extends CharacterBody2D
 
 @export var speed := 80.0
 
+var butterfly_active: bool = false
+
+@onready var butterfly_ability: Node = $Abilities/ButterflyAbility
+@onready var sprite: AnimatedSprite2D = $Sprite
+
 
 func _ready() -> void:
-	$CanvasLayer.visible = true
+	# to hide the menu in level editor
+	$MenuLayer.visible = true
 
 
 func _process(delta: float) -> void:
@@ -17,34 +23,37 @@ func _physics_process(delta: float) -> void:
 	movement(delta)
 
 
-func animation(_delta: float) -> void:
+func animation(delta: float) -> void:
+	if butterfly_active:
+		butterfly_ability.butterfly_animation(delta)
+		return
+	
 	if velocity == Vector2.ZERO:
-		if %Sprite.animation == "walk_down":
-			%Sprite.play("idle")
+		if sprite.animation == "walk_down":
+			sprite.play("idle")
 			
-		elif %Sprite.animation == "idle":
+		elif sprite.animation == "idle":
 			return
 			
 		else:
-			%Sprite.stop()
+			sprite.stop()
 		
 		return
 	
-	
 	if Input.is_action_pressed("move_right"):
-		%Sprite.play("walk_right")
+		sprite.play("walk_right")
 		
 	elif Input.is_action_pressed("move_down"):
-		%Sprite.play("walk_down")
+		sprite.play("walk_down")
 		
 	elif Input.is_action_pressed("move_left"):
-		%Sprite.play("walk_left")
+		sprite.play("walk_left")
 		
 	elif Input.is_action_pressed("move_up"):
-		%Sprite.play("walk_up")
+		sprite.play("walk_up")
 		
 	else:
-		%Sprite.stop()
+		sprite.stop()
 
 
 func movement(_delta: float) -> void:

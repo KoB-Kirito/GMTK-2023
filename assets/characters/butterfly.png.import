@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhd207jegfsc3"
-path="res://.godot/imported/vampire.png-ac40b7c7d7f1703faf1afaa03b6a45b3.ctex"
+uid="uid://b6pjtn4c25qk0"
+path="res://.godot/imported/butterfly.png-aca8855b93548c8b5bfffb8df646c5fe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/vampire.png"
-dest_files=["res://.godot/imported/vampire.png-ac40b7c7d7f1703faf1afaa03b6a45b3.ctex"]
+source_file="res://assets/characters/butterfly.png"
+dest_files=["res://.godot/imported/butterfly.png-aca8855b93548c8b5bfffb8df646c5fe.ctex"]
 
 [params]
 
