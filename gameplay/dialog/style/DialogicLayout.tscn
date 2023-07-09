@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://addons/dialogic/Modules/Choice/node_choice_button.gd" id="5_06dcw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_otkb7"]
+bg_color = Color(0.27451, 0.27451, 0.27451, 1)
 skew = Vector2(-0.5, 0)
 
 [node name="RPG_ExampleNode" type="CanvasLayer"]
@@ -32,6 +33,7 @@ theme_override_constants/margin_right = 4
 layout_mode = 2
 
 [node name="DialogicNode_DialogText" type="RichTextLabel" parent="TextContainer/TextMargin/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 14
 text = "Some Text that explains the choices"

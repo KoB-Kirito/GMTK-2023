@@ -12,6 +12,8 @@ func _ready() -> void:
 
 
 func on_character_joined(_info: Dictionary):
+	%DialogicNode_DialogText.text = ""
+	
 	var tween = create_tween()
 	
 	# move text to the right

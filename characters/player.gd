@@ -1,7 +1,12 @@
+class_name Player
 extends CharacterBody2D
 
 
-@export var speed := 40.0
+@export var speed := 80.0
+
+
+func _ready() -> void:
+	$CanvasLayer.visible = true
 
 
 func _process(delta: float) -> void:

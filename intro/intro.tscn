@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://de7pqac08c3oe"]
+
+[ext_resource type="Script" path="res://intro/intro.gd" id="1_6lh8c"]
+[ext_resource type="Texture2D" uid="uid://bs3mnmpkdw0nk" path="res://intro/open_book.png" id="1_tb0gl"]
+[ext_resource type="AudioStream" uid="uid://batu67k55lwve" path="res://assets/bgm/house_theme.mp3" id="3_iqkgv"]
+
+[node name="Intro" type="Node"]
+script = ExtResource("1_6lh8c")
+
+[node name="BackgroundRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0235294, 0, 0, 1)
+
+[node name="Book" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+position = Vector2(243, 83)
+texture = ExtResource("1_tb0gl")
+
+[node name="Timer" type="Timer" parent="Book"]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="bgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_iqkgv")
+autoplay = true
+
+[connection signal="timeout" from="Book/Timer" to="." method="_on_timer_timeout"]
