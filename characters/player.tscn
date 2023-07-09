@@ -1,13 +1,14 @@
-[gd_scene load_steps=30 format=3 uid="uid://d3mklqtc7tjww"]
+[gd_scene load_steps=31 format=3 uid="uid://d3mklqtc7tjww"]
 
 [ext_resource type="Script" path="res://characters/player.gd" id="1_g54x2"]
 [ext_resource type="Texture2D" uid="uid://bhd207jegfsc3" path="res://assets/characters/vampire.png" id="1_hr2po"]
 [ext_resource type="Texture2D" uid="uid://b6pjtn4c25qk0" path="res://assets/characters/butterfly.png" id="2_fpx1j"]
 [ext_resource type="PackedScene" uid="uid://coaan7m4e1471" path="res://menu/menu.tscn" id="3_tps5g"]
-[ext_resource type="PackedScene" uid="uid://vc5teyo7b0sh" path="res://characters/abilities/butterfly_ability.tscn" id="5_04dif"]
+[ext_resource type="PackedScene" uid="uid://vc5teyo7b0sh" path="res://characters/abilities/transform_ability.tscn" id="5_04dif"]
+[ext_resource type="PackedScene" uid="uid://ys235m7omaq3" path="res://characters/abilities/vision_ability.tscn" id="6_3b20v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dmvol"]
-radius = 8.0
+radius = 6.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r8h4c"]
 atlas = ExtResource("2_fpx1j")
@@ -214,7 +215,7 @@ motion_mode = 1
 script = ExtResource("1_g54x2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -8)
+position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_dmvol")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
@@ -235,4 +236,6 @@ ingame_menu = true
 
 [node name="Abilities" type="Node" parent="."]
 
-[node name="ButterflyAbility" parent="Abilities" instance=ExtResource("5_04dif")]
+[node name="TransformAbility" parent="Abilities" instance=ExtResource("5_04dif")]
+
+[node name="VisionAbility" parent="Abilities" instance=ExtResource("6_3b20v")]

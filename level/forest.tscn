@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dhcp87xdovcl8" path="res://assets/tilesets/forest.png" id="1_wbop8"]
 [ext_resource type="Texture2D" uid="uid://b0dhyx3funlrp" path="res://assets/tilesets/forest_objects.png" id="2_ndjtb"]
 [ext_resource type="PackedScene" uid="uid://d3mklqtc7tjww" path="res://characters/player.tscn" id="3_l3vqa"]
-[ext_resource type="PackedScene" path="res://gameplay/teleport.tscn" id="4_hxxyk"]
+[ext_resource type="PackedScene" uid="uid://bstajtwfoqlbj" path="res://gameplay/teleport.tscn" id="4_hxxyk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7si12"]
 texture = ExtResource("1_wbop8")
@@ -325,3 +325,6 @@ scene_path = "res://level/town.tscn"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Teleport"]
 polygon = PackedVector2Array(-148, 161, 408, 160, 408, -191, -163, -190, -163, 157, -222, 155, -216, -227, 471, -230, 470, 195, -182, 199)
+
+[node name="VisionTarget" type="Node2D" parent="." groups=["vision_target"]]
+position = Vector2(168, 137)

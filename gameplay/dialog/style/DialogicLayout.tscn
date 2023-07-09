@@ -1,14 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://cugj8odcvwcd0"]
+[gd_scene load_steps=10 format=3 uid="uid://cugj8odcvwcd0"]
 
 [ext_resource type="Script" path="res://gameplay/dialog/style/DialogicLayout.gd" id="1_15xbm"]
+[ext_resource type="Texture2D" uid="uid://c152wcoksx1sa" path="res://assets/ui/dialog_box_red.png" id="2_bd3bs"]
 [ext_resource type="Script" path="res://addons/dialogic/Modules/Character/node_portrait_container.gd" id="2_lwc7v"]
 [ext_resource type="Script" path="res://addons/dialogic/Modules/Text/node_name_label.gd" id="3_j7xwo"]
 [ext_resource type="Script" path="res://addons/dialogic/Modules/Text/node_dialog_text.gd" id="4_dhbm5"]
 [ext_resource type="Script" path="res://addons/dialogic/Modules/Choice/node_choice_button.gd" id="5_06dcw"]
+[ext_resource type="Texture2D" uid="uid://cp8cg6n5llpdw" path="res://assets/ui/dialog_name_green.png" id="5_vnlsh"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_otkb7"]
-bg_color = Color(0.27451, 0.27451, 0.27451, 1)
-skew = Vector2(-0.5, 0)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wii5i"]
+texture = ExtResource("2_bd3bs")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ic5db"]
+texture = ExtResource("5_vnlsh")
 
 [node name="RPG_ExampleNode" type="CanvasLayer"]
 layer = 3
@@ -22,6 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_wii5i")
 
 [node name="TextMargin" type="MarginContainer" parent="TextContainer"]
 unique_name_in_owner = true
@@ -62,7 +67,7 @@ offset_top = -100.0
 offset_right = -5.0
 offset_bottom = -80.0
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_otkb7")
+theme_override_styles/panel = SubResource("StyleBoxTexture_ic5db")
 
 [node name="NameMargin" type="MarginContainer" parent="NameContainer"]
 layout_mode = 2
