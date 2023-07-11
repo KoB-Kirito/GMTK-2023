@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://buvrn7c6gpqcv"]
 
-[ext_resource type="Script" path="res://level/objects/door.gd" id="1_20ycc"]
+[ext_resource type="Script" path="res://level/_objects/door.gd" id="1_20ycc"]
 [ext_resource type="Texture2D" uid="uid://btd4sw48g1s0x" path="res://assets/tilesets/Building parts/door animation sprites.png" id="1_tdbsh"]
 [ext_resource type="AudioStream" uid="uid://bh0dbtgvuljrl" path="res://assets/sounds/door_open.ogg" id="3_0yfk7"]
 [ext_resource type="AudioStream" uid="uid://tbhenk46o5w5" path="res://assets/sounds/door_close.ogg" id="4_arf5v"]
