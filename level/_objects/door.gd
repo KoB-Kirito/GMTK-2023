@@ -14,6 +14,7 @@ var player_nearby: bool = false
 @onready var snd_open: AudioStreamPlayer2D = $snd_open
 @onready var snd_close: AudioStreamPlayer2D = $snd_close
 @onready var auto_close_timer: Timer = $AutoCloseTimer
+@onready var open_timer: Timer = $OpenTimer
 
 
 func _ready() -> void:
@@ -37,8 +38,8 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		# open door
 		sprite.play("open")
 		snd_open.play()
-		collision.set_deferred("disabled", true)
 		open = true
+		open_timer.start()
 
 
 func _on_interaction_area_body_entered(body: Node2D) -> void:
@@ -62,6 +63,11 @@ func _on_auto_close_timer_timeout() -> void:
 	snd_close.play()
 	collision.set_deferred("disabled", false)
 	open = false
+
+
+func _on_open_timer_timeout() -> void:
+	# disable collision after some time
+	collision.set_deferred("disabled", true)
 
 
 func update_state():

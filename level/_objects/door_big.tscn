@@ -129,8 +129,6 @@ size = Vector2(24, 16)
 
 [node name="DoorBig" type="StaticBody2D"]
 script = ExtResource("1_gkpt8")
-player_can_open = null
-auto_closes = null
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(-18, 0)
@@ -143,14 +141,13 @@ shape = SubResource("RectangleShape2D_5gctt")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sjm8x")
 animation = &"closed"
-frame_progress = 0.203473
+frame_progress = 0.259344
 
 [node name="InteractionArea" type="Area2D" parent="."]
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("RectangleShape2D_l5whh")
-disabled = true
 debug_color = Color(0, 0.6, 0.964706, 0.419608)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -170,5 +167,11 @@ pitch_scale = 0.8
 [node name="AutoCloseTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="OpenTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
 [connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]
+[connection signal="timeout" from="AutoCloseTimer" to="." method="_on_auto_close_timer_timeout"]
+[connection signal="timeout" from="OpenTimer" to="." method="_on_open_timer_timeout"]
