@@ -119,15 +119,23 @@ animations = [{
 "texture": SubResource("AtlasTexture_j048j")
 }],
 "loop": false,
-"name": &"default",
-"speed": 30.0
+"name": &"splosh",
+"speed": 15.0
 }]
 
 [node name="VisionAbility" type="Node2D"]
 script = ExtResource("1_sbxxh")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Hint" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+z_index = 99
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_lt7j5")
-frame = 15
-frame_progress = 1.0
+animation = &"splosh"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
