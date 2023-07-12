@@ -6,6 +6,7 @@
 
 [node name="Intro" type="Node"]
 script = ExtResource("1_6lh8c")
+first_level = "res://level/town/world.tscn"
 
 [node name="BackgroundRect" type="ColorRect" parent="."]
 anchors_preset = 15

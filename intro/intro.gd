@@ -1,6 +1,9 @@
 extends Node
 
 
+@export_file("*.tscn") var first_level: String
+
+
 func _ready() -> void:
 	Dialogic.signal_event.connect(on_dialogic_signal)
 	Dialogic.timeline_ended.connect(on_timeline_ended)
@@ -25,4 +28,4 @@ func on_dialogic_signal(argument: String):
 
 
 func on_timeline_ended():
-	get_tree().change_scene_to_file("res://level/town.tscn")
+	get_tree().change_scene_to_file(first_level)
