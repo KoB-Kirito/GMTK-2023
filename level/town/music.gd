@@ -7,6 +7,10 @@ extends Node
 @onready var bgm_forest: AudioStreamPlayer = $bgm_forest
 
 
+#func _ready() -> void:
+#	fade(null, bgm_house, fade_duration)
+
+
 func _on_forest_area_body_entered(body: Node2D) -> void:
 	if not body is Player:
 		return
@@ -37,7 +41,7 @@ func _on_house_area_body_exited(body: Node2D) -> void:
 
 func fade(from: AudioStreamPlayer, to: AudioStreamPlayer, duration: float, cross_fade: bool = false):
 	to.volume_db = -30.0
-	if cross_fade:
+	if from != null and cross_fade:
 		to.play(from.get_playback_position())
 		
 	else:
@@ -45,5 +49,6 @@ func fade(from: AudioStreamPlayer, to: AudioStreamPlayer, duration: float, cross
 	
 	var tween = create_tween()
 	tween.tween_property(to, "volume_db", 0.0, duration)
-	tween.parallel().tween_property(from, "volume_db", -30.0, duration)
-	tween.tween_callback(func(): from.stop())
+	if from != null:
+		tween.parallel().tween_property(from, "volume_db", -30.0, duration)
+		tween.tween_callback(func(): from.stop())
