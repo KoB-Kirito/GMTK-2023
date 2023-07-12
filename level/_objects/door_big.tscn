@@ -1,7 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://doamoxdbxmss"]
+[gd_scene load_steps=20 format=3 uid="uid://doamoxdbxmss"]
 
 [ext_resource type="Script" path="res://level/_objects/door.gd" id="1_gkpt8"]
-[ext_resource type="Texture2D" uid="uid://btd4sw48g1s0x" path="res://assets/tilesets/Building parts/door animation sprites.png" id="2_m0y3j"]
 [ext_resource type="AudioStream" uid="uid://bh0dbtgvuljrl" path="res://assets/sounds/door_open.ogg" id="3_laeu2"]
 [ext_resource type="AudioStream" uid="uid://tbhenk46o5w5" path="res://assets/sounds/door_close.ogg" id="4_el7um"]
 
@@ -9,51 +8,39 @@
 size = Vector2(12, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ivlov"]
-atlas = ExtResource("2_m0y3j")
 region = Rect2(0, 16, 48, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_txav8"]
-atlas = ExtResource("2_m0y3j")
 region = Rect2(48, 16, 48, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6d2pe"]
-atlas = ExtResource("2_m0y3j")
 region = Rect2(96, 16, 48, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ypwnm"]
-atlas = ExtResource("2_m0y3j")
 region = Rect2(144, 16, 48, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k5snx"]
-atlas = ExtResource("2_m0y3j")
 region = Rect2(192, 16, 48, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4liu0"]
-atlas = ExtResource("2_m0y3j")
 region = Rect2(240, 16, 48, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_60wj3"]
-atlas = ExtResource("2_m0y3j")
 region = Rect2(240, 16, 48, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v0bfw"]
-atlas = ExtResource("2_m0y3j")
 region = Rect2(192, 16, 48, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ikfh1"]
-atlas = ExtResource("2_m0y3j")
 region = Rect2(144, 16, 48, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kpj8x"]
-atlas = ExtResource("2_m0y3j")
 region = Rect2(96, 16, 48, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_62xv7"]
-atlas = ExtResource("2_m0y3j")
 region = Rect2(48, 16, 48, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8c7u6"]
-atlas = ExtResource("2_m0y3j")
 region = Rect2(0, 16, 48, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sjm8x"]
