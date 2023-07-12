@@ -1,3 +1,4 @@
+#@tool
 extends TileMap
 
 
@@ -53,3 +54,9 @@ func lower_player() -> void:
 	player.set_collision_layer_value(1, true)
 	player.set_collision_mask_value(1, true)
 	elevated = false
+
+
+#func _notification(what: int) -> void:
+#	if what == NOTIFICATION_EDITOR_POST_SAVE:
+#		# removes all missing tiles
+#		fix_invalid_tiles()

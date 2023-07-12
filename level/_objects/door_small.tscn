@@ -119,10 +119,9 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l5whh"]
-size = Vector2(16, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bbfqd"]
-size = Vector2(16, 16)
+size = Vector2(16, 8)
 
 [node name="DoorSmall" type="StaticBody2D"]
 script = ExtResource("1_20ycc")
@@ -137,10 +136,12 @@ frame_progress = 1.0
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_l5whh")
 debug_color = Color(0, 0.6, 0.964706, 0.419608)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_bbfqd")
 debug_color = Color(0.952941, 0.113725, 0, 0.501961)
 
@@ -153,6 +154,7 @@ stream = ExtResource("4_arf5v")
 volume_db = -16.0
 
 [node name="AutoCloseTimer" type="Timer" parent="."]
+wait_time = 2.0
 one_shot = true
 
 [node name="OpenTimer" type="Timer" parent="."]

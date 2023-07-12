@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://tbhenk46o5w5" path="res://assets/sounds/door_close.ogg" id="4_el7um"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5gctt"]
-size = Vector2(12, 16)
+size = Vector2(12, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ivlov"]
 atlas = ExtResource("2_m0y3j")
@@ -122,35 +122,37 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l5whh"]
-size = Vector2(24, 24)
+size = Vector2(28, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bbfqd"]
-size = Vector2(24, 16)
+size = Vector2(24, 8)
 
 [node name="DoorBig" type="StaticBody2D"]
 script = ExtResource("1_gkpt8")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(-18, 0)
+position = Vector2(-18, 4)
 shape = SubResource("RectangleShape2D_5gctt")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
-position = Vector2(18, 0)
+position = Vector2(18, 4)
 shape = SubResource("RectangleShape2D_5gctt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sjm8x")
 animation = &"closed"
-frame_progress = 0.259344
+frame_progress = 0.635127
 
 [node name="InteractionArea" type="Area2D" parent="."]
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_l5whh")
 debug_color = Color(0, 0.6, 0.964706, 0.419608)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_bbfqd")
 debug_color = Color(0.952941, 0.113725, 0, 0.501961)
 
@@ -165,6 +167,7 @@ volume_db = -12.0
 pitch_scale = 0.8
 
 [node name="AutoCloseTimer" type="Timer" parent="."]
+wait_time = 2.0
 one_shot = true
 
 [node name="OpenTimer" type="Timer" parent="."]
