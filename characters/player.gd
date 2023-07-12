@@ -8,6 +8,7 @@ var butterfly_active: bool = false
 
 @onready var butterfly_ability: Node = $Abilities/TransformAbility
 @onready var sprite: AnimatedSprite2D = $Sprite
+@onready var collision: CollisionShape2D = $CollisionShape2D
 
 
 func _ready() -> void:
@@ -16,8 +17,6 @@ func _ready() -> void:
 	
 	# enables dialogic pause
 	#Globals.enable_pause()
-	
-	Dialogic.start("intro2")
 
 
 func _process(delta: float) -> void:
