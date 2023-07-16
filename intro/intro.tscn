@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://de7pqac08c3oe"]
+[gd_scene load_steps=5 format=3 uid="uid://de7pqac08c3oe"]
 
 [ext_resource type="Script" path="res://intro/intro.gd" id="1_6lh8c"]
 [ext_resource type="Texture2D" uid="uid://bs3mnmpkdw0nk" path="res://intro/open_book.png" id="1_tb0gl"]
 [ext_resource type="AudioStream" uid="uid://b0gdsyrikuwpl" path="res://assets/bgm/intro.ogg" id="3_pja1f"]
+[ext_resource type="PackedScene" uid="uid://cn5e8ujuxalos" path="res://gameplay/levelchange_fade_out.tscn" id="4_ep6gr"]
 
 [node name="Intro" type="Node"]
 process_mode = 3
@@ -32,5 +33,10 @@ autostart = true
 [node name="bgm" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_pja1f")
 autoplay = true
+
+[node name="LevelchangeFadeOut" parent="." node_paths=PackedStringArray("bgm_player") instance=ExtResource("4_ep6gr")]
+unique_name_in_owner = true
+next_level = "res://level/town/world.tscn"
+bgm_player = NodePath("../bgm")
 
 [connection signal="timeout" from="Book/Timer" to="." method="_on_timer_timeout"]
