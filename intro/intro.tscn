@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://b0gdsyrikuwpl" path="res://assets/bgm/intro.ogg" id="3_pja1f"]
 
 [node name="Intro" type="Node"]
+process_mode = 3
 script = ExtResource("1_6lh8c")
 first_level = "res://level/town/world.tscn"
 

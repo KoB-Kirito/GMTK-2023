@@ -1,20 +1,39 @@
-Join test 0
-test: Hello!\
-This is some text that could be a dialog. Bla bla bla..
-Leave test
-Text without character.. Be gone empty space! Be gone name bar without a name! Muhahah
-<.<
-Whasup?
-- Not much
-	test: You picked choice 1. It is a very good choice indeed.
-	bla bla bla
-- A lot
-	You picked choice 2. It's also quite good.
-Join test 0
-test: I'm back \:D Did you miss me?
+# Timeline start
+[wait time="0.5"]
+Join child
+child: Hello, I am a child speaking.\
+This is the test timeline for the dialog system. It starts with a character.
+child: Now I'll leave..
+Leave child
+Text without character.. This should show full size. So text without characters can be quite long without scrolling. Preferably we don't want scrolling at all, cause it's hard to setup with controller support etc.
+Now a character joins on the right.
+Join blacksmith 2
+blacksmith: Hi, I am the blacksmith here in town.\
+I am on the right side, cause the npc you talk to should be on the right side I guess.
+blacksmith: But who am I talking to? Let's join the main character..
+Join vampire
+vampire: Howdy ~
+blacksmith: There you are!
+vampire: Now we both are on the screen and can have a conversation. It should be obvious who is talking though.
+blacksmith: I hope it is.
+# Test choices
+blacksmith: Now lets test choices, they are an important part of the game.
+blacksmith: You should have a choice now
 - Yes
-	test: Aww..
+	blacksmith: Very good!
 - No
-	test: Sob..
-Leave test
-[wave]And so the choices were picked..[/wave]
+	blacksmith: No? That's bad, better check the layout again then..
+blacksmith: Now I'll leave so you have a bit more room for the next choice..
+Leave blacksmith
+Do you like more room for choices?
+- Yeah, I can write a bit more here
+	Indeed, they can get even bigger though..
+- Nah, I want them even bigger
+	Okay, okay..
+Leave vampire
+Without characters you can have quite long text for choices.. You can also have more question text as here. The box will extend which is okay without the name bars.
+- True, I can almost write a whole story here .. and they happily lived ever after..
+- But I kinda miss the characters
+	You could hide them just for the choice if you need more space, but yeah that's a limitation.
+- You can also have more than 2 choices
+End of the test timeline..

@@ -84,9 +84,9 @@ func finish_text() -> void:
 
 # Calls continue_reveal. Used instead of a timer to allow multiple reveals per frame.
 func _process(delta:float) -> void:
-	if !revealing or Dialogic.paused:
+	if !revealing:
 		return
 	speed_counter += delta
-	while speed_counter > speed and revealing and !Dialogic.paused:
+	while speed_counter > speed and revealing:
 		speed_counter -= speed
 		continue_reveal()

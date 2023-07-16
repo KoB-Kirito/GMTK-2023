@@ -177,8 +177,9 @@ func _update_portrait_transform(character_node:Node2D, time:float = 0.0) -> void
 
 ## Animates the portrait in the given container with the given animation.
 func _animate_portrait(character_node:Node2D, animation_path:String, length:float, repeats = 1) -> DialogicAnimation:
-	if character_node.get_meta('animation_node', null) != null and is_instance_valid(character_node.get_meta('animation_node', null)):
-		character_node.get_meta('animation_node').queue_free()
+	var old_anim_node = character_node.get_meta('animation_node', null)
+	if old_anim_node != null and is_instance_valid(old_anim_node):
+		old_anim_node.queue_free()
 	
 	var anim_script :Script = load(animation_path)
 	var anim_node := Node.new()

@@ -1,12 +1,7 @@
-[signal arg="noskip"]
-[speed=0.06]"Stories are told that vampires live amongst \
-us and bite those who are reckless. They can't harm you during the night, but by day you have to be cautious or they will take your life and fuel themselves with the blood that is yours."
-[signal arg="skip"]
-Join child 0
+[ns][speed=0.05]"Stories are told that vampires live amongst us and bite those who are reckless. They can't harm you during the night, but by day you have to be cautious or they will take your life and fuel themselves with the blood that is yours."
+Join child 2
 child: [wave]Vampires are so cool!
-Join father 0 [animation="Instant In Or Out"]
+Join father [animation="Instant In Or Out"]
 father: They are dangerous.
-Join child 0 [animation="Instant In Or Out"]
 child: I don't think so. Could you read me the story again tomorrow?
-Join father 0 [animation="Instant In Or Out"]
-father: Of course... [pause=2]tomorrow...
+father: [ns]Of course... [pause=2]tomorrow...
