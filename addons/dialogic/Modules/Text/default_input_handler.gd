@@ -1,8 +1,8 @@
 @tool
 extends Node
 
-var autoadvance_timer := Timer.new()
-var safety_timer := Timer.new()
+@onready var autoadvance_timer := Timer.new()
+@onready var safety_timer := Timer.new()
 
 signal dialogic_action()
 
@@ -12,10 +12,10 @@ signal dialogic_action()
 func _input(event:InputEvent) -> void:
 	if Input.is_action_just_pressed(ProjectSettings.get_setting('dialogic/text/input_action', 'dialogic_default_action')):
 		# only allow inputs every 0.8 seconds
-		if not safety_timer.is_stopped():
+		if safety_timer.time_left > 0.0:
 			return
 		safety_timer.start(0.8)
-				
+			
 		if Dialogic.current_state == Dialogic.states.IDLE and Dialogic.Text.can_manual_advance():
 			Dialogic.handle_next_event()
 			autoadvance_timer.stop()
@@ -35,6 +35,7 @@ func _ready() -> void:
 	add_child(autoadvance_timer)
 	autoadvance_timer.one_shot = true
 	autoadvance_timer.timeout.connect(_on_autoadvance_timer_timeout)
+	add_child(safety_timer)
 	safety_timer.one_shot = true
 	safety_timer.process_mode = Node.PROCESS_MODE_ALWAYS
 

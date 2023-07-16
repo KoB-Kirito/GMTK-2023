@@ -20,6 +20,10 @@ func _ready() -> void:
 	# pause game
 	get_tree().paused = true
 	
+	# lower volume
+	var default_volume = AudioServer.get_bus_volume_db(0)
+	AudioServer.set_bus_volume_db(0, default_volume - 10.0)
+	
 	# get current layout
 	portrait_width = %LeftPortraitContainer.size.x
 	left_name_position = %LeftNameContainer.position.x
@@ -96,6 +100,8 @@ func _on_about_to_show_text(info: Dictionary):
 
 func _on_timeline_ended():
 	get_tree().paused = false
+	# reset volume to normal #ToDo: set to set volume if settings are done
+	AudioServer.set_bus_volume_db(0, 0.0)
 
 
 func fade_left_character():
@@ -182,3 +188,21 @@ func leave_right_character():
 	
 	# slide name out
 	tween.tween_property(%RightNameContainer, "position:x", right_name_position + slide_distance, animation_duration * 1.5).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BACK)
+
+
+## make sure a button gets a focus for controller support
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept") or event.is_action_pressed("ui_left") or event.is_action_pressed("ui_right") or event.is_action_pressed("ui_up") or event.is_action_pressed("ui_down"):
+		if button_visible_but_none_focused():
+			%DialogicNode_ChoiceButton.grab_focus()
+
+
+func button_visible_but_none_focused() -> bool:
+	var button_visible: bool = false
+	for button in %ChoiceContainer.get_children():
+		if button.visible:
+			button_visible = true
+			if button.has_focus():
+				return false
+		
+	return button_visible

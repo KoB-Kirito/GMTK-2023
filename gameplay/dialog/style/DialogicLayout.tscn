@@ -1,15 +1,45 @@
-[gd_scene load_steps=11 format=3 uid="uid://cugj8odcvwcd0"]
+[gd_scene load_steps=16 format=3 uid="uid://cugj8odcvwcd0"]
 
 [ext_resource type="Script" path="res://gameplay/dialog/style/DialogicLayout.gd" id="1_15xbm"]
 [ext_resource type="Texture2D" uid="uid://c152wcoksx1sa" path="res://assets/ui/dialog_box_red.png" id="2_bd3bs"]
 [ext_resource type="Script" path="res://addons/dialogic/Modules/Character/node_portrait_container.gd" id="2_lwc7v"]
 [ext_resource type="Script" path="res://addons/dialogic/Modules/Text/node_dialog_text.gd" id="4_dhbm5"]
+[ext_resource type="Script" path="res://addons/dialogic/Modules/Text/node_next_indicator.gd" id="4_y4hha"]
 [ext_resource type="Script" path="res://addons/dialogic/Modules/Choice/node_choice_button.gd" id="5_06dcw"]
 [ext_resource type="Texture2D" uid="uid://dfkron1sex261" path="res://assets/ui/dialog_name_green_left.png" id="5_6npsd"]
+[ext_resource type="Texture2D" uid="uid://crkrh81dc1b4w" path="res://gameplay/dialog/style/next_indicator.png" id="5_8a20u"]
 [ext_resource type="Texture2D" uid="uid://crg444f0terfg" path="res://assets/ui/dialog_name_green_right.png" id="7_8x7fl"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wii5i"]
 texture = ExtResource("2_bd3bs")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3123l"]
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 0.501961)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ykqwt"]
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.6, 0.6, 0.6, 0.498039)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jy43q"]
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.6, 0.6, 0.6, 0.501961)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tl6pa"]
 texture = ExtResource("5_6npsd")
@@ -34,6 +64,7 @@ color = Color(0, 0, 0, 0)
 [node name="TextContainer" type="PanelContainer" parent="."]
 unique_name_in_owner = true
 process_mode = 3
+clip_contents = true
 custom_minimum_size = Vector2(0, 80)
 anchors_preset = 12
 anchor_top = 1.0
@@ -55,37 +86,63 @@ layout_mode = 2
 [node name="DialogicNode_DialogText" type="RichTextLabel" parent="TextContainer/TextMargin/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 14
+theme_override_font_sizes/normal_font_size = 13
 text = "Text"
 fit_content = true
 visible_characters_behavior = 1
 script = ExtResource("4_dhbm5")
 
-[node name="DialogicNode_ChoiceButton" type="Button" parent="TextContainer/TextMargin/VBoxContainer"]
+[node name="ChoiceContainer" type="VBoxContainer" parent="TextContainer/TextMargin/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="DialogicNode_ChoiceButton" type="Button" parent="TextContainer/TextMargin/VBoxContainer/ChoiceContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("StyleBoxFlat_3123l")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ykqwt")
+theme_override_styles/focus = SubResource("StyleBoxFlat_jy43q")
 text = "Choice 1"
 script = ExtResource("5_06dcw")
 
-[node name="DialogicNode_ChoiceButton2" type="Button" parent="TextContainer/TextMargin/VBoxContainer"]
+[node name="DialogicNode_ChoiceButton2" type="Button" parent="TextContainer/TextMargin/VBoxContainer/ChoiceContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("StyleBoxFlat_3123l")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ykqwt")
+theme_override_styles/focus = SubResource("StyleBoxFlat_jy43q")
 text = "Choice 2"
 script = ExtResource("5_06dcw")
 
-[node name="DialogicNode_ChoiceButton3" type="Button" parent="TextContainer/TextMargin/VBoxContainer"]
+[node name="DialogicNode_ChoiceButton3" type="Button" parent="TextContainer/TextMargin/VBoxContainer/ChoiceContainer"]
 visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("StyleBoxFlat_3123l")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ykqwt")
+theme_override_styles/focus = SubResource("StyleBoxFlat_jy43q")
 text = "Choice 3 (only without characters)"
 script = ExtResource("5_06dcw")
 
-[node name="DialogicNode_ChoiceButton4" type="Button" parent="TextContainer/TextMargin/VBoxContainer"]
+[node name="DialogicNode_ChoiceButton4" type="Button" parent="TextContainer/TextMargin/VBoxContainer/ChoiceContainer"]
 visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("StyleBoxFlat_3123l")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ykqwt")
+theme_override_styles/focus = SubResource("StyleBoxFlat_jy43q")
 text = "Choice 4 (only without characters)"
 script = ExtResource("5_06dcw")
+
+[node name="DNextIndicator" type="Control" parent="TextContainer/TextMargin"]
+custom_minimum_size = Vector2(12, 8)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+script = ExtResource("4_y4hha")
+animation = 1
+texture = ExtResource("5_8a20u")
 
 [node name="LeftNameContainer" type="PanelContainer" parent="."]
 unique_name_in_owner = true
