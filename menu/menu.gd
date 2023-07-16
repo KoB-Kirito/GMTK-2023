@@ -18,6 +18,27 @@ func _process(delta):
 		esc_to_menu()
 
 
+## make sure a button gets a focus for controller support
+func _input(event: InputEvent) -> void:
+	if not visible:
+		return
+	
+	if event.is_action_pressed("ui_accept") or event.is_action_pressed("ui_left") or event.is_action_pressed("ui_right") or event.is_action_pressed("ui_up") or event.is_action_pressed("ui_down"):
+		if button_visible_but_none_focused():
+			%StartButton.grab_focus()
+
+
+func button_visible_but_none_focused() -> bool:
+	var button_visible: bool = false
+	for button in %ButtonContainer.get_children():
+		if button.visible:
+			button_visible = true
+			if button.has_focus():
+				return false
+		
+	return button_visible
+
+
 func esc_to_menu():
 	visible = !visible
 	get_tree().paused = visible

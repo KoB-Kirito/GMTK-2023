@@ -28,7 +28,6 @@ stream = ExtResource("3_vu2vr")
 autoplay = true
 
 [node name="Menu" parent="." instance=ExtResource("4_apyax")]
+unique_name_in_owner = true
 visible = false
 layout_mode = 1
-
-[connection signal="gui_input" from="TextureRect" to="." method="_on_texture_rect_gui_input"]

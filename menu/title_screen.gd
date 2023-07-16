@@ -1,9 +1,13 @@
 extends Control
+## Shows the main menu for any input but motion
 
 
-func _on_texture_rect_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
+func _input(event: InputEvent) -> void:
+	if %Menu.visible:
 		return
 	
-	$TextureRect.gui_input.disconnect(_on_texture_rect_gui_input)
-	$Menu.visible = true
+	if event is InputEventMouseMotion or event is InputEventJoypadMotion:
+		print_debug("motion input")
+		return
+	
+	%Menu.visible = true

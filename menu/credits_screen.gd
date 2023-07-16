@@ -1,5 +1,6 @@
 extends Control
 
 
-func _on_credits_back_button_pressed():
-	hide()
+func _unhandled_key_input(event: InputEvent) -> void:
+	if visible and event.is_action_pressed("ui_cancel"):
+		hide()
