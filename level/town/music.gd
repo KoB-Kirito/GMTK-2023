@@ -40,7 +40,9 @@ func _on_house_area_body_exited(body: Node2D) -> void:
 
 
 func fade(from: AudioStreamPlayer, to: AudioStreamPlayer, duration: float, cross_fade: bool = false):
+	var target_volume = to.volume_db
 	to.volume_db = -30.0
+	
 	if from != null and cross_fade:
 		to.play(from.get_playback_position())
 		
@@ -48,7 +50,9 @@ func fade(from: AudioStreamPlayer, to: AudioStreamPlayer, duration: float, cross
 		to.play()
 	
 	var tween = create_tween()
-	tween.tween_property(to, "volume_db", 0.0, duration)
+	tween.tween_property(to, "volume_db", target_volume, duration)
 	if from != null:
+		var original_volume = from.volume_db
 		tween.parallel().tween_property(from, "volume_db", -30.0, duration)
 		tween.tween_callback(func(): from.stop())
+		tween.tween_property(from, "volume_db", original_volume, 0.0)

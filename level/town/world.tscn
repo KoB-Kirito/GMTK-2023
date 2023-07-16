@@ -1,5 +1,6 @@
-[gd_scene load_steps=36 format=3 uid="uid://dy8wsehbghl2l"]
+[gd_scene load_steps=38 format=3 uid="uid://dy8wsehbghl2l"]
 
+[ext_resource type="Script" path="res://level/town/world.gd" id="1_kayik"]
 [ext_resource type="TileSet" uid="uid://fwtbdlu5tfhr" path="res://level/_tilesets/town.tres" id="2_ad5c8"]
 [ext_resource type="Script" path="res://level/town/elevation.gd" id="2_gvfpo"]
 [ext_resource type="PackedScene" uid="uid://d3mklqtc7tjww" path="res://characters/player.tscn" id="2_llgaa"]
@@ -12,6 +13,7 @@
 [ext_resource type="Script" path="res://level/town/boy_end.gd" id="9_ebvlc"]
 [ext_resource type="PackedScene" uid="uid://buvrn7c6gpqcv" path="res://level/_objects/door_small.tscn" id="10_e3ht2"]
 [ext_resource type="PackedScene" uid="uid://doamoxdbxmss" path="res://level/_objects/door_big.tscn" id="11_t2vet"]
+[ext_resource type="PackedScene" uid="uid://bj53jxxqnqiv" path="res://gameplay/levelchange_fade_in.tscn" id="13_4dp4v"]
 
 [sub_resource type="Curve2D" id="Curve2D_s6r0p"]
 _data = {
@@ -104,6 +106,7 @@ size = Vector2(74, 76)
 radius = 20.0693
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_kayik")
 
 [node name="Tilemap" type="TileMap" parent="." node_paths=PackedStringArray("player")]
 y_sort_enabled = true
@@ -262,7 +265,6 @@ rotation = 1.55533
 
 [node name="Music" type="Node2D" parent="."]
 process_mode = 3
-visible = false
 script = ExtResource("4_cdc8t")
 fade_duration = 0.6
 
@@ -274,6 +276,7 @@ stream = ExtResource("6_pqk03")
 
 [node name="bgm_forest" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("7_4tutb")
+volume_db = -8.0
 
 [node name="ForestArea" type="Area2D" parent="Music"]
 position = Vector2(303, 1012)
@@ -357,8 +360,11 @@ script = ExtResource("9_ebvlc")
 position = Vector2(0, 6.66666)
 shape = SubResource("CircleShape2D_0mu6d")
 
+[node name="LevelchangeFadeIn" parent="." instance=ExtResource("13_4dp4v")]
+
 [connection signal="body_entered" from="Music/ForestArea" to="Music" method="_on_forest_area_body_entered"]
 [connection signal="body_exited" from="Music/ForestArea" to="Music" method="_on_forest_area_body_exited"]
 [connection signal="body_entered" from="Music/HouseArea" to="Music" method="_on_house_area_body_entered"]
 [connection signal="body_exited" from="Music/HouseArea" to="Music" method="_on_house_area_body_exited"]
 [connection signal="body_entered" from="Boy2/Area2D" to="Boy2" method="_on_area_2d_body_entered"]
+[connection signal="transition_finished" from="LevelchangeFadeIn" to="." method="_on_levelchange_fade_in_transition_finished"]
