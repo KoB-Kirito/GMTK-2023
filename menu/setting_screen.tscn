@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cktenhbydatec"]
+[gd_scene load_steps=6 format=3 uid="uid://cktenhbydatec"]
 
 [ext_resource type="Script" path="res://menu/setting_screen.gd" id="1_dqr2w"]
-[ext_resource type="Texture2D" uid="uid://bx08sqdo0gh7x" path="res://assets/ui/platzhalter.png" id="2_nx18t"]
+[ext_resource type="Texture2D" uid="uid://da6yl7qjqu5da" path="res://assets/ui/title.png" id="2_wv838"]
+[ext_resource type="Texture2D" uid="uid://cphc7ny5uv5g6" path="res://assets/ui/ButtonUnten.png" id="3_1wid7"]
+[ext_resource type="Texture2D" uid="uid://byl721nj4wo24" path="res://assets/ui/ButtonUnten_pressed.png" id="4_if27p"]
+[ext_resource type="Texture2D" uid="uid://jft5tl5812gl" path="res://assets/ui/ButtonUnten_hover.png" id="5_aui25"]
 
 [node name="SettingScreen" type="Control"]
 layout_mode = 3
@@ -13,9 +16,11 @@ grow_vertical = 2
 script = ExtResource("1_dqr2w")
 
 [node name="SettingsRect" type="TextureRect" parent="."]
+modulate = Color(0.490196, 0.490196, 0.490196, 1)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+texture = ExtResource("2_wv838")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -47,6 +52,8 @@ text = "Master Volume"
 
 [node name="VolumeSlider" type="HSlider" parent="CenterContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+min_value = -30.0
+max_value = 30.0
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
 layout_mode = 2
@@ -62,11 +69,25 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -137.0
-offset_bottom = -194.0
+offset_right = -358.0
+offset_bottom = -218.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("2_nx18t")
+texture_normal = ExtResource("3_1wid7")
+texture_pressed = ExtResource("4_if27p")
+texture_hover = ExtResource("5_aui25")
+texture_focused = ExtResource("5_aui25")
+
+[node name="Label" type="Label" parent="SettingsBackButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="value_changed" from="CenterContainer/HBoxContainer/VBoxContainer/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
 [connection signal="toggled" from="CenterContainer/HBoxContainer/VBoxContainer2/FullScreenCheckBox" to="." method="_on_full_screen_check_box_toggled"]
