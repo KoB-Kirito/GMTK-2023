@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1uo7gqoo51tb"
-path="res://.godot/imported/Verrückter_Mann_2.png-e01790fbd1514e5c800c6d7452026d2d.ctex"
+uid="uid://8dv5ksdmy4ub"
+path="res://.godot/imported/hunter.png-876b8dfa19329dbbf6d3cbc5aeef7a43.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/Verrückter_Mann_2.png"
-dest_files=["res://.godot/imported/Verrückter_Mann_2.png-e01790fbd1514e5c800c6d7452026d2d.ctex"]
+source_file="res://assets/characters/hunter.png"
+dest_files=["res://.godot/imported/hunter.png-876b8dfa19329dbbf6d3cbc5aeef7a43.ctex"]
 
 [params]
 

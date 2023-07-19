@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nkepgj1lgm48"
-path="res://.godot/imported/Oma_2.png-fecf8a9d7bd82a713adee73d27d5a4c8.ctex"
+uid="uid://cot4iy7d2w0bp"
+path="res://.godot/imported/butcher.png-68f49d24b33151022a50ca62e8f6f86e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/Oma_2.png"
-dest_files=["res://.godot/imported/Oma_2.png-fecf8a9d7bd82a713adee73d27d5a4c8.ctex"]
+source_file="res://assets/characters/butcher.png"
+dest_files=["res://.godot/imported/butcher.png-68f49d24b33151022a50ca62e8f6f86e.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cot4iy7d2w0bp"
-path="res://.godot/imported/Metzger_2.png-ab612d30ea45ff0c247bfb7ce553fce9.ctex"
+uid="uid://dd45st1e0n5tb"
+path="res://.godot/imported/mayor.png-29e1e9f5ec19811fe545bfb37b1b7c8c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/Metzger_2.png"
-dest_files=["res://.godot/imported/Metzger_2.png-ab612d30ea45ff0c247bfb7ce553fce9.ctex"]
+source_file="res://assets/characters/mayor.png"
+dest_files=["res://.godot/imported/mayor.png-29e1e9f5ec19811fe545bfb37b1b7c8c.ctex"]
 
 [params]
 

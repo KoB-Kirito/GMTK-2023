@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8dv5ksdmy4ub"
-path="res://.godot/imported/Vampirjäger_2.png-6c5dc5bd883afb8a98af8bebefcd272d.ctex"
+uid="uid://nkepgj1lgm48"
+path="res://.godot/imported/grandma.png-1a00a97f253723aef69c4c91b2d0b906.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/Vampirjäger_2.png"
-dest_files=["res://.godot/imported/Vampirjäger_2.png-6c5dc5bd883afb8a98af8bebefcd272d.ctex"]
+source_file="res://assets/characters/grandma.png"
+dest_files=["res://.godot/imported/grandma.png-1a00a97f253723aef69c4c91b2d0b906.ctex"]
 
 [params]
 

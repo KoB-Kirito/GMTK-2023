@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bdl1v5m0qd6w6"
-path="res://.godot/imported/Kneipenwirt_2.png-93346eadd61f2070be13882f11963aad.ctex"
+path="res://.godot/imported/innkeeper.png-6003e89788ed622bc1bf7bf198377898.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/Kneipenwirt_2.png"
-dest_files=["res://.godot/imported/Kneipenwirt_2.png-93346eadd61f2070be13882f11963aad.ctex"]
+source_file="res://assets/characters/innkeeper.png"
+dest_files=["res://.godot/imported/innkeeper.png-6003e89788ed622bc1bf7bf198377898.ctex"]
 
 [params]
 
