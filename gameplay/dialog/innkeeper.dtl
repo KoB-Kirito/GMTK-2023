@@ -1,0 +1,14 @@
+Join innkeeper 2
+innkeeper: (Gruffly) Well, well, if it isn't one of those bloodsuckers trying to worm their way into our lives.
+innkeeper: We don't need your kind around here, causing trouble!
+- I am not like the vampires you've heard about in the stories
+	Join vampire
+	vampire: I assure you; I am not like the vampires you've heard about in the stories. I am a healer, capable of mending wounds and saving lives.
+	innkeeper: (Pauses, reluctantly) Fine! But know this, vampire, one wrong move, and I'll be the first to drive a stake through your heart.
+	innkeeper: Don't think I'm going to let my guard down just because you have a silver tongue.
+	[color="#00ff00"]You made a good impression.
+- Who would want to, if you say things like that?!
+	Join vampire
+	vampire: Who would want to “worm” their way into your life if you say things like that?!
+	innkeeper: I’ve heard enough of your devilish talk! Vampires are monsters! They drain the life out of people. They're evil, every last one of 'em!
+	[color="#ff0000"]You made a bad impression.

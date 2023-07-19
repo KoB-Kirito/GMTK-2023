@@ -1,0 +1,14 @@
+Join grandma 2
+grandma: Are you here to take my life?
+- I would never do such a thing!
+	Join vampire
+	vampire: I would never do such a thing! You are a flower, who would dare to pluck such beauty?!
+	grandma: You flatter me, young vampire. Do you want to hear a story from my life when I was just as young as you are now?
+	vampire: I apologize, but I have to attend business. I wish you the best.
+	[color="#00ff00"]You made a good impression.
+- Why would I take a life that is already over?
+	Join vampire
+	vampire: Why would I take a life that is already over?
+	grandma: Rude.
+	[color="#ff0000"]You made a bad impression.
+

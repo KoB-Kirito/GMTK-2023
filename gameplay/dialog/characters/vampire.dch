@@ -17,8 +17,8 @@
 "placeholder": {
 "image": "res://assets/characters/portraits/vampire.png",
 "mirror": false,
-"offset": Vector2(0, 32),
-"scale": 2.0,
+"offset": Vector2(0, 12),
+"scale": 1.8,
 "scene": ""
 }
 },

@@ -1,0 +1,17 @@
+Join butcher 2
+butcher: One step closer and I will slit your throat open so that you suffer..
+butcher: ..just like the victims in your past!
+- Perhaps if you gave me a chance to prove myself..
+	Join vampire
+	vampire: Well, I understand that you might have some strong feelings about vampires,
+	vampire: but perhaps if you gave me a chance to prove myself,
+	vampire: you might see that I do not wish to harm anybody.
+	butcher: I don't know if I can trust you, vampire. But I'll keep your words in mind. Don't think this changes anything, though.
+	[color="#00ff00"]You made a good impression.
+- I heal creatures to end the circle of hate and destruction
+	Join vampire
+	vampire: Easy, I do kill like you do, I heal creatures to end the circle of hate and destruction.
+	butcher: Save your words, vampire. I've heard it all before. You all pretend to be something you're not, but I know the truth.
+	butcher: You're all evil creatures who prey on innocent people.
+	[color="#ff0000"]You made a bad impression.
+

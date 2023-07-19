@@ -1,0 +1,19 @@
+Join mayor 2
+mayor: I can’t believe you are showing yourself in my town.
+mayor: What do you want, vampire?
+- I want to help the sick in this village
+	Join vampire
+	vampire: I want to help the sick in this village just like you help everybody around here.
+	mayor: So, what? You want me to believe that you're some kind of... vampire saint?
+	mayor: I've seen the fear in my town, the fear that vampires instill. You have one chance, vampire.
+	mayor: If you betray my trust, there will be dire consequences.
+	[color="#00ff00"]You made a good impression.
+- A Mayor that doesn’t care about the ill, is not a good mayor
+	Join vampire
+	vampire: A Mayor that doesn’t care about the ill, is not a good mayor.
+	vampire: I am very much capable of helping those in need with my abilities.
+	mayor: Do not question my compassion towards the people in this village.
+	mayor: I've heard stories of your kind attacking unsuspecting victims, draining them of their lifeblood!
+	mayor: You can’t fool me!
+	[color="#ff0000"]You made a bad impression.
+

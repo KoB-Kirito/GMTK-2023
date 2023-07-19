@@ -1,0 +1,17 @@
+Join baker 2
+baker: Who the hell are you? What do you want?
+baker: We don't need any trouble around here.
+- I couldn't help but notice the delightful aroma from your bakery
+	Join vampire
+	vampire: I couldn't help but notice the delightful aroma wafting from your bakery.
+	vampire: You are truly a gift for this village, providing everybody with freshly baked bread.
+	baker: Enough of your sweet talk. You expect me to trust you just because you compliment me and my bread?
+	baker: ...maybe I will.
+	[color="#00ff00"]You made a good impression.
+- I noticed a strange smell coming from your bakery
+	Join vampire
+	vampire: I noticed a strange smell coming from your bakery and couldn’t help but to investigate.
+	vampire: My purpose is to help, to heal those in need. I came to aid you in your greatest time of need!
+	baker: Enough, you devilish brute! You insult me, my work, and my ancestors!
+	baker: I will not stand by and watch as your darkness engulfs everything that is good and delicious!
+	[color="#ff0000"]You made a bad impression.

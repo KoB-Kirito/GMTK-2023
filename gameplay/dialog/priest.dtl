@@ -1,0 +1,16 @@
+Join priest 2
+priest: I see darkness living inside you.
+priest: What have you done to receive this punishment?
+- Fear not, the darkness you see is not inherent to my kind
+	Join vampire
+	vampire: Fear not, the darkness you see is not inherent to my kind. I strive to heal and help those that are in need.
+	vampire: I implore you to look beyond the shadows that cloud your judgment.
+	priest: You speak of delusions! I will pray to the gods and ask them for forgiveness.
+	priest: Maybe one day your heart will be open to the possibility of redemption and understanding.
+	[color="#00ff00"]You made a good impression.
+- I am not a punishment. I am a gift, send to heal and unite humanity
+	Join vampire
+	vampire: Oh no, I am not a punishment. I am a gift, send to heal and unite humanity.
+	priest: You speak of union? I cannot fathom a union between the pure and the damned!
+	[color="#ff0000"]You made a bad impression.
+
