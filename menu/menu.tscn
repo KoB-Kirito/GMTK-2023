@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://coaan7m4e1471"]
+[gd_scene load_steps=12 format=3 uid="uid://coaan7m4e1471"]
 
 [ext_resource type="Script" path="res://menu/menu.gd" id="1_dcw3v"]
 [ext_resource type="PackedScene" uid="uid://dfh6uhorh4r0f" path="res://menu/controls_screen.tscn" id="2_6wnys"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cktenhbydatec" path="res://menu/setting_screen.tscn" id="3_q4ix5"]
 [ext_resource type="PackedScene" uid="uid://uov2070uvrsk" path="res://menu/credits_screen.tscn" id="4_1aiy0"]
 [ext_resource type="Texture2D" uid="uid://bn514rqj0hbky" path="res://assets/ui/ButtonWings_hover.png" id="4_k6dck"]
+[ext_resource type="FontFile" uid="uid://b035e7kua1kwu" path="res://assets/font/plasdrip.ttf" id="5_0axuo"]
 [ext_resource type="Texture2D" uid="uid://cphc7ny5uv5g6" path="res://assets/ui/ButtonUnten.png" id="5_6jnpq"]
 [ext_resource type="Texture2D" uid="uid://byl721nj4wo24" path="res://assets/ui/ButtonUnten_pressed.png" id="6_0osef"]
 [ext_resource type="Texture2D" uid="uid://jft5tl5812gl" path="res://assets/ui/ButtonUnten_hover.png" id="7_g1bbe"]
@@ -68,6 +69,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_0axuo")
+theme_override_font_sizes/font_size = 20
 text = "Start"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -87,6 +90,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_0axuo")
+theme_override_font_sizes/font_size = 20
 text = "Controls"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -106,6 +111,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_0axuo")
+theme_override_font_sizes/font_size = 20
 text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -125,6 +132,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_0axuo")
+theme_override_font_sizes/font_size = 20
 text = "Credits"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -144,6 +153,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_0axuo")
+theme_override_font_sizes/font_size = 20
 text = "Quit"
 horizontal_alignment = 1
 vertical_alignment = 1

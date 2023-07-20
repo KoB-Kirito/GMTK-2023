@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfh6uhorh4r0f"]
+[gd_scene load_steps=6 format=3 uid="uid://dfh6uhorh4r0f"]
 
 [ext_resource type="Script" path="res://menu/controls_screen.gd" id="1_342at"]
 [ext_resource type="Texture2D" uid="uid://cphc7ny5uv5g6" path="res://assets/ui/ButtonUnten.png" id="2_llvig"]
 [ext_resource type="Texture2D" uid="uid://byl721nj4wo24" path="res://assets/ui/ButtonUnten_pressed.png" id="3_61lm4"]
 [ext_resource type="Texture2D" uid="uid://jft5tl5812gl" path="res://assets/ui/ButtonUnten_hover.png" id="4_i72vr"]
+[ext_resource type="FontFile" uid="uid://b035e7kua1kwu" path="res://assets/font/plasdrip.ttf" id="5_6sgmp"]
 
 [node name="ControlsScreen" type="Control"]
 layout_mode = 3
@@ -33,6 +34,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_6sgmp")
+theme_override_font_sizes/font_size = 20
 text = "Back"
 horizontal_alignment = 1
 vertical_alignment = 1
