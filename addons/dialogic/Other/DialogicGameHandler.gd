@@ -472,7 +472,7 @@ func start(timeline:Variant, label:Variant="") -> Node:
 	Dialogic.clear(ClearFlags.KeepVariables)
 	if "intro_animation_finished" in scene:
 		await scene.intro_animation_finished
-		print("intro finished")
+		#print("intro finished")
 	Dialogic.start_timeline(timeline, label)
 	return scene
 

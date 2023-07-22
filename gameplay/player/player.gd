@@ -6,7 +6,7 @@ extends CharacterBody2D
 
 var butterfly_active: bool = false
 
-@onready var butterfly_ability: Node = $Abilities/TransformAbility
+@onready var butterfly_ability: Node = $AbilityManager
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var collision: CollisionShape2D = $CollisionShape2D
 

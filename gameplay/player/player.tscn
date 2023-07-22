@@ -1,11 +1,10 @@
-[gd_scene load_steps=31 format=3 uid="uid://d3mklqtc7tjww"]
+[gd_scene load_steps=30 format=3 uid="uid://d3mklqtc7tjww"]
 
 [ext_resource type="Script" path="res://gameplay/player/player.gd" id="1_g54x2"]
 [ext_resource type="Texture2D" uid="uid://bhd207jegfsc3" path="res://assets/characters/vampire.png" id="1_hr2po"]
 [ext_resource type="Texture2D" uid="uid://b6pjtn4c25qk0" path="res://assets/characters/butterfly.png" id="2_fpx1j"]
 [ext_resource type="PackedScene" uid="uid://coaan7m4e1471" path="res://menu/menu.tscn" id="3_tps5g"]
-[ext_resource type="PackedScene" uid="uid://vc5teyo7b0sh" path="res://gameplay/player/abilities/transform_ability.tscn" id="5_04dif"]
-[ext_resource type="PackedScene" uid="uid://ys235m7omaq3" path="res://gameplay/player/abilities/vision_ability.tscn" id="6_3b20v"]
+[ext_resource type="PackedScene" uid="uid://ds08ophovdk75" path="res://gameplay/player/abilities/ability_manager.tscn" id="4_auija"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dmvol"]
 radius = 4.0
@@ -228,14 +227,10 @@ autoplay = "idle"
 limit_left = 0
 limit_top = 0
 
+[node name="AbilityManager" parent="." instance=ExtResource("4_auija")]
+
 [node name="MenuLayer" type="CanvasLayer" parent="."]
 visible = false
 
 [node name="Menu" parent="MenuLayer" instance=ExtResource("3_tps5g")]
 ingame_menu = true
-
-[node name="Abilities" type="Node" parent="."]
-
-[node name="TransformAbility" parent="Abilities" instance=ExtResource("5_04dif")]
-
-[node name="VisionAbility" parent="Abilities" instance=ExtResource("6_3b20v")]

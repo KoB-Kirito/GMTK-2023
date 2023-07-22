@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://ds08ophovdk75"]
+
+[ext_resource type="PackedScene" uid="uid://vc5teyo7b0sh" path="res://gameplay/player/abilities/transform_ability.tscn" id="1_6mha0"]
+[ext_resource type="Script" path="res://gameplay/player/abilities/ability_manager.gd" id="1_adcgj"]
+[ext_resource type="PackedScene" uid="uid://ys235m7omaq3" path="res://gameplay/player/abilities/vision_ability.tscn" id="2_ugm3p"]
+[ext_resource type="Texture2D" uid="uid://2y3lysas1pbs" path="res://assets/ui/transformation.png" id="4_vq74k"]
+[ext_resource type="Texture2D" uid="uid://pbamm7kxutoq" path="res://assets/ui/vision.png" id="5_1mjwl"]
+[ext_resource type="Script" path="res://gameplay/player/abilities/ability_progress.gd" id="5_xttvo"]
+
+[node name="AbilityManager" type="Node"]
+script = ExtResource("1_adcgj")
+
+[node name="TransformAbility" parent="." node_paths=PackedStringArray("progress") instance=ExtResource("1_6mha0")]
+unique_name_in_owner = true
+progress = NodePath("../AbilityHudLayer/TransformationProgress")
+
+[node name="VisionAbility" parent="." node_paths=PackedStringArray("progress") instance=ExtResource("2_ugm3p")]
+progress = NodePath("../AbilityHudLayer/VisionProgress")
+
+[node name="AbilityHudLayer" type="CanvasLayer" parent="."]
+
+[node name="TransformationProgress" type="TextureProgressBar" parent="AbilityHudLayer"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 44.0
+offset_bottom = 44.0
+mouse_filter = 2
+step = 0.0
+value = 100.0
+fill_mode = 4
+texture_under = ExtResource("4_vq74k")
+texture_progress = ExtResource("4_vq74k")
+tint_under = Color(1, 1, 1, 0.498039)
+script = ExtResource("5_xttvo")
+
+[node name="VisionProgress" type="TextureProgressBar" parent="AbilityHudLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -44.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = 44.0
+grow_horizontal = 0
+step = 0.0
+fill_mode = 4
+texture_under = ExtResource("5_1mjwl")
+texture_progress = ExtResource("5_1mjwl")
+tint_under = Color(1, 1, 1, 0.501961)
+script = ExtResource("5_xttvo")

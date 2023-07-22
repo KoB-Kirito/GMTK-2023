@@ -2,6 +2,7 @@ extends Node
 
 
 @export var speed: float = 160.0
+@export var progress: TextureProgressBar
 
 var active: bool = false
 var last_direction: Vector2 = Vector2.RIGHT
@@ -14,9 +15,37 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ability_butterfly"):
 		if active:
 			disable_butterfly()
+			return
+		
+		if progress.value < 100.0:
+			progress.play_deny_animation()
+			return
+		
+		enable_butterfly()
+
+
+func _process(delta: float) -> void:
+	if active:
+		# stop butterfly if time is up
+		if progress.value <= 0.0:
+			disable_butterfly()
+			progress.value = 0.0
+			return
+		
+		# lower amount while active
+		progress.value -= 20.0 * delta
+		
+	else:
+		if progress.value == 100.0:
+			return
+		
+		elif progress.value > 100.0:
+			progress.value = 100.0
+			return
 		
 		else:
-			enable_butterfly()
+			# increase amount while inactive
+			progress.value += 10.0 * delta
 
 
 func enable_butterfly():

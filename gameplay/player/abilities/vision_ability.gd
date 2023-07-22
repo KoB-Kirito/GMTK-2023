@@ -1,6 +1,8 @@
 extends Node2D
 
 
+@export var progress: TextureProgressBar
+
 const HINT_MARGIN: int = 20
 const VIEWPORT_SIZE: Vector2 = Vector2(480, 270)
 
@@ -16,8 +18,15 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if target == null:
 		print_debug("vision ability found no target")
+		progress.value = 0.0
+		progress.play_deny_animation()
 		return
 	
+	if progress.value < 100.0:
+		progress.play_deny_animation()
+		return
+	
+	progress.value = 0.0
 	%Hint.play("splosh")
 
 
@@ -51,3 +60,11 @@ func _physics_process(delta: float) -> void:
 		hint_position.y = canvas_position.y + VIEWPORT_SIZE.y - HINT_MARGIN
 	
 	position = hint_position
+
+
+func _process(delta: float) -> void:
+	if target == null:
+		return
+	
+	if progress.value < 100.0:
+		progress.value += 5.0 * delta

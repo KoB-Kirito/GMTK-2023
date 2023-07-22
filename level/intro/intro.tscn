@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://de7pqac08c3oe"]
+[gd_scene load_steps=7 format=3 uid="uid://de7pqac08c3oe"]
 
 [ext_resource type="Script" path="res://level/intro/intro.gd" id="1_6lh8c"]
 [ext_resource type="Texture2D" uid="uid://bs3mnmpkdw0nk" path="res://level/intro/open_book.png" id="1_tb0gl"]
 [ext_resource type="AudioStream" uid="uid://b0gdsyrikuwpl" path="res://assets/bgm/intro.ogg" id="3_pja1f"]
 [ext_resource type="PackedScene" uid="uid://cn5e8ujuxalos" path="res://gameplay/levelchange_fade_out.tscn" id="4_ep6gr"]
+[ext_resource type="Texture2D" uid="uid://mqx2lo3trsdl" path="res://assets/ui/ring.png" id="5_jwrfb"]
+[ext_resource type="Script" path="res://level/intro/skip.gd" id="6_h3ncc"]
 
 [node name="Intro" type="Node"]
 process_mode = 3
@@ -36,7 +38,43 @@ autoplay = true
 
 [node name="LevelchangeFadeOut" parent="." node_paths=PackedStringArray("bgm_player") instance=ExtResource("4_ep6gr")]
 unique_name_in_owner = true
+process_mode = 3
+layer = 5
 next_level = "res://level/town/world.tscn"
 bgm_player = NodePath("../bgm")
+
+[node name="Skip" type="TextureProgressBar" parent="."]
+process_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -28.0
+offset_top = 4.0
+offset_right = -8.0
+offset_bottom = 24.0
+grow_horizontal = 0
+value = 100.0
+fill_mode = 4
+texture_progress = ExtResource("5_jwrfb")
+script = ExtResource("6_h3ncc")
+next_level = "res://level/town/world.tscn"
+
+[node name="Label" type="Label" parent="Skip"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 8.0
+offset_right = 20.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 11
+text = "Skip"
+horizontal_alignment = 1
 
 [connection signal="timeout" from="Book/Timer" to="." method="_on_timer_timeout"]

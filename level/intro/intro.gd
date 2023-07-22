@@ -3,11 +3,13 @@ extends Node
 
 @export_file("*.tscn") var first_level: String
 
+var dialog: Node
+
 
 func _ready() -> void:
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
 	
-	Dialogic.start("intro")
+	dialog = await Dialogic.start("intro")
 
 
 func _on_timer_timeout() -> void:
@@ -17,3 +19,7 @@ func _on_timer_timeout() -> void:
 
 func _on_timeline_ended():
 	%LevelchangeFadeOut.start()
+
+
+func kill_dialog():
+	dialog.queue_free()
