@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://ys235m7omaq3"]
 
-[ext_resource type="Script" path="res://characters/abilities/vision_ability.gd" id="1_sbxxh"]
-[ext_resource type="Texture2D" uid="uid://mat7rine07e6" path="res://characters/abilities/blood_ball.png" id="2_jg30q"]
+[ext_resource type="Script" path="res://gameplay/player/abilities/vision_ability.gd" id="1_sbxxh"]
+[ext_resource type="Texture2D" uid="uid://mat7rine07e6" path="res://gameplay/player/abilities/blood_ball.png" id="2_jg30q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mq06y"]
 atlas = ExtResource("2_jg30q")

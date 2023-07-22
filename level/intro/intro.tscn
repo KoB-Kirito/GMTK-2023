@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://de7pqac08c3oe"]
 
-[ext_resource type="Script" path="res://intro/intro.gd" id="1_6lh8c"]
-[ext_resource type="Texture2D" uid="uid://bs3mnmpkdw0nk" path="res://intro/open_book.png" id="1_tb0gl"]
+[ext_resource type="Script" path="res://level/intro/intro.gd" id="1_6lh8c"]
+[ext_resource type="Texture2D" uid="uid://bs3mnmpkdw0nk" path="res://level/intro/open_book.png" id="1_tb0gl"]
 [ext_resource type="AudioStream" uid="uid://b0gdsyrikuwpl" path="res://assets/bgm/intro.ogg" id="3_pja1f"]
 [ext_resource type="PackedScene" uid="uid://cn5e8ujuxalos" path="res://gameplay/levelchange_fade_out.tscn" id="4_ep6gr"]
 

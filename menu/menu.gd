@@ -1,5 +1,7 @@
 extends Control
 
+
+@export_file("*.tscn") var first_level
 @export var ingame_menu = false
 @onready var switch = true
 
@@ -56,7 +58,7 @@ func esc_to_menu():
 func _on_start_button_pressed():
 #	get_tree().unload_current_scene()
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://intro/intro.tscn")
+	get_tree().change_scene_to_file(first_level)
 
 
 func _on_controls_button_pressed():
