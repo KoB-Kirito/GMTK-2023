@@ -9,6 +9,11 @@ const VIEWPORT_SIZE: Vector2 = Vector2(480, 270)
 var target: Node2D
 
 
+func _ready() -> void:
+	target = get_tree().get_first_node_in_group("vision_target")
+	if target == null:
+		progress.value = 0.0
+
 func _unhandled_input(event: InputEvent) -> void:
 	if not event.is_action_pressed("ability_vision"):
 		return

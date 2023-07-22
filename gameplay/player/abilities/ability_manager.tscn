@@ -43,6 +43,7 @@ offset_right = -4.0
 offset_bottom = 44.0
 grow_horizontal = 0
 step = 0.0
+value = 100.0
 fill_mode = 4
 texture_under = ExtResource("5_1mjwl")
 texture_progress = ExtResource("5_1mjwl")
