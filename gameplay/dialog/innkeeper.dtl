@@ -4,7 +4,7 @@ innkeeper: We don't need your kind around here, causing trouble!
 - I am not like the vampires you've heard about in the stories
 	Join vampire
 	vampire: I assure you; I am not like the vampires you've heard about in the stories. I am a healer, capable of mending wounds and saving lives.
-	innkeeper: ... Fine! But know this, vampire, one wrong move, and I'll be the first to drive a stake through your heart.
+	innkeeper: [pause=0.2].[pause=0.2]. ... Fine! But know this, vampire, one wrong move, and I'll be the first to drive a stake through your heart.
 	innkeeper: Don't think I'm going to let my guard down just because you have a silver tongue.
 	[color="#00ff00"]You made a good impression.
 - Who would want to, if you say things like that?!
