@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://crncy4ndwrhbp"]
+[gd_scene load_steps=9 format=3 uid="uid://crncy4ndwrhbp"]
 
 [ext_resource type="Script" path="res://gameplay/npcs/hunter/hunter.gd" id="1_4kbem"]
 [ext_resource type="Texture2D" uid="uid://8dv5ksdmy4ub" path="res://assets/characters/hunter.png" id="1_38gsl"]
 [ext_resource type="Texture2D" uid="uid://cyrmda0tugi2k" path="res://assets/ui/danger.png" id="3_e83j8"]
+[ext_resource type="PackedScene" uid="uid://bn2hi4l7jd02f" path="res://gameplay/player_detector.tscn" id="3_hi2w8"]
 [ext_resource type="Texture2D" uid="uid://qjl0ov41ihmr" path="res://assets/ui/danger2.png" id="4_vqumf"]
+[ext_resource type="Script" path="res://scripts/state_machine.gd" id="6_bw6f5"]
+[ext_resource type="Script" path="res://gameplay/npcs/hunter/states/look_around.gd" id="7_2x78p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x4xxv"]
 radius = 5.0
@@ -12,11 +15,9 @@ radius = 5.0
 motion_mode = 1
 script = ExtResource("1_4kbem")
 look_right = true
-look_down = true
-look_left = true
-look_up = true
-look_duration = 10.0
-look_mode = 0
+look_down = false
+look_left = false
+look_up = false
 
 [node name="Sprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -33,23 +34,11 @@ unique_name_in_owner = true
 position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_x4xxv")
 
+[node name="PlayerDetector" parent="." instance=ExtResource("3_hi2w8")]
+unique_name_in_owner = true
+position = Vector2(0, -8)
+
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-
-[node name="DetectionArea" type="Area2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(0, -8)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DetectionArea"]
-polygon = PackedVector2Array(0, 0, 256, -64, 256, 64)
-
-[node name="DetectionRay" type="RayCast2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(0, -8)
-enabled = false
-target_position = Vector2(256, 0)
-
-[node name="CycleTimer" type="Timer" parent="."]
-unique_name_in_owner = true
 
 [node name="Danger" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -70,8 +59,15 @@ unique_name_in_owner = true
 wait_time = 2.0
 one_shot = true
 
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("6_bw6f5")
+
+[node name="LookAround" type="Node" parent="StateMachine"]
+script = ExtResource("7_2x78p")
+
+[node name="CycleTimer" type="Timer" parent="StateMachine/LookAround"]
+unique_name_in_owner = true
+
 [connection signal="timeout" from="Sprite/AnimationTimer" to="." method="_on_animation_timer_timeout"]
-[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
-[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
-[connection signal="timeout" from="CycleTimer" to="." method="_on_cycle_timer_timeout"]
 [connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]
+[connection signal="timeout" from="StateMachine/LookAround/CycleTimer" to="StateMachine/LookAround" method="_on_cycle_timer_timeout"]

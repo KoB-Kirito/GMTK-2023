@@ -1,9 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://d26qr7hybpd5m"]
+[gd_scene load_steps=27 format=3 uid="uid://d26qr7hybpd5m"]
 
 [ext_resource type="Texture2D" uid="uid://dhcp87xdovcl8" path="res://assets/tilesets/ground/forest.png" id="1_wbop8"]
 [ext_resource type="Texture2D" uid="uid://b0dhyx3funlrp" path="res://assets/tilesets/objects/forest_objects.png" id="2_ndjtb"]
 [ext_resource type="PackedScene" uid="uid://d3mklqtc7tjww" path="res://gameplay/player/player.tscn" id="3_l3vqa"]
 [ext_resource type="PackedScene" uid="uid://crncy4ndwrhbp" path="res://gameplay/npcs/hunter/hunter.tscn" id="4_35har"]
+[ext_resource type="Script" path="res://gameplay/npcs/hunter/patrol_path.gd" id="5_10h4c"]
+[ext_resource type="Script" path="res://gameplay/npcs/hunter/patrol_point.gd" id="6_sesft"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_q6y1q"]
 
@@ -469,3 +471,22 @@ position = Vector2(168, 137)
 
 [node name="Hunter" parent="." instance=ExtResource("4_35har")]
 position = Vector2(253, 164)
+
+[node name="PatrolPath" type="Node2D" parent="."]
+script = ExtResource("5_10h4c")
+
+[node name="PatrolPoint1" type="Node2D" parent="PatrolPath"]
+position = Vector2(312, 488)
+script = ExtResource("6_sesft")
+
+[node name="PatrolPoint2" type="Node2D" parent="PatrolPath"]
+position = Vector2(88, 488)
+script = ExtResource("6_sesft")
+
+[node name="PatrolPoint3" type="Node2D" parent="PatrolPath"]
+position = Vector2(72, 408)
+script = ExtResource("6_sesft")
+
+[node name="PatrolPoint4" type="Node2D" parent="PatrolPath"]
+position = Vector2(280, 392)
+script = ExtResource("6_sesft")
