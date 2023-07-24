@@ -6,7 +6,7 @@ baker: We don't need any trouble around here.
 	vampire: I couldn't help but notice the delightful aroma wafting from your bakery.
 	vampire: You are truly a gift for this village, providing everybody with freshly baked bread.
 	baker: Enough of your sweet talk. You expect me to trust you just because you compliment me and my bread?
-	baker: ...maybe I will.
+	baker: [pause=0.2].[pause=0.2].[pause=0.2]. ...maybe I will.
 	[color="#00ff00"]You made a good impression.
 - I noticed a strange smell coming from your bakery
 	Join vampire
