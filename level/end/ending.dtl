@@ -1,9 +1,9 @@
 Join child 2
-child: Are you here to take me with you? V\:
+child: Are you here to take me with you?
 Join vampire [animation="Instant In Or Out"]
-vampire: Never, I'm here to help you!
-Branimir bites the boy's arm and heals him.
-Father comes home after work and sees that the child is still alive.
-He is very happy and tells him something about vampires again.
+vampire: I would never do such thing. I want to help you.
+child: I knew Vampires are not as bad as the stories made them out to be. You are a healer?
+vampire: I am and it warms my heart that you see me as the person I truly am. 
+vampire: Now let me end your suffering.
 [rainbow]Happy End
 [signal arg="end"]
