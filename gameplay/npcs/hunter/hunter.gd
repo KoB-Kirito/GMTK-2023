@@ -16,13 +16,21 @@ var patrol_data: PatrolPointData:
 		patrol_data = value
 		update_configuration_warnings()
 
+var current_facing: Vector2 = Vector2.RIGHT
 
-var look_current: Vector2 = Vector2.RIGHT
 
-
-#func _init():
-#	for info in get_property_list():
-#		print(info)
+func _ready() -> void:
+	if Engine.is_editor_hint():
+		return
+	
+	assert(patrol_path or patrol_data, "No path and no data")
+	
+	# conditional entry point
+	var state_machine := $StateMachine as StateMachine
+	if patrol_path != null:
+		state_machine.transition_to(%Patrolling)
+	else:
+		state_machine.transition_to(%Watching)
 
 
 func _physics_process(delta: float) -> void:
@@ -67,25 +75,25 @@ func face_right():
 	if is_node_ready():
 		%Sprite.frame_coords.y = 0
 		%PlayerDetector.rotation_degrees = 0
-		look_current = Vector2.RIGHT
+		current_facing = Vector2.RIGHT
 
 func face_down():
 	if is_node_ready():
 		%Sprite.frame_coords.y = 2
 		%PlayerDetector.rotation_degrees = 90
-		look_current = Vector2.DOWN
+		current_facing = Vector2.DOWN
 
 func face_left():
 	if is_node_ready():
 		%Sprite.frame_coords.y = 1
 		%PlayerDetector.rotation_degrees = 180
-		look_current = Vector2.LEFT
+		current_facing = Vector2.LEFT
 
 func face_up():
 	if is_node_ready():
 		%Sprite.frame_coords.y = 3
 		%PlayerDetector.rotation_degrees = 270
-		look_current = Vector2.UP
+		current_facing = Vector2.UP
 
 
 
@@ -130,3 +138,7 @@ func _get_property_list() -> Array[Dictionary]:
 		})
 	
 	return properties
+
+
+func _on_state_machine_transitioned(old_state, new_state) -> void:
+	%DebugLabel.text = new_state.name

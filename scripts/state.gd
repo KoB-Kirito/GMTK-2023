@@ -1,9 +1,17 @@
 @icon("res://scripts/state.svg")
 class_name State
-extends Node
+extends Node2D
 
 
-signal transition(calling_state: State, new_state_name: String)
+@onready var state_machine := get_parent() as StateMachine
+
+
+func transition_to(new_state: State) -> void:
+	state_machine.transition_to(new_state)
+
+
+func transition_to_last_state() -> void:
+	state_machine.transition_to_last_state()
 
 
 func enter() -> void:

@@ -1,12 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://crncy4ndwrhbp"]
+[gd_scene load_steps=13 format=3 uid="uid://crncy4ndwrhbp"]
 
 [ext_resource type="Script" path="res://gameplay/npcs/hunter/hunter.gd" id="1_4kbem"]
 [ext_resource type="Texture2D" uid="uid://8dv5ksdmy4ub" path="res://assets/characters/hunter.png" id="1_38gsl"]
 [ext_resource type="Texture2D" uid="uid://cyrmda0tugi2k" path="res://assets/ui/danger.png" id="3_e83j8"]
 [ext_resource type="PackedScene" uid="uid://bn2hi4l7jd02f" path="res://gameplay/npcs/player_detector.tscn" id="3_hi2w8"]
 [ext_resource type="Texture2D" uid="uid://qjl0ov41ihmr" path="res://assets/ui/danger2.png" id="4_vqumf"]
+[ext_resource type="Script" path="res://gameplay/npcs/hunter/states/watching.gd" id="5_7je0j"]
+[ext_resource type="Script" path="res://gameplay/npcs/hunter/states/patrolling.gd" id="6_1nhf6"]
 [ext_resource type="Script" path="res://scripts/state_machine.gd" id="6_bw6f5"]
-[ext_resource type="Script" path="res://gameplay/npcs/hunter/states/look_around.gd" id="7_2x78p"]
+[ext_resource type="Script" path="res://gameplay/npcs/hunter/states/chasing.gd" id="7_3jr04"]
+[ext_resource type="Script" path="res://gameplay/npcs/hunter/states/searching.gd" id="9_wmkhd"]
+[ext_resource type="Script" path="res://gameplay/npcs/hunter/states/returning.gd" id="11_f0ho1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x4xxv"]
 radius = 5.0
@@ -15,6 +19,23 @@ radius = 5.0
 motion_mode = 1
 script = ExtResource("1_4kbem")
 patrol_data = null
+
+[node name="DebugLabel" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -45.0
+offset_right = 20.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 10
+text = "State"
+horizontal_alignment = 1
 
 [node name="Sprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -37,34 +58,63 @@ position = Vector2(0, -8)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
-[node name="Danger" type="Sprite2D" parent="."]
+[node name="StateMachine" type="Node2D" parent="."]
+script = ExtResource("6_bw6f5")
+
+[node name="Watching" type="Node2D" parent="StateMachine"]
+unique_name_in_owner = true
+script = ExtResource("5_7je0j")
+
+[node name="CycleTimer" type="Timer" parent="StateMachine/Watching"]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="StayTimer" type="Timer" parent="StateMachine/Watching"]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="Patrolling" type="Node2D" parent="StateMachine"]
+unique_name_in_owner = true
+script = ExtResource("6_1nhf6")
+
+[node name="Chasing" type="Node2D" parent="StateMachine"]
+unique_name_in_owner = true
+script = ExtResource("7_3jr04")
+
+[node name="ChaseMarker" type="Sprite2D" parent="StateMachine/Chasing"]
 unique_name_in_owner = true
 visible = false
 position = Vector2(0, -27)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_e83j8")
 
-[node name="Danger2" type="Sprite2D" parent="."]
+[node name="Searching" type="Node2D" parent="StateMachine"]
+unique_name_in_owner = true
+script = ExtResource("9_wmkhd")
+
+[node name="SearchMarker" type="Sprite2D" parent="StateMachine/Searching"]
 unique_name_in_owner = true
 visible = false
 position = Vector2(0, -27)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_vqumf")
 
-[node name="ResetTimer" type="Timer" parent="."]
+[node name="SearchTimer" type="Timer" parent="StateMachine/Searching"]
 unique_name_in_owner = true
-wait_time = 2.0
+wait_time = 5.0
 one_shot = true
 
-[node name="StateMachine" type="Node" parent="."]
-script = ExtResource("6_bw6f5")
-
-[node name="LookAround" type="Node" parent="StateMachine"]
-script = ExtResource("7_2x78p")
-
-[node name="CycleTimer" type="Timer" parent="StateMachine/LookAround"]
+[node name="Returning" type="Node2D" parent="StateMachine"]
 unique_name_in_owner = true
+script = ExtResource("11_f0ho1")
+
+[node name="ReturnTimer" type="Timer" parent="StateMachine/Returning"]
+unique_name_in_owner = true
+one_shot = true
 
 [connection signal="timeout" from="Sprite/AnimationTimer" to="." method="_on_animation_timer_timeout"]
-[connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]
-[connection signal="timeout" from="StateMachine/LookAround/CycleTimer" to="StateMachine/LookAround" method="_on_cycle_timer_timeout"]
+[connection signal="transitioned" from="StateMachine" to="." method="_on_state_machine_transitioned"]
+[connection signal="timeout" from="StateMachine/Watching/CycleTimer" to="StateMachine/Watching" method="_on_cycle_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Watching/StayTimer" to="StateMachine/Watching" method="_on_stay_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Searching/SearchTimer" to="StateMachine/Searching" method="_on_search_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Returning/ReturnTimer" to="StateMachine/Returning" method="_on_return_timer_timeout"]

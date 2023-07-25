@@ -6,7 +6,8 @@
 script = ExtResource("1_k0p7e")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-modulate = Color(0, 1, 0, 1)
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.25098)
 polygon = PackedVector2Array(0, 0, 180, -180, 237, -98, 256, 0, 237, 98, 180, 180)
 
 [node name="DetectionRay" type="RayCast2D" parent="."]
