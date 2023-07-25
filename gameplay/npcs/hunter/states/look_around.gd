@@ -11,12 +11,23 @@ var always_new: bool
 @onready var hunter := owner as Hunter
 
 
+func _ready() -> void:
+	copy_settings()
+
 
 func enter():
 	#ToDo: get current settings from hunter
 	
 	%CycleTimer.wait_time = owner.look_cycle_duration
 	%CycleTimer.start()
+
+
+func copy_settings():
+	look_right = hunter.look_right
+	look_down = hunter.look_down
+	look_left = hunter.look_left
+	look_up = hunter.look_up
+	look_mode = hunter.look
 
 
 func _on_cycle_timer_timeout() -> void:

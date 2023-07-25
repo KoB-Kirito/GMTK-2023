@@ -1,12 +1,15 @@
 @tool
-@icon("res://gameplay/npcs/hunter/patrol_point.svg")
+@icon("res://gameplay/npcs/patrolling/patrol_point.svg")
 class_name PatrolPoint
 extends Node2D
+# represents one point on a patrol path
 
 
 const GRID_SIZE: int = 16
 
-@export var data: PatrolPointData
+## Data for this patrol point. Inherit from PatrolPointData to add more
+@export var patrol_data: PatrolPointData
+
 
 
 ## editor only
@@ -27,6 +30,11 @@ func _notification(what: int) -> void:
 			var path = get_parent()
 			if path != null:
 				path.queue_redraw()
+		
+		NOTIFICATION_DRAG_END:
+			# ToDo: why does this not fire? :reeee:
+			print("drag ended")
+
 
 
 func align_to_grid():
@@ -49,6 +57,10 @@ func align_to_grid():
 
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings: PackedStringArray
+	
+	if patrol_data != null:
+		if !patrol_data.look_right and !patrol_data.look_down and !patrol_data.look_left and !patrol_data.look_up:
+			warnings.append("You must enable at least one look direction if set as patrol point")
 	
 	var parent = get_parent()
 	if parent == null or not parent is PatrolPath:

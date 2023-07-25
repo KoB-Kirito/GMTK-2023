@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://6xfhgsvta34h"
-path="res://.godot/imported/patrol_path.svg-9e5a99d8517344f2811eaf59beaf4b4b.ctex"
+path="res://.godot/imported/patrol_path.svg-550e4b6f05ef2f1345c79df1bb5033aa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gameplay/npcs/hunter/patrol_path.svg"
-dest_files=["res://.godot/imported/patrol_path.svg-9e5a99d8517344f2811eaf59beaf4b4b.ctex"]
+source_file="res://gameplay/npcs/patrolling/patrol_path.svg"
+dest_files=["res://.godot/imported/patrol_path.svg-550e4b6f05ef2f1345c79df1bb5033aa.ctex"]
 
 [params]
 

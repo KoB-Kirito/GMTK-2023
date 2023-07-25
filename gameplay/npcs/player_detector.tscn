@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bn2hi4l7jd02f"]
 
-[ext_resource type="Script" path="res://gameplay/player_detector.gd" id="1_k0p7e"]
+[ext_resource type="Script" path="res://gameplay/npcs/player_detector.gd" id="1_k0p7e"]
 
 [node name="PlayerDetector" type="Area2D"]
 script = ExtResource("1_k0p7e")

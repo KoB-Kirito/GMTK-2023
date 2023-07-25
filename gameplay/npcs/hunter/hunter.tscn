@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://gameplay/npcs/hunter/hunter.gd" id="1_4kbem"]
 [ext_resource type="Texture2D" uid="uid://8dv5ksdmy4ub" path="res://assets/characters/hunter.png" id="1_38gsl"]
 [ext_resource type="Texture2D" uid="uid://cyrmda0tugi2k" path="res://assets/ui/danger.png" id="3_e83j8"]
-[ext_resource type="PackedScene" uid="uid://bn2hi4l7jd02f" path="res://gameplay/player_detector.tscn" id="3_hi2w8"]
+[ext_resource type="PackedScene" uid="uid://bn2hi4l7jd02f" path="res://gameplay/npcs/player_detector.tscn" id="3_hi2w8"]
 [ext_resource type="Texture2D" uid="uid://qjl0ov41ihmr" path="res://assets/ui/danger2.png" id="4_vqumf"]
 [ext_resource type="Script" path="res://scripts/state_machine.gd" id="6_bw6f5"]
 [ext_resource type="Script" path="res://gameplay/npcs/hunter/states/look_around.gd" id="7_2x78p"]
@@ -14,10 +14,7 @@ radius = 5.0
 [node name="Hunter" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_4kbem")
-look_right = true
-look_down = false
-look_left = false
-look_up = false
+patrol_data = null
 
 [node name="Sprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true

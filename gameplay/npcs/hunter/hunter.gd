@@ -10,57 +10,19 @@ extends CharacterBody2D
 		patrol_path = value
 		notify_property_list_changed()
 
-# stationary settings
-var look_right: bool = true:
+## Data for stationary behavior, if not used on a path
+var patrol_data: PatrolPointData:
 	set(value):
-		look_right = value
-		if value:
-			face_right()
+		patrol_data = value
 		update_configuration_warnings()
-		notify_property_list_changed()
-var look_down: bool = true:
-	set(value):
-		look_down = value
-		if value:
-			face_down()
-		update_configuration_warnings()
-		notify_property_list_changed()
-var look_left: bool = true:
-	set(value):
-		look_left = value
-		if value:
-			face_left()
-		update_configuration_warnings()
-		notify_property_list_changed()
-var look_up: bool = true:
-	set(value):
-		look_up = value
-		if value:
-			face_up()
-		update_configuration_warnings()
-		notify_property_list_changed()
-var cycle_mode: int = 0:
-	set(value):
-		cycle_mode = value
-		update_configuration_warnings()
-		notify_property_list_changed()
-## If enabled, random will pick a new direction everytime
-var always_new: bool = true
-## Minimum duration until direction is cycled, in seconds
-var duration_min: float = 2.0:
-	set(value):
-		duration_min = value
-		if duration_max < duration_min:
-			duration_max = duration_min
-## Maximum duration until direction is cycled, in seconds
-var duration_max: float = 4.0:
-	set(value):
-		duration_max = value
-		if duration_min > duration_max:
-			duration_min = duration_max
 
 
 var look_current: Vector2 = Vector2.RIGHT
+
+
+#func _init():
+#	for info in get_property_list():
+#		print(info)
 
 
 func _physics_process(delta: float) -> void:
@@ -128,77 +90,43 @@ func face_up():
 
 
 ## editor only
+func _notification(what: int) -> void:
+	match what:
+		NOTIFICATION_EDITOR_PRE_SAVE:
+			update_configuration_warnings()
+
+func _get_configuration_warnings() -> PackedStringArray:
+	var warnings: PackedStringArray
+	
+	if patrol_path == null and patrol_data == null:
+		warnings.append("Set either patrol path or patrol data for behavior")
+	
+	if patrol_path == null and patrol_data != null:
+		if !patrol_data.look_right and !patrol_data.look_down and !patrol_data.look_left and !patrol_data.look_up:
+			warnings.append("You must enable at least one look direction if stationary")
+			
+		elif patrol_data.look_right:
+			face_right()
+		elif patrol_data.look_down:
+			face_down()
+		elif patrol_data.look_left:
+			face_left()
+		elif patrol_data.look_up:
+			face_up()
+		
+	return warnings
+
 func _get_property_list() -> Array[Dictionary]:
 	var properties: Array[Dictionary]
 	
 	if patrol_path == null:
 		properties.append({
-			"name": "Stationary Settings",
-			"type": TYPE_STRING,
-			"usage": PROPERTY_USAGE_GROUP,
-		})
-		properties.append({
-			"name": "look_right",
-			"type": TYPE_BOOL,
+			"name": "patrol_data",
+			"class_name": &"Resource",
+			"type": TYPE_OBJECT,
+			"hint": PROPERTY_HINT_RESOURCE_TYPE,
+			"hint_string": "PatrolPointData",
 			"usage": PROPERTY_USAGE_DEFAULT,
 		})
-		properties.append({
-			"name": "look_down",
-			"type": TYPE_BOOL,
-			"usage": PROPERTY_USAGE_DEFAULT,
-		})
-		properties.append({
-			"name": "look_left",
-			"type": TYPE_BOOL,
-			"usage": PROPERTY_USAGE_DEFAULT,
-		})
-		properties.append({
-			"name": "look_up",
-			"type": TYPE_BOOL,
-			"usage": PROPERTY_USAGE_DEFAULT,
-		})
-		if [look_right, look_down, look_left, look_up].count(true) > 1:
-			properties.append({
-			"name": "Cycle Directions",
-			"type": TYPE_STRING,
-			"usage": PROPERTY_USAGE_GROUP,
-			})
-			
-			if [look_right, look_down, look_left, look_up].count(true) > 2:
-				properties.append({
-					"name": "cycle_mode",
-					"type": TYPE_INT,
-					"usage": PROPERTY_USAGE_DEFAULT,
-					"hint": PROPERTY_HINT_ENUM,
-					"hint_string": "Clockwise,Counter-clockwise,Random"
-				})
-				
-				if cycle_mode == 2:
-					properties.append({
-						"name": "always_new",
-						"type": TYPE_BOOL,
-						"usage": PROPERTY_USAGE_DEFAULT,
-					})
-			
-			properties.append({
-				"name": "duration_min",
-				"type": TYPE_FLOAT,
-				"usage": PROPERTY_USAGE_DEFAULT,
-			})
-			properties.append({
-				"name": "duration_max",
-				"type": TYPE_FLOAT,
-				"usage": PROPERTY_USAGE_DEFAULT,
-			})
 	
 	return properties
-
-
-func _get_configuration_warnings() -> PackedStringArray:
-	var warnings: PackedStringArray
-	
-	if patrol_path == null:
-		if !look_right and !look_down and !look_left and !look_up:
-			warnings.append("You must enable at least one look direction if stationary")
-	
-	return warnings

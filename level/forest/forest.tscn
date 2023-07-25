@@ -1,11 +1,12 @@
-[gd_scene load_steps=27 format=3 uid="uid://d26qr7hybpd5m"]
+[gd_scene load_steps=29 format=3 uid="uid://d26qr7hybpd5m"]
 
 [ext_resource type="Texture2D" uid="uid://dhcp87xdovcl8" path="res://assets/tilesets/ground/forest.png" id="1_wbop8"]
 [ext_resource type="Texture2D" uid="uid://b0dhyx3funlrp" path="res://assets/tilesets/objects/forest_objects.png" id="2_ndjtb"]
 [ext_resource type="PackedScene" uid="uid://d3mklqtc7tjww" path="res://gameplay/player/player.tscn" id="3_l3vqa"]
 [ext_resource type="PackedScene" uid="uid://crncy4ndwrhbp" path="res://gameplay/npcs/hunter/hunter.tscn" id="4_35har"]
-[ext_resource type="Script" path="res://gameplay/npcs/hunter/patrol_path.gd" id="5_10h4c"]
-[ext_resource type="Script" path="res://gameplay/npcs/hunter/patrol_point.gd" id="6_sesft"]
+[ext_resource type="Script" path="res://gameplay/npcs/patrolling/patrol_path.gd" id="5_10h4c"]
+[ext_resource type="Script" path="res://gameplay/npcs/patrolling/patrol_point.gd" id="6_sesft"]
+[ext_resource type="Script" path="res://gameplay/npcs/patrolling/patrol_point_data.gd" id="7_0tpag"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_q6y1q"]
 
@@ -438,6 +439,17 @@ navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_7si12")
 sources/1 = SubResource("TileSetAtlasSource_82jlx")
 
+[sub_resource type="Resource" id="Resource_ri8ud"]
+script = ExtResource("7_0tpag")
+stay_duration = 10.0
+look_right = true
+look_down = false
+look_left = true
+look_up = true
+cycle_mode = 0
+duration_min = 2.0
+duration_max = 4.0
+
 [node name="World" type="Node2D"]
 y_sort_enabled = true
 
@@ -476,7 +488,7 @@ position = Vector2(253, 164)
 script = ExtResource("5_10h4c")
 
 [node name="PatrolPoint1" type="Node2D" parent="PatrolPath"]
-position = Vector2(312, 488)
+position = Vector2(328, 472)
 script = ExtResource("6_sesft")
 
 [node name="PatrolPoint2" type="Node2D" parent="PatrolPath"]
@@ -488,5 +500,14 @@ position = Vector2(72, 408)
 script = ExtResource("6_sesft")
 
 [node name="PatrolPoint4" type="Node2D" parent="PatrolPath"]
-position = Vector2(280, 392)
+position = Vector2(296, 392)
+script = ExtResource("6_sesft")
+
+[node name="PatrolPoint5" type="Node2D" parent="PatrolPath"]
+position = Vector2(296, 296)
+script = ExtResource("6_sesft")
+patrol_data = SubResource("Resource_ri8ud")
+
+[node name="PatrolPoint6" type="Node2D" parent="PatrolPath"]
+position = Vector2(296, 392)
 script = ExtResource("6_sesft")
