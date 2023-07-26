@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dy8wsehbghl2l"]
+[gd_scene load_steps=44 format=3 uid="uid://dy8wsehbghl2l"]
 
 [ext_resource type="Script" path="res://level/town/world.gd" id="1_kayik"]
 [ext_resource type="TileSet" uid="uid://fwtbdlu5tfhr" path="res://level/_tilesets/town.tres" id="2_ad5c8"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://gameplay/npcs/patrolling/patrol_point.gd" id="10_ms0lc"]
 [ext_resource type="PackedScene" uid="uid://doamoxdbxmss" path="res://level/_objects/door_big.tscn" id="11_t2vet"]
 [ext_resource type="PackedScene" uid="uid://bj53jxxqnqiv" path="res://gameplay/levelchange_fade_in.tscn" id="13_4dp4v"]
+[ext_resource type="AudioStream" uid="uid://ej1kq0uv8eh6" path="res://assets/bgm/hunter_theme.ogg" id="16_bn6hu"]
 
 [sub_resource type="Resource" id="Resource_wprjb"]
 script = ExtResource("8_jbuy4")
@@ -228,10 +229,14 @@ position = Vector2(936, 424)
 
 [node name="Hunter" parent="Tilemap/Enemies" instance=ExtResource("7_ld378")]
 position = Vector2(590, 613)
+default_speed = 30.0
+chasing_speed = 40.0
 patrol_data = SubResource("Resource_wprjb")
 
 [node name="Hunter2" parent="Tilemap/Enemies" node_paths=PackedStringArray("patrol_path") instance=ExtResource("7_ld378")]
 position = Vector2(499, 487)
+default_speed = 30.0
+chasing_speed = 40.0
 patrol_path = NodePath("PatrolPath")
 
 [node name="PatrolPath" type="Node2D" parent="Tilemap/Enemies/Hunter2"]
@@ -323,6 +328,9 @@ stream = ExtResource("6_pqk03")
 [node name="bgm_forest" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("7_4tutb")
 volume_db = -8.0
+
+[node name="bgm_hunter" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("16_bn6hu")
 
 [node name="ForestArea" type="Area2D" parent="Music"]
 position = Vector2(303, 1012)

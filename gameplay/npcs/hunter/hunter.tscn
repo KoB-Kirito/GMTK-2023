@@ -58,7 +58,6 @@ unique_name_in_owner = true
 [node name="Navigation" type="NavigationAgent2D" parent="."]
 unique_name_in_owner = true
 target_desired_distance = 2.0
-avoidance_enabled = true
 debug_enabled = true
 
 [node name="UpdateTimer" type="Timer" parent="Navigation"]
