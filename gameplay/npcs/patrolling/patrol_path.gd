@@ -14,6 +14,10 @@ const GRID_SIZE: float = 16
 var points: Array[PatrolPoint]
 
 
+func _init() -> void:
+	top_level = true
+
+
 func _ready() -> void:
 	for child in get_children():
 		if child is PatrolPoint:
@@ -21,7 +25,7 @@ func _ready() -> void:
 
 
 ## Returns the PatrolPoint nearest to the given position
-func get_nearest(pos: Vector2) -> PatrolPoint:
+func get_nearest_to(pos: Vector2) -> PatrolPoint:
 	var nearest: PatrolPoint
 	for point in points:
 		if nearest == null:
@@ -34,7 +38,7 @@ func get_nearest(pos: Vector2) -> PatrolPoint:
 
 
 ## Returns the next PatrolPoint following the given PatrolPoint, null if last and cycle is disabled
-func get_next(patrol_point: PatrolPoint) -> PatrolPoint:
+func get_next_to(patrol_point: PatrolPoint) -> PatrolPoint:
 	for i in range(points.size()):
 		if points[i] != patrol_point:
 			continue

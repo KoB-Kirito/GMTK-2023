@@ -2,6 +2,8 @@ class_name Watching
 extends State
 
 
+var last_position: Vector2
+
 var stay_duration: float
 
 var look_right: bool
@@ -35,6 +37,7 @@ func exit():
 	%PlayerDetector.player_detected.disconnect(on_player_detected)
 	%CycleTimer.stop()
 	%StayTimer.stop()
+	last_position = global_position
 
 
 func get_data():
@@ -158,4 +161,5 @@ func _on_stay_timer_timeout() -> void:
 
 
 func on_player_detected():
+	print("player detected")
 	transition_to(%Chasing)

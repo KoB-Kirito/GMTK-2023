@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dy8wsehbghl2l"]
+[gd_scene load_steps=43 format=3 uid="uid://dy8wsehbghl2l"]
 
 [ext_resource type="Script" path="res://level/town/world.gd" id="1_kayik"]
 [ext_resource type="TileSet" uid="uid://fwtbdlu5tfhr" path="res://level/_tilesets/town.tres" id="2_ad5c8"]
@@ -9,11 +9,27 @@
 [ext_resource type="AudioStream" uid="uid://mt6vpm8560rn" path="res://assets/bgm/village_theme.ogg" id="5_qwac7"]
 [ext_resource type="AudioStream" uid="uid://da0q1ml2a4ddg" path="res://assets/bgm/house_theme.ogg" id="6_pqk03"]
 [ext_resource type="AudioStream" uid="uid://dnaw0ck2knteg" path="res://assets/bgm/woods_theme.ogg" id="7_4tutb"]
+[ext_resource type="PackedScene" uid="uid://crncy4ndwrhbp" path="res://gameplay/npcs/hunter/hunter.tscn" id="7_ld378"]
+[ext_resource type="Script" path="res://gameplay/npcs/patrolling/patrol_point_data.gd" id="8_jbuy4"]
 [ext_resource type="Texture2D" uid="uid://cmgshtawbbvfm" path="res://assets/characters/portraits/boy_2.png" id="8_t4hxv"]
 [ext_resource type="Script" path="res://level/town/boy_end.gd" id="9_ebvlc"]
+[ext_resource type="Script" path="res://gameplay/npcs/patrolling/patrol_path.gd" id="9_qvyiq"]
 [ext_resource type="PackedScene" uid="uid://buvrn7c6gpqcv" path="res://level/_objects/door_small.tscn" id="10_e3ht2"]
+[ext_resource type="Script" path="res://gameplay/npcs/patrolling/patrol_point.gd" id="10_ms0lc"]
 [ext_resource type="PackedScene" uid="uid://doamoxdbxmss" path="res://level/_objects/door_big.tscn" id="11_t2vet"]
 [ext_resource type="PackedScene" uid="uid://bj53jxxqnqiv" path="res://gameplay/levelchange_fade_in.tscn" id="13_4dp4v"]
+
+[sub_resource type="Resource" id="Resource_wprjb"]
+script = ExtResource("8_jbuy4")
+speed_override = 0.0
+stay_duration = 1.0
+look_right = true
+look_down = true
+look_left = true
+look_up = true
+cycle_mode = 0
+duration_min = 2.0
+duration_max = 4.0
 
 [sub_resource type="Curve2D" id="Curve2D_s6r0p"]
 _data = {
@@ -207,6 +223,36 @@ position = Vector2(760, 424)
 
 [node name="DoorSmall14" parent="Tilemap/Objects" instance=ExtResource("10_e3ht2")]
 position = Vector2(936, 424)
+
+[node name="Enemies" type="Node2D" parent="Tilemap"]
+
+[node name="Hunter" parent="Tilemap/Enemies" instance=ExtResource("7_ld378")]
+position = Vector2(590, 613)
+patrol_data = SubResource("Resource_wprjb")
+
+[node name="Hunter2" parent="Tilemap/Enemies" node_paths=PackedStringArray("patrol_path") instance=ExtResource("7_ld378")]
+position = Vector2(499, 487)
+patrol_path = NodePath("PatrolPath")
+
+[node name="PatrolPath" type="Node2D" parent="Tilemap/Enemies/Hunter2"]
+top_level = true
+script = ExtResource("9_qvyiq")
+
+[node name="PatrolPoint" type="Node2D" parent="Tilemap/Enemies/Hunter2/PatrolPath"]
+position = Vector2(456, 472)
+script = ExtResource("10_ms0lc")
+
+[node name="PatrolPoint2" type="Node2D" parent="Tilemap/Enemies/Hunter2/PatrolPath"]
+position = Vector2(456, 280)
+script = ExtResource("10_ms0lc")
+
+[node name="PatrolPoint3" type="Node2D" parent="Tilemap/Enemies/Hunter2/PatrolPath"]
+position = Vector2(1064, 280)
+script = ExtResource("10_ms0lc")
+
+[node name="PatrolPoint4" type="Node2D" parent="Tilemap/Enemies/Hunter2/PatrolPath"]
+position = Vector2(456, 280)
+script = ExtResource("10_ms0lc")
 
 [node name="PathHolder" type="Node2D" parent="."]
 visible = false

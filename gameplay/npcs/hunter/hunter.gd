@@ -4,13 +4,19 @@ extends CharacterBody2D
 ## Enemy class
 
 
+## Can be overridden by the partol path
+@export var default_speed: float = 40.0
+@export var chasing_speed: float = 60.0
+var current_speed: float = default_speed
+
+@export_group("Behavior")
 ## The path this hunter will follow. If set, the path will determine it's behavior at each point.
 @export var patrol_path: PatrolPath:
 	set(value):
 		patrol_path = value
 		notify_property_list_changed()
 
-## Data for stationary behavior, if not used on a path
+## Data for stationary behavior. Ignored if path is set.
 var patrol_data: PatrolPointData:
 	set(value):
 		patrol_data = value
@@ -34,7 +40,26 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		return
+	
+	move_to_target()
 	animation()
+
+
+func move_to_target():
+	if %Navigation.is_navigation_finished():
+		velocity = Vector2.ZERO
+		return
+	
+	var next_path_position: Vector2 = %Navigation.get_next_path_position()
+	
+	var new_velocity: Vector2 = next_path_position - global_position
+	new_velocity = new_velocity.normalized()
+	new_velocity = new_velocity * current_speed
+	
+	velocity = new_velocity
+	move_and_slide()
 
 
 func animation():
@@ -140,5 +165,5 @@ func _get_property_list() -> Array[Dictionary]:
 	return properties
 
 
-func _on_state_machine_transitioned(old_state, new_state) -> void:
+func _on_state_machine_state_changed(old_state, new_state) -> void:
 	%DebugLabel.text = new_state.name

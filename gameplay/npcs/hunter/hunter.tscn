@@ -13,10 +13,11 @@
 [ext_resource type="Script" path="res://gameplay/npcs/hunter/states/returning.gd" id="11_f0ho1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x4xxv"]
-radius = 5.0
+radius = 4.0
 
 [node name="Hunter" type="CharacterBody2D"]
 motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_4kbem")
 patrol_data = null
 
@@ -49,14 +50,20 @@ frame = 1
 unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_x4xxv")
 
 [node name="PlayerDetector" parent="." instance=ExtResource("3_hi2w8")]
 unique_name_in_owner = true
-position = Vector2(0, -8)
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+[node name="Navigation" type="NavigationAgent2D" parent="."]
+unique_name_in_owner = true
+target_desired_distance = 2.0
+avoidance_enabled = true
+debug_enabled = true
+
+[node name="UpdateTimer" type="Timer" parent="Navigation"]
+unique_name_in_owner = true
+wait_time = 0.5
 
 [node name="StateMachine" type="Node2D" parent="."]
 script = ExtResource("6_bw6f5")
@@ -88,6 +95,11 @@ position = Vector2(0, -27)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_e83j8")
 
+[node name="LoseTimer" type="Timer" parent="StateMachine/Chasing"]
+unique_name_in_owner = true
+wait_time = 2.0
+one_shot = true
+
 [node name="Searching" type="Node2D" parent="StateMachine"]
 unique_name_in_owner = true
 script = ExtResource("9_wmkhd")
@@ -101,20 +113,22 @@ texture = ExtResource("4_vqumf")
 
 [node name="SearchTimer" type="Timer" parent="StateMachine/Searching"]
 unique_name_in_owner = true
-wait_time = 5.0
+wait_time = 6.0
+one_shot = true
+
+[node name="SearchCycleTimer" type="Timer" parent="StateMachine/Searching"]
+unique_name_in_owner = true
 one_shot = true
 
 [node name="Returning" type="Node2D" parent="StateMachine"]
 unique_name_in_owner = true
 script = ExtResource("11_f0ho1")
 
-[node name="ReturnTimer" type="Timer" parent="StateMachine/Returning"]
-unique_name_in_owner = true
-one_shot = true
-
 [connection signal="timeout" from="Sprite/AnimationTimer" to="." method="_on_animation_timer_timeout"]
-[connection signal="transitioned" from="StateMachine" to="." method="_on_state_machine_transitioned"]
+[connection signal="timeout" from="Navigation/UpdateTimer" to="StateMachine/Chasing" method="_on_update_timer_timeout"]
+[connection signal="state_changed" from="StateMachine" to="." method="_on_state_machine_state_changed"]
 [connection signal="timeout" from="StateMachine/Watching/CycleTimer" to="StateMachine/Watching" method="_on_cycle_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Watching/StayTimer" to="StateMachine/Watching" method="_on_stay_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Chasing/LoseTimer" to="StateMachine/Chasing" method="_on_lose_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Searching/SearchTimer" to="StateMachine/Searching" method="_on_search_timer_timeout"]
-[connection signal="timeout" from="StateMachine/Returning/ReturnTimer" to="StateMachine/Returning" method="_on_return_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Searching/SearchCycleTimer" to="StateMachine/Searching" method="_on_search_cycle_timer_timeout"]

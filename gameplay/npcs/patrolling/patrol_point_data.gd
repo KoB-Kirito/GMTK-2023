@@ -3,8 +3,11 @@ class_name PatrolPointData
 extends Resource
 
 
+## If > 0, the unit will use this speed to get TO this point
+@export var speed_override: float = 0.0
+
 ## How long the unit stops at this point. Has no effect if not used on a PatrolPoint.
-@export var stay_duration: float = 10.0:
+@export var stay_duration: float = 0.0:
 	set(value):
 		stay_duration = value
 		notify_property_list_changed()

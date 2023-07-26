@@ -7,7 +7,6 @@ signal player_detected
 signal player_lost
 
 var sees_player: bool = false
-var last_position: Vector2
 var player: Player
 
 
@@ -45,7 +44,7 @@ func on_body_entered(body: Node2D) -> void:
 			player = body
 		
 		%DetectionRay.enabled = true
-		%CollisionPolygon2D.modulate = Color("ffffffff")
+		%CollisionPolygon2D.modulate = Color("ffffff90")
 
 
 func on_body_exited(body: Node2D) -> void:
@@ -59,10 +58,12 @@ func see_player():
 	sees_player = true
 	player_detected.emit()
 	%DetectionRay.modulate = Color.YELLOW
+	%CollisionPolygon2D.modulate = Color("ffffffc0")
+
 
 
 func lose_player():
 	sees_player = false
-	last_position = player.global_position
 	player_lost.emit()
 	%DetectionRay.modulate = Color.GREEN
+	%CollisionPolygon2D.modulate = Color("ffffff90")
