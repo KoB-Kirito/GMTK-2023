@@ -220,7 +220,7 @@ shape = SubResource("CircleShape2D_dmvol")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_4okou")
-animation = &"walk_up"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]

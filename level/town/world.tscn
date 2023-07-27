@@ -1,23 +1,31 @@
-[gd_scene load_steps=45 format=3 uid="uid://dy8wsehbghl2l"]
+[gd_scene load_steps=53 format=3 uid="uid://dy8wsehbghl2l"]
 
 [ext_resource type="Script" path="res://level/town/world.gd" id="1_kayik"]
 [ext_resource type="TileSet" uid="uid://fwtbdlu5tfhr" path="res://level/_tilesets/town.tres" id="2_ad5c8"]
 [ext_resource type="Script" path="res://level/town/elevation.gd" id="2_gvfpo"]
 [ext_resource type="PackedScene" uid="uid://d3mklqtc7tjww" path="res://gameplay/player/player.tscn" id="2_llgaa"]
-[ext_resource type="PackedScene" uid="uid://d0pwq4rvak3ri" path="res://npc/npc.tscn" id="2_yrs6g"]
 [ext_resource type="Script" path="res://level/town/music.gd" id="4_cdc8t"]
 [ext_resource type="AudioStream" uid="uid://mt6vpm8560rn" path="res://assets/bgm/village_theme.ogg" id="5_qwac7"]
 [ext_resource type="AudioStream" uid="uid://da0q1ml2a4ddg" path="res://assets/bgm/house_theme.ogg" id="6_pqk03"]
 [ext_resource type="AudioStream" uid="uid://dnaw0ck2knteg" path="res://assets/bgm/woods_theme.ogg" id="7_4tutb"]
+[ext_resource type="PackedScene" uid="uid://deye2a812qqpf" path="res://gameplay/npcs/npc.tscn" id="7_jceo7"]
 [ext_resource type="PackedScene" uid="uid://crncy4ndwrhbp" path="res://gameplay/npcs/hunter/hunter.tscn" id="7_ld378"]
 [ext_resource type="Script" path="res://gameplay/npcs/patrolling/patrol_point_data.gd" id="8_jbuy4"]
+[ext_resource type="Texture2D" uid="uid://bj717fecl17kv" path="res://assets/characters/blacksmith.png" id="8_rwl5e"]
 [ext_resource type="Texture2D" uid="uid://cmgshtawbbvfm" path="res://assets/characters/portraits/boy_2.png" id="8_t4hxv"]
+[ext_resource type="Texture2D" uid="uid://c8y4c3r6cjeun" path="res://assets/characters/baker.png" id="8_w2ocb"]
 [ext_resource type="Script" path="res://level/town/boy_end.gd" id="9_ebvlc"]
+[ext_resource type="Texture2D" uid="uid://cot4iy7d2w0bp" path="res://assets/characters/butcher.png" id="9_mnt7h"]
 [ext_resource type="Script" path="res://gameplay/npcs/patrolling/patrol_path.gd" id="9_qvyiq"]
 [ext_resource type="PackedScene" uid="uid://buvrn7c6gpqcv" path="res://level/_objects/door_small.tscn" id="10_e3ht2"]
 [ext_resource type="Script" path="res://gameplay/npcs/patrolling/patrol_point.gd" id="10_ms0lc"]
+[ext_resource type="Texture2D" uid="uid://c1uo7gqoo51tb" path="res://assets/characters/crazy_man.png" id="11_pc63l"]
 [ext_resource type="PackedScene" uid="uid://doamoxdbxmss" path="res://level/_objects/door_big.tscn" id="11_t2vet"]
+[ext_resource type="Texture2D" uid="uid://nkepgj1lgm48" path="res://assets/characters/grandma.png" id="12_rbvln"]
 [ext_resource type="PackedScene" uid="uid://bj53jxxqnqiv" path="res://gameplay/levelchange_fade_in.tscn" id="13_4dp4v"]
+[ext_resource type="Texture2D" uid="uid://bdl1v5m0qd6w6" path="res://assets/characters/innkeeper.png" id="13_37fgf"]
+[ext_resource type="Texture2D" uid="uid://dd45st1e0n5tb" path="res://assets/characters/mayor.png" id="14_n40w8"]
+[ext_resource type="Texture2D" uid="uid://dqjrlo85qp4us" path="res://assets/characters/priest.png" id="15_ck6a3"]
 [ext_resource type="AudioStream" uid="uid://ej1kq0uv8eh6" path="res://assets/bgm/hunter_theme.ogg" id="16_bn6hu"]
 [ext_resource type="PackedScene" uid="uid://cn5e8ujuxalos" path="res://gameplay/levelchange_fade_out.tscn" id="20_fsxsr"]
 
@@ -180,7 +188,7 @@ player = NodePath("Player")
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="Tilemap" instance=ExtResource("2_llgaa")]
-position = Vector2(120, 1089)
+position = Vector2(96, 1113)
 
 [node name="Objects" type="Node2D" parent="Tilemap"]
 y_sort_enabled = true
@@ -233,6 +241,50 @@ position = Vector2(760, 424)
 [node name="DoorSmall14" parent="Tilemap/Objects" instance=ExtResource("10_e3ht2")]
 position = Vector2(936, 424)
 
+[node name="NPCs" type="Node2D" parent="Tilemap"]
+y_sort_enabled = true
+
+[node name="Baker" parent="Tilemap/NPCs" instance=ExtResource("7_jceo7")]
+position = Vector2(746, 717)
+dialog_name = "Baker"
+sprite = ExtResource("8_w2ocb")
+
+[node name="Blacksmith" parent="Tilemap/NPCs" instance=ExtResource("7_jceo7")]
+position = Vector2(487, 669)
+dialog_name = "Blacksmith"
+sprite = ExtResource("8_rwl5e")
+
+[node name="Butcher" parent="Tilemap/NPCs" instance=ExtResource("7_jceo7")]
+position = Vector2(364, 683)
+dialog_name = "Butcher"
+sprite = ExtResource("9_mnt7h")
+look = 0
+
+[node name="CrazyMan" parent="Tilemap/NPCs" instance=ExtResource("7_jceo7")]
+position = Vector2(175, 673)
+dialog_name = "Crazy Man"
+sprite = ExtResource("11_pc63l")
+
+[node name="Grandma" parent="Tilemap/NPCs" instance=ExtResource("7_jceo7")]
+position = Vector2(287, 512)
+dialog_name = "Grandma"
+sprite = ExtResource("12_rbvln")
+
+[node name="Innkeeper" parent="Tilemap/NPCs" instance=ExtResource("7_jceo7")]
+position = Vector2(251, 512)
+dialog_name = "Innkeeper"
+sprite = ExtResource("13_37fgf")
+
+[node name="Mayor" parent="Tilemap/NPCs" instance=ExtResource("7_jceo7")]
+position = Vector2(104, 462)
+dialog_name = "Mayor"
+sprite = ExtResource("14_n40w8")
+
+[node name="Priest" parent="Tilemap/NPCs" instance=ExtResource("7_jceo7")]
+position = Vector2(204, 562)
+dialog_name = "Priest"
+sprite = ExtResource("15_ck6a3")
+
 [node name="Enemies" type="Node2D" parent="Tilemap"]
 y_sort_enabled = true
 
@@ -269,6 +321,7 @@ position = Vector2(456, 280)
 script = ExtResource("10_ms0lc")
 
 [node name="PathHolder" type="Node2D" parent="."]
+visible = false
 
 [node name="Mann1Path" type="Path2D" parent="PathHolder"]
 curve = SubResource("Curve2D_s6r0p")
@@ -277,9 +330,6 @@ curve = SubResource("Curve2D_s6r0p")
 position = Vector2(642.53, 735)
 rotation = 3.14159
 progress = 138.46
-
-[node name="NPC" parent="PathHolder/Mann1Path/PathFollow2D" instance=ExtResource("2_yrs6g")]
-position = Vector2(-89.4703, -8.99988)
 
 [node name="MetzgerPath" type="Path2D" parent="PathHolder"]
 curve = SubResource("Curve2D_41o3e")
@@ -425,6 +475,7 @@ shape = SubResource("CircleShape2D_0mu6d")
 
 [node name="LevelchangeFadeIn" parent="." instance=ExtResource("13_4dp4v")]
 visible = false
+duration = 0.5
 
 [node name="LevelchangeFadeOut_GameOver" parent="." node_paths=PackedStringArray("bgm_player") instance=ExtResource("20_fsxsr")]
 unique_name_in_owner = true
