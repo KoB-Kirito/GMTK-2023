@@ -1,9 +1,10 @@
-Join child 2
-child: Are you here to take me with you?
+Join boy_2 2
+boy_2: Are you here to take me with you?
 Join vampire [animation="Instant In Or Out"]
 vampire: I would never do such thing. I want to help you.
-child: I knew Vampires are not as bad as the stories made them out to be. You are a healer?
+boy_2: I knew Vampires are not as bad as the stories made them out to be. You are a healer?
 vampire: I am and it warms my heart that you see me as the person I truly am. 
 vampire: Now let me end your suffering.
 [rainbow]Happy End
 [signal arg="end"]
+
