@@ -15,6 +15,7 @@ func _ready() -> void:
 func start() -> void:
 	# catch inputs
 	%Fade.mouse_filter = Control.MOUSE_FILTER_STOP
+	get_tree().paused = true
 	
 	var tween = create_tween()
 	
@@ -26,4 +27,6 @@ func start() -> void:
 		tween.parallel().tween_property(bgm_player, "volume_db", -50.0, duration)
 	
 	# change scene
-	tween.tween_callback(func(): get_tree().change_scene_to_file(next_level))
+	tween.tween_callback(func():
+			get_tree().paused = false
+			get_tree().change_scene_to_file(next_level))

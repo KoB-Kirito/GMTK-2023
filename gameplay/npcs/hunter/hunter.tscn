@@ -51,6 +51,7 @@ unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_x4xxv")
+disabled = true
 
 [node name="PlayerDetector" parent="." instance=ExtResource("3_hi2w8")]
 unique_name_in_owner = true
@@ -96,7 +97,6 @@ texture = ExtResource("3_e83j8")
 
 [node name="LoseTimer" type="Timer" parent="StateMachine/Chasing"]
 unique_name_in_owner = true
-wait_time = 2.0
 one_shot = true
 
 [node name="Searching" type="Node2D" parent="StateMachine"]

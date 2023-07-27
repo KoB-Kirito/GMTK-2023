@@ -174,8 +174,7 @@ ability_vision={
 
 [navigation]
 
-2d/default_cell_size=8
-2d/default_edge_connection_margin=6
+2d/default_cell_size=2
 
 [rendering]
 

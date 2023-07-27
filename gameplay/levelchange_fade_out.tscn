@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://gameplay/levelchange_fade_out.gd" id="1_sh7ne"]
 
 [node name="LevelchangeFadeOut" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_sh7ne")
 
 [node name="Fade" type="ColorRect" parent="."]

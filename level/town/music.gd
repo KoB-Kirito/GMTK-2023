@@ -25,7 +25,8 @@ func on_hunter_saw_player() -> void:
 
 func on_hunter_lost_player() -> void:
 	hunters -= 1
-	if hunters == 0:
+	#if hunters == 0: # ToDo: Fix
+	if true:
 		hunter_playing = false
 		fade(bgm_hunter, currently_playing, fade_duration, true)
 

@@ -10,6 +10,8 @@ signal transition_finished
 
 
 func _ready() -> void:
+	visible = true
+	
 	%Fade.color = color
 	
 	var tween = create_tween()

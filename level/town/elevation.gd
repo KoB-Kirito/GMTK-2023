@@ -7,6 +7,11 @@ extends TileMap
 var elevated: bool = false
 
 
+func _ready() -> void:
+	#set_layer_enabled(6, false)
+	set_layer_modulate(6, Color(1.0, 1.0, 1.0, 0.0))
+
+
 func _physics_process(delta: float) -> void:
 	check_elevation()
 
