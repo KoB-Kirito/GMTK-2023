@@ -23,6 +23,7 @@ var patrol_data: PatrolPointData:
 		update_configuration_warnings()
 
 var current_facing: Vector2 = Vector2.RIGHT
+var paused: bool = true
 
 
 func _ready() -> void:
@@ -40,6 +41,9 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if paused:
+		return
+	
 	if Engine.is_editor_hint():
 		return
 	
@@ -89,6 +93,9 @@ func animation():
 
 
 func _on_animation_timer_timeout() -> void:
+	if paused:
+		return
+	
 	if %Sprite.frame_coords.x == 2:
 		%Sprite.frame_coords.x = 0
 		
@@ -120,6 +127,13 @@ func face_up():
 		%PlayerDetector.rotation_degrees = 270
 		current_facing = Vector2.UP
 
+
+## Pause when not on screen
+func _on_visible_notifier_screen_entered() -> void:
+	paused = false
+
+func _on_visible_notifier_screen_exited() -> void:
+	paused = true
 
 
 ## editor only

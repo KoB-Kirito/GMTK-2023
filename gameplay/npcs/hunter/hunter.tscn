@@ -21,6 +21,9 @@ wall_min_slide_angle = 0.0
 script = ExtResource("1_4kbem")
 patrol_data = null
 
+[node name="VisibleNotifier" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-100, -100, 200, 200)
+
 [node name="DebugLabel" type="Label" parent="."]
 unique_name_in_owner = true
 anchors_preset = 7
@@ -123,6 +126,8 @@ one_shot = true
 unique_name_in_owner = true
 script = ExtResource("11_f0ho1")
 
+[connection signal="screen_entered" from="VisibleNotifier" to="." method="_on_visible_notifier_screen_entered"]
+[connection signal="screen_exited" from="VisibleNotifier" to="." method="_on_visible_notifier_screen_exited"]
 [connection signal="timeout" from="Sprite/AnimationTimer" to="." method="_on_animation_timer_timeout"]
 [connection signal="timeout" from="Navigation/UpdateTimer" to="StateMachine/Chasing" method="_on_update_timer_timeout"]
 [connection signal="state_changed" from="StateMachine" to="." method="_on_state_machine_state_changed"]
