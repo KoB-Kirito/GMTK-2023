@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://dy8wsehbghl2l"]
+[gd_scene load_steps=54 format=3 uid="uid://dy8wsehbghl2l"]
 
 [ext_resource type="Script" path="res://level/town/world.gd" id="1_kayik"]
 [ext_resource type="TileSet" uid="uid://fwtbdlu5tfhr" path="res://level/_tilesets/town.tres" id="2_ad5c8"]
@@ -127,6 +127,9 @@ size = Vector2(58, 90)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nbcad"]
 size = Vector2(74, 76)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ghc2v"]
+size = Vector2(159, 95)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0mu6d"]
 radius = 20.0693
@@ -373,90 +376,94 @@ curve = SubResource("Curve2D_sy6nv")
 position = Vector2(122, 513)
 rotation = 1.55533
 
-[node name="Music" type="Node2D" parent="."]
+[node name="MusicManager" type="Node2D" parent="."]
 process_mode = 3
 script = ExtResource("4_cdc8t")
 fade_duration = 0.6
 
-[node name="bgm_village" type="AudioStreamPlayer" parent="Music"]
+[node name="bgm_village" type="AudioStreamPlayer" parent="MusicManager"]
 stream = ExtResource("5_qwac7")
 
-[node name="bgm_house" type="AudioStreamPlayer" parent="Music"]
+[node name="bgm_house" type="AudioStreamPlayer" parent="MusicManager"]
 stream = ExtResource("6_pqk03")
 
-[node name="bgm_forest" type="AudioStreamPlayer" parent="Music"]
+[node name="bgm_forest" type="AudioStreamPlayer" parent="MusicManager"]
 stream = ExtResource("7_4tutb")
 volume_db = -8.0
 
-[node name="bgm_hunter" type="AudioStreamPlayer" parent="Music"]
+[node name="bgm_hunter" type="AudioStreamPlayer" parent="MusicManager"]
 stream = ExtResource("16_bn6hu")
 
-[node name="ForestArea" type="Area2D" parent="Music"]
+[node name="ForestArea" type="Area2D" parent="MusicManager"]
 position = Vector2(303, 1012)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Music/ForestArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MusicManager/ForestArea"]
 shape = SubResource("RectangleShape2D_eg1n3")
 
-[node name="HouseArea" type="Area2D" parent="Music"]
+[node name="HouseArea" type="Area2D" parent="MusicManager"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Music/HouseArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MusicManager/HouseArea"]
 position = Vector2(457, 672)
 shape = SubResource("RectangleShape2D_c2a6f")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Music/HouseArea"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="MusicManager/HouseArea"]
 position = Vector2(776, 677)
 shape = SubResource("RectangleShape2D_a4l35")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Music/HouseArea"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="MusicManager/HouseArea"]
 position = Vector2(216, 627)
 shape = SubResource("RectangleShape2D_8p71p")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Music/HouseArea"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="MusicManager/HouseArea"]
 position = Vector2(311, 448)
 shape = SubResource("RectangleShape2D_enqvq")
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="Music/HouseArea"]
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="MusicManager/HouseArea"]
 position = Vector2(104, 329)
 shape = SubResource("RectangleShape2D_4njgw")
 
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="Music/HouseArea"]
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="MusicManager/HouseArea"]
 position = Vector2(119, 455)
 shape = SubResource("RectangleShape2D_vq7be")
 
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="Music/HouseArea"]
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="MusicManager/HouseArea"]
 position = Vector2(273, 283)
 shape = SubResource("RectangleShape2D_rowyj")
 
-[node name="CollisionShape2D8" type="CollisionShape2D" parent="Music/HouseArea"]
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="MusicManager/HouseArea"]
 position = Vector2(582, 210)
 shape = SubResource("RectangleShape2D_u7dx0")
 
-[node name="CollisionShape2D9" type="CollisionShape2D" parent="Music/HouseArea"]
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="MusicManager/HouseArea"]
 position = Vector2(775, 204)
 shape = SubResource("RectangleShape2D_yxsrg")
 
-[node name="CollisionShape2D10" type="CollisionShape2D" parent="Music/HouseArea"]
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="MusicManager/HouseArea"]
 position = Vector2(553, 355)
 shape = SubResource("RectangleShape2D_oe2pf")
 
-[node name="CollisionShape2D11" type="CollisionShape2D" parent="Music/HouseArea"]
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="MusicManager/HouseArea"]
 position = Vector2(792, 543)
 shape = SubResource("RectangleShape2D_mxjfv")
 
-[node name="CollisionShape2D12" type="CollisionShape2D" parent="Music/HouseArea"]
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="MusicManager/HouseArea"]
 position = Vector2(897, 379)
 shape = SubResource("RectangleShape2D_q6hsl")
 
-[node name="CollisionShape2D13" type="CollisionShape2D" parent="Music/HouseArea"]
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="MusicManager/HouseArea"]
 position = Vector2(767, 378)
 shape = SubResource("RectangleShape2D_y63ni")
 
-[node name="CollisionShape2D14" type="CollisionShape2D" parent="Music/HouseArea"]
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="MusicManager/HouseArea"]
 position = Vector2(456, 64)
 shape = SubResource("RectangleShape2D_nbcad")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Music/HouseArea"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MusicManager/HouseArea"]
 polygon = PackedVector2Array(383, 550, 498, 550, 498, 593, 435, 593, 435, 586, 382, 587)
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="MusicManager/HouseArea"]
+position = Vector2(144.5, 1083.5)
+shape = SubResource("RectangleShape2D_ghc2v")
 
 [node name="VisionTarget" type="Node2D" parent="." groups=["vision_target"]]
 position = Vector2(424, 40)
@@ -481,11 +488,11 @@ duration = 0.5
 unique_name_in_owner = true
 next_level = "res://level/end/game_over.tscn"
 duration = 3.0
-bgm_player = NodePath("../Music/bgm_hunter")
+bgm_player = NodePath("../MusicManager/bgm_hunter")
 
-[connection signal="body_entered" from="Music/ForestArea" to="Music" method="_on_forest_area_body_entered"]
-[connection signal="body_exited" from="Music/ForestArea" to="Music" method="_on_forest_area_body_exited"]
-[connection signal="body_entered" from="Music/HouseArea" to="Music" method="_on_house_area_body_entered"]
-[connection signal="body_exited" from="Music/HouseArea" to="Music" method="_on_house_area_body_exited"]
+[connection signal="body_entered" from="MusicManager/ForestArea" to="MusicManager" method="_on_forest_area_body_entered"]
+[connection signal="body_exited" from="MusicManager/ForestArea" to="MusicManager" method="_on_forest_area_body_exited"]
+[connection signal="body_entered" from="MusicManager/HouseArea" to="MusicManager" method="_on_house_area_body_entered"]
+[connection signal="body_exited" from="MusicManager/HouseArea" to="MusicManager" method="_on_house_area_body_exited"]
 [connection signal="body_entered" from="Boy2/Area2D" to="Boy2" method="_on_area_2d_body_entered"]
 [connection signal="transition_finished" from="LevelchangeFadeIn" to="." method="_on_levelchange_fade_in_transition_finished"]

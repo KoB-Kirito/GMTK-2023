@@ -2,6 +2,7 @@ extends Node
 
 @export var fade_duration: float = 1.0
 
+var current_main_theme: AudioStreamPlayer
 var currently_playing: AudioStreamPlayer
 var hunter_playing: bool = false
 var hunters: int = 0
@@ -13,6 +14,7 @@ var hunters: int = 0
 
 
 func _ready() -> void:
+	current_main_theme = bgm_forest
 	Globals.hunter_saw_player.connect(on_hunter_saw_player)
 	Globals.hunter_lost_player.connect(on_hunter_lost_player)
 
@@ -35,7 +37,11 @@ func _on_forest_area_body_entered(body: Node2D) -> void:
 	if not body is Player:
 		return
 	
+	if not currently_playing == bgm_village:
+		return
+	
 	currently_playing = bgm_forest
+	current_main_theme = bgm_forest
 
 	if not hunter_playing:
 		fade(bgm_village, bgm_forest, fade_duration)
@@ -46,6 +52,8 @@ func _on_forest_area_body_exited(body: Node2D) -> void:
 		return
 	
 	currently_playing = bgm_village
+	current_main_theme = bgm_village
+	
 	if not hunter_playing:
 		fade(bgm_forest, bgm_village, fade_duration)
 
@@ -57,17 +65,17 @@ func _on_house_area_body_entered(body: Node2D) -> void:
 	currently_playing = bgm_house
 	
 	if not hunter_playing:
-		fade(bgm_village, bgm_house, fade_duration, true)
+		fade(current_main_theme, bgm_house, fade_duration, true)
 
 
 func _on_house_area_body_exited(body: Node2D) -> void:
 	if not body is Player:
 		return
 	
-	currently_playing = bgm_village
+	currently_playing = current_main_theme
 	
 	if not hunter_playing:
-		fade(bgm_house, bgm_village, fade_duration, true)
+		fade(bgm_house, current_main_theme, fade_duration, true)
 
 
 func fade(from: AudioStreamPlayer, to: AudioStreamPlayer, duration: float, cross_fade: bool = false):
