@@ -68,10 +68,10 @@ target_desired_distance = 2.0
 unique_name_in_owner = true
 wait_time = 0.5
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="StateMachine" type="Node2D" parent="."]
 script = ExtResource("6_bw6f5")
 
-[node name="Watching" type="Node" parent="StateMachine"]
+[node name="Watching" type="Node2D" parent="StateMachine"]
 unique_name_in_owner = true
 script = ExtResource("5_7je0j")
 
@@ -83,11 +83,11 @@ one_shot = true
 unique_name_in_owner = true
 one_shot = true
 
-[node name="Patrolling" type="Node" parent="StateMachine"]
+[node name="Patrolling" type="Node2D" parent="StateMachine"]
 unique_name_in_owner = true
 script = ExtResource("6_1nhf6")
 
-[node name="Chasing" type="Node" parent="StateMachine"]
+[node name="Chasing" type="Node2D" parent="StateMachine"]
 unique_name_in_owner = true
 script = ExtResource("7_3jr04")
 
@@ -102,7 +102,7 @@ texture = ExtResource("3_e83j8")
 unique_name_in_owner = true
 one_shot = true
 
-[node name="Searching" type="Node" parent="StateMachine"]
+[node name="Searching" type="Node2D" parent="StateMachine"]
 unique_name_in_owner = true
 script = ExtResource("9_wmkhd")
 
@@ -122,7 +122,7 @@ one_shot = true
 unique_name_in_owner = true
 one_shot = true
 
-[node name="Returning" type="Node" parent="StateMachine"]
+[node name="Returning" type="Node2D" parent="StateMachine"]
 unique_name_in_owner = true
 script = ExtResource("11_f0ho1")
 
