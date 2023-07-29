@@ -2,10 +2,12 @@ class_name ChasingState
 extends State
 
 
+var player: Player
 @onready var hunter := owner as Hunter
 
 
 func _enter_state():
+	player = %PlayerDetector.player
 	%PlayerDetector.player_lost.connect(on_player_lost)
 	%PlayerDetector.player_detected.connect(on_player_detected)
 	%ChaseMarker.visible = true
@@ -23,7 +25,7 @@ func _exit_state():
 
 
 func _physics_process(delta: float) -> void:
-	if %PlayerDetector.player.global_position.distance_to(hunter.global_position) < 20.0:
+	if player.global_position.distance_to(hunter.global_position) < 20.0:
 		print("game over")
 		Globals.game_over.emit()
 

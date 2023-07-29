@@ -11,13 +11,14 @@ var current_state: State
 var last_state: State
 
 
-func _ready() -> void:
+func _enter_tree() -> void:
 	for node in get_children_recursive(self):
-		print(node)
 		if node is State:
-			set_processing(node, false)
+			node.ready.connect(set_processing.bind(node, false), CONNECT_ONE_SHOT)
 			node.state_machine = self
-	
+
+
+func _ready() -> void:
 	if initial_state != null:
 		change_state(initial_state)
 
@@ -45,8 +46,8 @@ func get_children_recursive(node: Node, nodes: Array[Node] = []) -> Array[Node]:
 
 
 func set_processing(node: Node, enable: bool) -> void:
-	set_process(enable)
-	set_physics_process(enable)
-	set_process_input(enable)
-	set_process_unhandled_input(enable)
-	set_process_unhandled_key_input(enable)
+	node.set_process(enable)
+	node.set_physics_process(enable)
+	node.set_process_input(enable)
+	node.set_process_unhandled_input(enable)
+	node.set_process_unhandled_key_input(enable)
