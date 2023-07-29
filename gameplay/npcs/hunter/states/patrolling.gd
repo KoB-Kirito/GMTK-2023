@@ -1,4 +1,4 @@
-class_name Patrolling
+class_name PatrollingState
 extends State
 
 
@@ -7,32 +7,32 @@ var current_point: PatrolPoint
 @onready var hunter := owner as Hunter
 
 
-func enter():
+func _enter_state():
 	%PlayerDetector.player_detected.connect(on_player_detected)
 	%Navigation.navigation_finished.connect(on_point_reached)
 	
 	if current_point == null:
 		# get initial patrol point
-		current_point = hunter.patrol_path.get_nearest_to(global_position)
+		current_point = hunter.patrol_path.get_nearest_to(hunter.global_position)
 	
 	# move to current point
 	%Navigation.target_position = current_point.global_position
 
 
-func exit():
+func _exit_state():
 	%PlayerDetector.player_detected.disconnect(on_player_detected)
 	%Navigation.navigation_finished.disconnect(on_point_reached)
 
 
 func on_player_detected():
-	transition_to(%Chasing)
+	state_machine.change_state(%Chasing)
 
 
 func on_point_reached():
 	if current_point.patrol_data and current_point.patrol_data.stay_duration > 0.0:
 		hunter.patrol_data = current_point.patrol_data
 		current_point = hunter.patrol_path.get_next_to(current_point)
-		transition_to(%Watching)
+		state_machine.change_state(%Watching)
 		return
 	
 	# get next point

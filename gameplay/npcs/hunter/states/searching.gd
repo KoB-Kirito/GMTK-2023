@@ -1,4 +1,4 @@
-class_name Searching
+class_name SearchingState
 extends State
 
 
@@ -8,13 +8,13 @@ const CYCLE_MAX: float = 2.0
 @onready var hunter := owner as Hunter
 
 
-func enter():
+func _enter_state():
 	%PlayerDetector.player_detected.connect(on_player_detected)
 	%SearchMarker.visible = true
 	%Navigation.navigation_finished.connect(on_target_reached)
 
 
-func exit():
+func _exit_state():
 	%PlayerDetector.player_detected.disconnect(on_player_detected)
 	%SearchMarker.visible = false
 	%Navigation.navigation_finished.disconnect(on_target_reached)
@@ -24,7 +24,7 @@ func exit():
 
 
 func on_player_detected():
-	transition_to(%Chasing)
+	state_machine.change_state(%Chasing)
 
 
 func on_target_reached():
@@ -60,4 +60,4 @@ func _on_search_cycle_timer_timeout() -> void:
 
 
 func _on_search_timer_timeout() -> void:
-	transition_to(%Returning)
+	state_machine.change_state(%Returning)

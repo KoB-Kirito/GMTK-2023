@@ -33,11 +33,10 @@ func _ready() -> void:
 	assert(patrol_path or patrol_data, "No path and no data")
 	
 	# conditional entry point
-	var state_machine := $StateMachine as StateMachine
 	if patrol_path != null:
-		state_machine.transition_to(%Patrolling)
+		$StateMachine.change_state(%Patrolling)
 	else:
-		state_machine.transition_to(%Watching)
+		$StateMachine.change_state(%Watching)
 
 
 func _physics_process(delta: float) -> void:

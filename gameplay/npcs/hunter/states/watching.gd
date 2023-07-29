@@ -1,4 +1,4 @@
-class_name Watching
+class_name WatchingState
 extends State
 
 
@@ -19,7 +19,7 @@ var cycle_duration_max: float
 @onready var hunter := owner as Hunter
 
 
-func enter():
+func _enter_state():
 	get_data()
 	
 	%PlayerDetector.player_detected.connect(on_player_detected)
@@ -33,11 +33,11 @@ func enter():
 		%CycleTimer.start()
 
 
-func exit():
+func _exit_state():
 	%PlayerDetector.player_detected.disconnect(on_player_detected)
 	%CycleTimer.stop()
 	%StayTimer.stop()
-	last_position = global_position
+	last_position = hunter.global_position
 
 
 func get_data():
@@ -157,9 +157,8 @@ func _on_cycle_timer_timeout() -> void:
 
 
 func _on_stay_timer_timeout() -> void:
-	transition_to(%Patrolling)
+	state_machine.change_state(%Patrolling)
 
 
 func on_player_detected():
-	print("player detected")
-	transition_to(%Chasing)
+	state_machine.change_state(%Chasing)

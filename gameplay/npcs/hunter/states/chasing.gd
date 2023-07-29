@@ -1,11 +1,11 @@
-class_name Chasing
+class_name ChasingState
 extends State
 
 
 @onready var hunter := owner as Hunter
 
 
-func enter():
+func _enter_state():
 	%PlayerDetector.player_lost.connect(on_player_lost)
 	%PlayerDetector.player_detected.connect(on_player_detected)
 	%ChaseMarker.visible = true
@@ -15,14 +15,14 @@ func enter():
 	Globals.hunter_saw_player.emit()
 
 
-func exit():
+func _exit_state():
 	%PlayerDetector.player_lost.disconnect(on_player_lost)
 	%PlayerDetector.player_detected.disconnect(on_player_lost)
 	%UpdateTimer.stop()
 	%ChaseMarker.visible = false
 
 
-func physics_process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if %PlayerDetector.player.global_position.distance_to(hunter.global_position) < 20.0:
 		print("game over")
 		Globals.game_over.emit()
@@ -42,4 +42,4 @@ func _on_update_timer_timeout() -> void:
 
 
 func _on_lose_timer_timeout() -> void:
-	transition_to(%Searching)
+	state_machine.change_state(%Searching)

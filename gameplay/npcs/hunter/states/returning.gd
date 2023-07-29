@@ -1,11 +1,11 @@
-class_name Returning
+class_name ReturningState
 extends State
 
 
 @onready var hunter := owner as Hunter
 
 
-func enter():
+func _enter_state():
 	Globals.hunter_lost_player.emit()
 	if hunter.patrol_path == null:
 		# move back to watch position
@@ -13,10 +13,10 @@ func enter():
 		%Navigation.navigation_finished.connect(on_last_position_reached)
 		
 	else:
-		transition_to(%Patrolling)
+		state_machine.change_state(%Patrolling)
 
 
-func exit():
+func _exit_state():
 	%Navigation.navigation_finished.disconnect(on_last_position_reached)
 
 
@@ -25,4 +25,4 @@ func on_last_position_reached() -> void:
 	var tween = hunter.create_tween()
 	tween.tween_property(hunter, "global_position", %Watching.last_position, 1.0)
 	
-	transition_to(%Watching)
+	state_machine.change_state(%Watching)
