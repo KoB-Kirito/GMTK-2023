@@ -1,6 +1,6 @@
 @icon("res://scripts/state.svg")
 class_name State
-extends Node
+extends Node2D
 
 
 var state_machine: StateMachine

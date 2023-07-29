@@ -1,6 +1,6 @@
 @icon("res://scripts/state_machine.svg")
 class_name StateMachine
-extends Node
+extends Node2D
 
 
 signal state_changed(old_state: State, new_state: State)
@@ -14,9 +14,8 @@ var last_state: State
 func _enter_tree() -> void:
 	for node in get_children_recursive(self):
 		if node is State:
-			node.ready.connect(set_processing.bind(node, false), CONNECT_ONE_SHOT)
+			node.ready.connect(set_processing.bind(node, false))
 			node.state_machine = self
-
 
 func _ready() -> void:
 	if initial_state != null:
