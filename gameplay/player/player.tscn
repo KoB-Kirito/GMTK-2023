@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bhd207jegfsc3" path="res://assets/characters/vampire.png" id="1_hr2po"]
 [ext_resource type="Texture2D" uid="uid://b6pjtn4c25qk0" path="res://assets/characters/butterfly.png" id="2_fpx1j"]
 [ext_resource type="PackedScene" uid="uid://coaan7m4e1471" path="res://menu/menu.tscn" id="3_tps5g"]
-[ext_resource type="PackedScene" uid="uid://ds08ophovdk75" path="res://gameplay/player/abilities/ability_manager.tscn" id="4_auija"]
+[ext_resource type="PackedScene" path="res://gameplay/player/abilities/ability_manager.tscn" id="4_auija"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dmvol"]
 radius = 4.0
@@ -226,6 +226,8 @@ autoplay = "idle"
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = 0
 limit_top = 0
+limit_right = 1328
+limit_bottom = 1175
 
 [node name="AbilityManager" parent="." instance=ExtResource("4_auija")]
 
