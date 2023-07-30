@@ -29,6 +29,7 @@ rect = Rect2(-100, -100, 200, 200)
 
 [node name="DebugLabel" type="Label" parent="."]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -70,7 +71,6 @@ shape = SubResource("CircleShape2D_u5we8")
 [node name="Navigation" type="NavigationAgent2D" parent="."]
 unique_name_in_owner = true
 path_postprocessing = 1
-debug_enabled = true
 
 [node name="UpdateTimer" type="Timer" parent="Navigation"]
 unique_name_in_owner = true
