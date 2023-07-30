@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://crncy4ndwrhbp"]
+[gd_scene load_steps=14 format=3 uid="uid://crncy4ndwrhbp"]
 
 [ext_resource type="Script" path="res://gameplay/npcs/hunter/hunter.gd" id="1_4kbem"]
 [ext_resource type="Texture2D" uid="uid://8dv5ksdmy4ub" path="res://assets/characters/hunter.png" id="1_38gsl"]
@@ -15,6 +15,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_x4xxv"]
 radius = 4.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_u5we8"]
+
 [node name="Hunter" type="CharacterBody2D"]
 motion_mode = 1
 wall_min_slide_angle = 0.0
@@ -22,7 +24,7 @@ script = ExtResource("1_4kbem")
 patrol_data = null
 
 [node name="VisibleNotifier" type="VisibleOnScreenNotifier2D" parent="."]
-visible = false
+self_modulate = Color(1, 1, 1, 0.12549)
 rect = Rect2(-100, -100, 200, 200)
 
 [node name="DebugLabel" type="Label" parent="."]
@@ -59,6 +61,11 @@ disabled = true
 
 [node name="PlayerDetector" parent="." instance=ExtResource("3_hi2w8")]
 unique_name_in_owner = true
+
+[node name="GameOverArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameOverArea"]
+shape = SubResource("CircleShape2D_u5we8")
 
 [node name="Navigation" type="NavigationAgent2D" parent="."]
 unique_name_in_owner = true
@@ -123,6 +130,10 @@ one_shot = true
 unique_name_in_owner = true
 one_shot = true
 
+[node name="MaxSearchTimer" type="Timer" parent="StateMachine/Searching"]
+unique_name_in_owner = true
+wait_time = 5.0
+
 [node name="Returning" type="Node2D" parent="StateMachine"]
 unique_name_in_owner = true
 script = ExtResource("11_f0ho1")
@@ -130,6 +141,7 @@ script = ExtResource("11_f0ho1")
 [connection signal="screen_entered" from="VisibleNotifier" to="." method="_on_visible_notifier_screen_entered"]
 [connection signal="screen_exited" from="VisibleNotifier" to="." method="_on_visible_notifier_screen_exited"]
 [connection signal="timeout" from="Sprite/AnimationTimer" to="." method="_on_animation_timer_timeout"]
+[connection signal="body_entered" from="GameOverArea" to="." method="_on_game_over_area_body_entered"]
 [connection signal="timeout" from="Navigation/UpdateTimer" to="StateMachine/Chasing" method="_on_update_timer_timeout"]
 [connection signal="state_changed" from="StateMachine" to="." method="_on_state_machine_state_changed"]
 [connection signal="timeout" from="StateMachine/Watching/CycleTimer" to="StateMachine/Watching" method="_on_cycle_timer_timeout"]
@@ -137,3 +149,4 @@ script = ExtResource("11_f0ho1")
 [connection signal="timeout" from="StateMachine/Chasing/LoseTimer" to="StateMachine/Chasing" method="_on_lose_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Searching/SearchTimer" to="StateMachine/Searching" method="_on_search_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Searching/SearchCycleTimer" to="StateMachine/Searching" method="_on_search_cycle_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Searching/MaxSearchTimer" to="StateMachine/Searching" method="_on_max_search_timer_timeout"]

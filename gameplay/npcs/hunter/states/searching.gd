@@ -12,6 +12,7 @@ func _enter_state():
 	%PlayerDetector.player_detected.connect(on_player_detected)
 	%SearchMarker.visible = true
 	%Navigation.navigation_finished.connect(on_target_reached)
+	%MaxSearchTimer.start()
 
 
 func _exit_state():
@@ -20,6 +21,7 @@ func _exit_state():
 	%Navigation.navigation_finished.disconnect(on_target_reached)
 	%SearchTimer.stop()
 	%SearchCycleTimer.stop()
+	%MaxSearchTimer.stop()
 	hunter.current_speed = hunter.default_speed
 
 
@@ -60,4 +62,8 @@ func _on_search_cycle_timer_timeout() -> void:
 
 
 func _on_search_timer_timeout() -> void:
+	state_machine.change_state(%Returning)
+
+
+func _on_max_search_timer_timeout() -> void:
 	state_machine.change_state(%Returning)

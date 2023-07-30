@@ -24,12 +24,6 @@ func _exit_state():
 	%ChaseMarker.visible = false
 
 
-func _physics_process(delta: float) -> void:
-	if player.global_position.distance_to(hunter.global_position) < 20.0:
-		print("game over")
-		Globals.game_over.emit()
-
-
 func on_player_lost():
 	%LoseTimer.start()
 

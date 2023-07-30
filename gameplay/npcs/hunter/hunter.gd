@@ -135,6 +135,16 @@ func _on_visible_notifier_screen_exited() -> void:
 	paused = true
 
 
+func _on_state_machine_state_changed(old_state, new_state) -> void:
+	%DebugLabel.text = new_state.name
+
+
+func _on_game_over_area_body_entered(body: Node2D) -> void:
+	if body is Player:
+		print("game over")
+		Globals.game_over.emit()
+
+
 ## editor only
 func _notification(what: int) -> void:
 	match what:
@@ -176,7 +186,3 @@ func _get_property_list() -> Array[Dictionary]:
 		})
 	
 	return properties
-
-
-func _on_state_machine_state_changed(old_state, new_state) -> void:
-	%DebugLabel.text = new_state.name
