@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://dy8wsehbghl2l"]
+[gd_scene load_steps=55 format=3 uid="uid://dy8wsehbghl2l"]
 
 [ext_resource type="Script" path="res://level/town/world.gd" id="1_kayik"]
 [ext_resource type="TileSet" uid="uid://fwtbdlu5tfhr" path="res://level/_tilesets/town.tres" id="2_ad5c8"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://dd45st1e0n5tb" path="res://assets/characters/mayor.png" id="14_n40w8"]
 [ext_resource type="Texture2D" uid="uid://dqjrlo85qp4us" path="res://assets/characters/priest.png" id="15_ck6a3"]
 [ext_resource type="AudioStream" uid="uid://ej1kq0uv8eh6" path="res://assets/bgm/hunter_theme.ogg" id="16_bn6hu"]
+[ext_resource type="Script" path="res://level/town/PathHolder.gd" id="17_ea07r"]
 [ext_resource type="PackedScene" uid="uid://cn5e8ujuxalos" path="res://gameplay/levelchange_fade_out.tscn" id="20_fsxsr"]
 
 [sub_resource type="Resource" id="Resource_wprjb"]
@@ -247,26 +248,10 @@ position = Vector2(936, 424)
 [node name="NPCs" type="Node2D" parent="Tilemap"]
 y_sort_enabled = true
 
-[node name="Baker" parent="Tilemap/NPCs" instance=ExtResource("7_jceo7")]
-position = Vector2(746, 717)
-dialog_name = "Baker"
-sprite = ExtResource("8_w2ocb")
-
 [node name="Blacksmith" parent="Tilemap/NPCs" instance=ExtResource("7_jceo7")]
 position = Vector2(487, 669)
 dialog_name = "Blacksmith"
 sprite = ExtResource("8_rwl5e")
-
-[node name="Butcher" parent="Tilemap/NPCs" instance=ExtResource("7_jceo7")]
-position = Vector2(364, 683)
-dialog_name = "Butcher"
-sprite = ExtResource("9_mnt7h")
-look = 0
-
-[node name="CrazyMan" parent="Tilemap/NPCs" instance=ExtResource("7_jceo7")]
-position = Vector2(175, 673)
-dialog_name = "Crazy Man"
-sprite = ExtResource("11_pc63l")
 
 [node name="Grandma" parent="Tilemap/NPCs" instance=ExtResource("7_jceo7")]
 position = Vector2(287, 512)
@@ -324,14 +309,20 @@ position = Vector2(456, 280)
 script = ExtResource("10_ms0lc")
 
 [node name="PathHolder" type="Node2D" parent="."]
+script = ExtResource("17_ea07r")
 
 [node name="Mann1Path" type="Path2D" parent="PathHolder"]
 curve = SubResource("Curve2D_s6r0p")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="PathHolder/Mann1Path"]
-position = Vector2(651.689, 735.483)
+position = Vector2(790, 742)
 rotation = -3.09451
-progress = 138.46
+
+[node name="Baker" parent="PathHolder/Mann1Path/PathFollow2D" instance=ExtResource("7_jceo7")]
+position = Vector2(-93.3367, 22.9011)
+rotation = 3.09451
+dialog_name = "Baker"
+sprite = ExtResource("8_w2ocb")
 
 [node name="MetzgerPath" type="Path2D" parent="PathHolder"]
 curve = SubResource("Curve2D_41o3e")
@@ -339,6 +330,13 @@ curve = SubResource("Curve2D_41o3e")
 [node name="PathFollow2D" type="PathFollow2D" parent="PathHolder/MetzgerPath"]
 position = Vector2(403, 608)
 rotation = 0.832981
+
+[node name="Butcher" parent="PathHolder/MetzgerPath/PathFollow2D" instance=ExtResource("7_jceo7")]
+position = Vector2(29.2612, 79.3081)
+rotation = -0.832981
+dialog_name = "Butcher"
+sprite = ExtResource("9_mnt7h")
+look = 0
 
 [node name="AltFrauMannPath" type="Path2D" parent="PathHolder"]
 curve = SubResource("Curve2D_ofekb")
@@ -374,6 +372,13 @@ curve = SubResource("Curve2D_sy6nv")
 [node name="PathFollow2D" type="PathFollow2D" parent="PathHolder/FamielieKindPath"]
 position = Vector2(115, 553)
 rotation = 1.50595
+
+[node name="CrazyMan" parent="PathHolder/FamielieKindPath/PathFollow2D" instance=ExtResource("7_jceo7")]
+position = Vector2(123.636, -52.0981)
+rotation = -1.50595
+scale = Vector2(1, 1)
+dialog_name = "Crazy Man"
+sprite = ExtResource("11_pc63l")
 
 [node name="MusicManager" type="Node2D" parent="."]
 process_mode = 3
