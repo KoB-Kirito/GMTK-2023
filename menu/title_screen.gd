@@ -7,7 +7,6 @@ func _input(event: InputEvent) -> void:
 		return
 	
 	if event is InputEventMouseMotion or event is InputEventJoypadMotion:
-		print_debug("motion input")
 		return
 	
 	%Menu.visible = true

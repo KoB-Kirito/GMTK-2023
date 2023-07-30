@@ -231,8 +231,6 @@ limit_bottom = 1175
 
 [node name="AbilityManager" parent="." instance=ExtResource("4_auija")]
 
-[node name="MenuLayer" type="CanvasLayer" parent="."]
+[node name="Menu" parent="." instance=ExtResource("3_tps5g")]
 visible = false
-
-[node name="Menu" parent="MenuLayer" instance=ExtResource("3_tps5g")]
-ingame_menu = true
+first_level = "res://level/town/world.tscn"

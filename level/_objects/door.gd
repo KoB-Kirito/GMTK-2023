@@ -21,7 +21,7 @@ func _ready() -> void:
 	update_state()
 
 
-func _unhandled_key_input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	# ignore input door is not interactable
 	if not player_can_open:
 		return

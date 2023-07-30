@@ -1,27 +1,155 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfh6uhorh4r0f"]
+[gd_scene load_steps=7 format=3 uid="uid://dfh6uhorh4r0f"]
 
 [ext_resource type="Script" path="res://menu/controls_screen.gd" id="1_342at"]
 [ext_resource type="Texture2D" uid="uid://cphc7ny5uv5g6" path="res://assets/ui/ButtonUnten.png" id="2_llvig"]
+[ext_resource type="FontFile" uid="uid://dful53dqq30mj" path="res://assets/font/plasdrpe.ttf" id="2_njx5b"]
 [ext_resource type="Texture2D" uid="uid://byl721nj4wo24" path="res://assets/ui/ButtonUnten_pressed.png" id="3_61lm4"]
 [ext_resource type="Texture2D" uid="uid://jft5tl5812gl" path="res://assets/ui/ButtonUnten_hover.png" id="4_i72vr"]
 [ext_resource type="FontFile" uid="uid://b035e7kua1kwu" path="res://assets/font/plasdrip.ttf" id="5_6sgmp"]
 
 [node name="ControlsScreen" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_342at")
 
-[node name="ControlsRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="ControlsRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.878431)
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -192.5
+offset_top = 22.0
+offset_right = 192.5
+offset_bottom = 198.0
+grow_horizontal = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 0
+columns = 3
+
+[node name="Label" type="Label" parent="GridContainer"]
+modulate = Color(0.847059, 0, 0, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_njx5b")
+theme_override_font_sizes/font_size = 24
+text = "Action"
+
+[node name="Label2" type="Label" parent="GridContainer"]
+modulate = Color(0.847059, 0, 0, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_njx5b")
+theme_override_font_sizes/font_size = 24
+text = "Keyboard"
+
+[node name="Label3" type="Label" parent="GridContainer"]
+modulate = Color(0.847059, 0, 0, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_njx5b")
+theme_override_font_sizes/font_size = 24
+text = "Controller"
+
+[node name="Label10" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_6sgmp")
+text = "Menu"
+
+[node name="Label11" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_6sgmp")
+text = "ESC"
+
+[node name="Label12" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_6sgmp")
+text = "Menu"
+
+[node name="Label4" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_6sgmp")
+text = "Move"
+
+[node name="Label5" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_6sgmp")
+text = "WASD/Arrow Keys"
+
+[node name="Label6" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_6sgmp")
+text = "Left Stick/D-PAD"
+
+[node name="Label7" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_6sgmp")
+text = "Interaction"
+
+[node name="Label8" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_6sgmp")
+text = "Space/Return"
+
+[node name="Label9" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_6sgmp")
+text = "A-Button"
+
+[node name="Label13" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_6sgmp")
+text = "Transform"
+
+[node name="Label14" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_6sgmp")
+text = "T"
+
+[node name="Label15" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_6sgmp")
+text = "X-Button"
+
+[node name="Label16" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_6sgmp")
+text = "Vision"
+
+[node name="Label17" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_6sgmp")
+text = "V"
+
+[node name="Label18" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_6sgmp")
+text = "Y-Button"
 
 [node name="ControlsBackButton" type="TextureButton" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -61.0
+offset_top = -52.0
+offset_right = 61.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(61, 0)
 texture_normal = ExtResource("2_llvig")
 texture_pressed = ExtResource("3_61lm4")
 texture_hover = ExtResource("4_i72vr")
@@ -29,15 +157,21 @@ texture_focused = ExtResource("4_i72vr")
 
 [node name="Label" type="Label" parent="ControlsBackButton"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -16.0
+offset_right = 24.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("5_6sgmp")
 theme_override_font_sizes/font_size = 20
 text = "Back"
 horizontal_alignment = 1
-vertical_alignment = 1
+vertical_alignment = 2
 
 [connection signal="pressed" from="ControlsBackButton" to="." method="_on_controls_back_button_pressed"]

@@ -1,18 +1,26 @@
 [gd_scene load_steps=12 format=3 uid="uid://coaan7m4e1471"]
 
 [ext_resource type="Script" path="res://menu/menu.gd" id="1_dcw3v"]
-[ext_resource type="PackedScene" uid="uid://dfh6uhorh4r0f" path="res://menu/controls_screen.tscn" id="2_6wnys"]
 [ext_resource type="Texture2D" uid="uid://bxh67h1315eya" path="res://assets/ui/ButtonWings.png" id="2_gtlh4"]
+[ext_resource type="PackedScene" uid="uid://dfh6uhorh4r0f" path="res://menu/controls_screen.tscn" id="2_wgio3"]
+[ext_resource type="PackedScene" uid="uid://cktenhbydatec" path="res://menu/setting_screen.tscn" id="3_2rg44"]
 [ext_resource type="Texture2D" uid="uid://cuysstfcyg0bp" path="res://assets/ui/ButtonWings_pressed.png" id="3_gtd76"]
-[ext_resource type="PackedScene" uid="uid://cktenhbydatec" path="res://menu/setting_screen.tscn" id="3_q4ix5"]
-[ext_resource type="PackedScene" uid="uid://uov2070uvrsk" path="res://menu/credits_screen.tscn" id="4_1aiy0"]
 [ext_resource type="Texture2D" uid="uid://bn514rqj0hbky" path="res://assets/ui/ButtonWings_hover.png" id="4_k6dck"]
+[ext_resource type="PackedScene" uid="uid://uov2070uvrsk" path="res://menu/credits_screen.tscn" id="4_s4vpi"]
 [ext_resource type="FontFile" uid="uid://b035e7kua1kwu" path="res://assets/font/plasdrip.ttf" id="5_0axuo"]
 [ext_resource type="Texture2D" uid="uid://cphc7ny5uv5g6" path="res://assets/ui/ButtonUnten.png" id="5_6jnpq"]
 [ext_resource type="Texture2D" uid="uid://byl721nj4wo24" path="res://assets/ui/ButtonUnten_pressed.png" id="6_0osef"]
 [ext_resource type="Texture2D" uid="uid://jft5tl5812gl" path="res://assets/ui/ButtonUnten_hover.png" id="7_g1bbe"]
 
-[node name="Menu" type="Control"]
+[node name="MenuLayer" type="CanvasLayer"]
+process_mode = 3
+layer = 9
+script = ExtResource("1_dcw3v")
+controls_scene = ExtResource("2_wgio3")
+settings_scene = ExtResource("3_2rg44")
+credits_scene = ExtResource("4_s4vpi")
+
+[node name="MainMenu" type="Control" parent="."]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -20,10 +28,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_dcw3v")
-first_level = "res://level/intro/intro.tscn"
+metadata/_edit_horizontal_guides_ = [135.0]
+metadata/_edit_vertical_guides_ = [240.0]
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="MainMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,12 +40,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.215686, 0.215686, 0.215686, 0.501961)
 
-[node name="Background" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ButtonContainer" type="VBoxContainer" parent="."]
+[node name="ButtonContainer" type="VBoxContainer" parent="MainMenu"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -45,16 +48,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -56.0
-offset_top = -67.0
-offset_right = 129.0
-offset_bottom = 210.0
+offset_left = -92.5
+offset_top = -138.5
+offset_right = 92.5
+offset_bottom = 138.5
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.7, 0.7)
-alignment = 1
+pivot_offset = Vector2(100, 208.5)
 
-[node name="StartButton" type="TextureButton" parent="ButtonContainer"]
+[node name="StartButton" type="TextureButton" parent="MainMenu/ButtonContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 texture_normal = ExtResource("2_gtlh4")
@@ -63,20 +66,28 @@ texture_hover = ExtResource("4_k6dck")
 texture_focused = ExtResource("4_k6dck")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="ButtonContainer/StartButton"]
+[node name="StartLabel" type="Label" parent="MainMenu/ButtonContainer/StartButton"]
+unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -16.0
+offset_right = 26.5
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("5_0axuo")
 theme_override_font_sizes/font_size = 20
 text = "Start"
 horizontal_alignment = 1
-vertical_alignment = 1
+vertical_alignment = 2
 
-[node name="ControlsButton" type="TextureButton" parent="ButtonContainer"]
+[node name="ControlsButton" type="TextureButton" parent="MainMenu/ButtonContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 texture_normal = ExtResource("5_6jnpq")
 texture_pressed = ExtResource("6_0osef")
@@ -84,20 +95,27 @@ texture_hover = ExtResource("7_g1bbe")
 texture_focused = ExtResource("7_g1bbe")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="ButtonContainer/ControlsButton"]
+[node name="Label" type="Label" parent="MainMenu/ButtonContainer/ControlsButton"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -16.0
+offset_right = 43.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("5_0axuo")
 theme_override_font_sizes/font_size = 20
 text = "Controls"
 horizontal_alignment = 1
-vertical_alignment = 1
+vertical_alignment = 2
 
-[node name="SettingsButton" type="TextureButton" parent="ButtonContainer"]
+[node name="SettingsButton" type="TextureButton" parent="MainMenu/ButtonContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 texture_normal = ExtResource("5_6jnpq")
 texture_pressed = ExtResource("6_0osef")
@@ -105,20 +123,27 @@ texture_hover = ExtResource("7_g1bbe")
 texture_focused = ExtResource("7_g1bbe")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="ButtonContainer/SettingsButton"]
+[node name="Label" type="Label" parent="MainMenu/ButtonContainer/SettingsButton"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.0
+offset_top = -16.0
+offset_right = 42.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("5_0axuo")
 theme_override_font_sizes/font_size = 20
 text = "Settings"
 horizontal_alignment = 1
-vertical_alignment = 1
+vertical_alignment = 2
 
-[node name="CreditsButton" type="TextureButton" parent="ButtonContainer"]
+[node name="CreditsButton" type="TextureButton" parent="MainMenu/ButtonContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 texture_normal = ExtResource("5_6jnpq")
 texture_pressed = ExtResource("6_0osef")
@@ -126,20 +151,26 @@ texture_hover = ExtResource("7_g1bbe")
 texture_focused = ExtResource("7_g1bbe")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="ButtonContainer/CreditsButton"]
+[node name="Label" type="Label" parent="MainMenu/ButtonContainer/CreditsButton"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.5
+offset_top = -16.0
+offset_right = 36.5
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("5_0axuo")
 theme_override_font_sizes/font_size = 20
 text = "Credits"
 horizontal_alignment = 1
-vertical_alignment = 1
+vertical_alignment = 2
 
-[node name="QuitButton" type="TextureButton" parent="ButtonContainer"]
+[node name="QuitButton" type="TextureButton" parent="MainMenu/ButtonContainer"]
 layout_mode = 2
 texture_normal = ExtResource("5_6jnpq")
 texture_pressed = ExtResource("6_0osef")
@@ -147,42 +178,27 @@ texture_hover = ExtResource("7_g1bbe")
 texture_focused = ExtResource("7_g1bbe")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="ButtonContainer/QuitButton"]
+[node name="Label" type="Label" parent="MainMenu/ButtonContainer/QuitButton"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.5
+offset_top = -16.0
+offset_right = 21.5
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("5_0axuo")
 theme_override_font_sizes/font_size = 20
 text = "Quit"
 horizontal_alignment = 1
-vertical_alignment = 1
+vertical_alignment = 2
 
-[node name="ControlsScreen" parent="." instance=ExtResource("2_6wnys")]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SettingScreen" parent="." instance=ExtResource("3_q4ix5")]
-visible = false
-layout_mode = 1
-
-[node name="CreditsScreen" parent="." instance=ExtResource("4_1aiy0")]
-visible = false
-layout_mode = 1
-
-[node name="MenuMusicPlayer" type="AudioStreamPlayer" parent="."]
-
-[connection signal="pressed" from="ButtonContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="ButtonContainer/ControlsButton" to="." method="_on_controls_button_pressed"]
-[connection signal="pressed" from="ButtonContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="ButtonContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
-[connection signal="pressed" from="ButtonContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="MainMenu/ButtonContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MainMenu/ButtonContainer/ControlsButton" to="." method="_on_controls_button_pressed"]
+[connection signal="pressed" from="MainMenu/ButtonContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MainMenu/ButtonContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="MainMenu/ButtonContainer/QuitButton" to="." method="_on_quit_button_pressed"]

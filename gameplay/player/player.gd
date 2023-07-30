@@ -11,14 +11,6 @@ var butterfly_active: bool = false
 @onready var collision: CollisionShape2D = $CollisionShape2D
 
 
-func _ready() -> void:
-	# to hide the menu in level editor
-	$MenuLayer.visible = true
-	
-	# enables dialogic pause
-	#Globals.enable_pause()
-
-
 func _process(delta: float) -> void:
 	animation(delta)
 

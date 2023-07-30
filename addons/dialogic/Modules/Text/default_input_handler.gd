@@ -11,10 +11,10 @@ signal dialogic_action()
 ################################################################################
 func _input(event:InputEvent) -> void:
 	if Input.is_action_just_pressed(ProjectSettings.get_setting('dialogic/text/input_action', 'dialogic_default_action')):
-		# only allow inputs every 0.8 seconds
+		# only allow inputs every 0.4 seconds
 		if safety_timer.time_left > 0.0:
 			return
-		safety_timer.start(0.8)
+		safety_timer.start(0.4)
 			
 		if Dialogic.current_state == Dialogic.states.IDLE and Dialogic.Text.can_manual_advance():
 			Dialogic.handle_next_event()

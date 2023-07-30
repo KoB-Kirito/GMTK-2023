@@ -7,3 +7,5 @@ signal hunter_lost_player
 signal game_over
 
 var interacting: bool = false
+
+var used_controller: bool = false

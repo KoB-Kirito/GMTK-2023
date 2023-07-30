@@ -30,4 +30,4 @@ autoplay = true
 [node name="Menu" parent="." instance=ExtResource("4_apyax")]
 unique_name_in_owner = true
 visible = false
-layout_mode = 1
+first_level = "res://level/intro/intro.tscn"

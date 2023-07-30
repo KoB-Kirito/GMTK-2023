@@ -112,7 +112,7 @@ func _on_interaction_area_body_exited(body: Node2D) -> void:
 
 
 ## Get interaction input and start dialog
-func _unhandled_key_input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if not can_interact:
 		return
 	

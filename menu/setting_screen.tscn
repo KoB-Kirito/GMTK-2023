@@ -1,11 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://cktenhbydatec"]
+[gd_scene load_steps=8 format=3 uid="uid://cktenhbydatec"]
 
 [ext_resource type="Script" path="res://menu/setting_screen.gd" id="1_dqr2w"]
-[ext_resource type="Texture2D" uid="uid://da6yl7qjqu5da" path="res://assets/ui/title.png" id="2_wv838"]
 [ext_resource type="Texture2D" uid="uid://cphc7ny5uv5g6" path="res://assets/ui/ButtonUnten.png" id="3_1wid7"]
 [ext_resource type="FontFile" uid="uid://b035e7kua1kwu" path="res://assets/font/plasdrip.ttf" id="3_a7ivm"]
 [ext_resource type="Texture2D" uid="uid://byl721nj4wo24" path="res://assets/ui/ButtonUnten_pressed.png" id="4_if27p"]
 [ext_resource type="Texture2D" uid="uid://jft5tl5812gl" path="res://assets/ui/ButtonUnten_hover.png" id="5_aui25"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ende"]
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2wioh"]
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [node name="SettingScreen" type="Control"]
 layout_mode = 3
@@ -16,12 +27,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dqr2w")
 
-[node name="SettingsRect" type="TextureRect" parent="."]
-modulate = Color(0.490196, 0.490196, 0.490196, 1)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("2_wv838")
+[node name="ControlsRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.878431)
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -31,52 +44,62 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+[node name="GridContainer" type="GridContainer" parent="CenterContainer"]
 layout_mode = 2
-alignment = 1
+theme_override_constants/h_separation = 16
+columns = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="FullScreen" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+[node name="FullScreen" type="Label" parent="CenterContainer/GridContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_a7ivm")
 text = "Full Screen"
 
-[node name="VSync" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+[node name="FullScreenCheckBox" type="CheckBox" parent="CenterContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1ende")
+
+[node name="VSync" type="Label" parent="CenterContainer/GridContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_a7ivm")
 text = "VSync"
 
-[node name="MasterVolume" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+[node name="VSyncCheckBox" type="CheckBox" parent="CenterContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_2wioh")
+
+[node name="MasterVolume" type="Label" parent="CenterContainer/GridContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_a7ivm")
 text = "Master Volume"
 
-[node name="VolumeSlider" type="HSlider" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+[node name="VolumeSlider" type="HSlider" parent="CenterContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-min_value = -30.0
-max_value = 30.0
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="FullScreenCheckBox" type="CheckBox" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
-layout_mode = 2
-
-[node name="VSyncCheckBox" type="CheckBox" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
-layout_mode = 2
+min_value = -20.0
+max_value = 10.0
 
 [node name="SettingsBackButton" type="TextureButton" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_right = -358.0
-offset_bottom = -218.0
+offset_left = -61.0
+offset_top = -52.0
+offset_right = 61.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(61, 10)
 texture_normal = ExtResource("3_1wid7")
 texture_pressed = ExtResource("4_if27p")
 texture_hover = ExtResource("5_aui25")
@@ -84,18 +107,24 @@ texture_focused = ExtResource("5_aui25")
 
 [node name="Label" type="Label" parent="SettingsBackButton"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -16.0
+offset_right = 24.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_a7ivm")
 theme_override_font_sizes/font_size = 20
 text = "Back"
 horizontal_alignment = 1
-vertical_alignment = 1
+vertical_alignment = 2
 
-[connection signal="value_changed" from="CenterContainer/HBoxContainer/VBoxContainer/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
-[connection signal="toggled" from="CenterContainer/HBoxContainer/VBoxContainer2/FullScreenCheckBox" to="." method="_on_full_screen_check_box_toggled"]
-[connection signal="toggled" from="CenterContainer/HBoxContainer/VBoxContainer2/VSyncCheckBox" to="." method="_on_v_sync_check_box_toggled"]
+[connection signal="toggled" from="CenterContainer/GridContainer/FullScreenCheckBox" to="." method="_on_full_screen_check_box_toggled"]
+[connection signal="toggled" from="CenterContainer/GridContainer/VSyncCheckBox" to="." method="_on_v_sync_check_box_toggled"]
+[connection signal="value_changed" from="CenterContainer/GridContainer/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
 [connection signal="pressed" from="SettingsBackButton" to="." method="_on_settings_back_button_pressed"]
