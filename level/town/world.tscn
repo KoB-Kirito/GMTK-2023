@@ -253,25 +253,10 @@ position = Vector2(487, 669)
 dialog_name = "Blacksmith"
 sprite = ExtResource("8_rwl5e")
 
-[node name="Grandma" parent="Tilemap/NPCs" instance=ExtResource("7_jceo7")]
-position = Vector2(287, 512)
-dialog_name = "Grandma"
-sprite = ExtResource("12_rbvln")
-
-[node name="Innkeeper" parent="Tilemap/NPCs" instance=ExtResource("7_jceo7")]
-position = Vector2(251, 512)
-dialog_name = "Innkeeper"
-sprite = ExtResource("13_37fgf")
-
 [node name="Mayor" parent="Tilemap/NPCs" instance=ExtResource("7_jceo7")]
 position = Vector2(104, 462)
 dialog_name = "Mayor"
 sprite = ExtResource("14_n40w8")
-
-[node name="Priest" parent="Tilemap/NPCs" instance=ExtResource("7_jceo7")]
-position = Vector2(204, 562)
-dialog_name = "Priest"
-sprite = ExtResource("15_ck6a3")
 
 [node name="Enemies" type="Node2D" parent="Tilemap"]
 y_sort_enabled = true
@@ -309,18 +294,18 @@ position = Vector2(456, 280)
 script = ExtResource("10_ms0lc")
 
 [node name="PathHolder" type="Node2D" parent="."]
-visible = false
 script = ExtResource("17_ea07r")
 
 [node name="Mann1Path" type="Path2D" parent="PathHolder"]
 curve = SubResource("Curve2D_s6r0p")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="PathHolder/Mann1Path"]
+[node name="Mann1PathFollow" type="PathFollow2D" parent="PathHolder/Mann1Path"]
 position = Vector2(790, 742)
 rotation = -3.09451
+rotates = false
 
-[node name="Baker" parent="PathHolder/Mann1Path/PathFollow2D" instance=ExtResource("7_jceo7")]
-position = Vector2(-93.3367, 22.9011)
+[node name="Baker" parent="PathHolder/Mann1Path/Mann1PathFollow" instance=ExtResource("7_jceo7")]
+position = Vector2(1.95081, -1.09302)
 rotation = 3.09451
 dialog_name = "Baker"
 sprite = ExtResource("8_w2ocb")
@@ -328,54 +313,79 @@ sprite = ExtResource("8_w2ocb")
 [node name="MetzgerPath" type="Path2D" parent="PathHolder"]
 curve = SubResource("Curve2D_41o3e")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="PathHolder/MetzgerPath"]
+[node name="MetzgerPathFollow" type="PathFollow2D" parent="PathHolder/MetzgerPath"]
 position = Vector2(403, 608)
 rotation = 0.832981
+rotates = false
 
-[node name="Butcher" parent="PathHolder/MetzgerPath/PathFollow2D" instance=ExtResource("7_jceo7")]
-position = Vector2(29.2612, 79.3081)
+[node name="Butcher" parent="PathHolder/MetzgerPath/MetzgerPathFollow" instance=ExtResource("7_jceo7")]
+position = Vector2(3.69974, 3.36337)
 rotation = -0.832981
 dialog_name = "Butcher"
 sprite = ExtResource("9_mnt7h")
-look = 0
 
 [node name="AltFrauMannPath" type="Path2D" parent="PathHolder"]
 curve = SubResource("Curve2D_ofekb")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="PathHolder/AltFrauMannPath"]
+[node name="AltFrauMannPathFollow" type="PathFollow2D" parent="PathHolder/AltFrauMannPath"]
 position = Vector2(753, 444)
 rotation = 1.14417
+rotates = false
+
+[node name="Grandma" parent="PathHolder/AltFrauMannPath/AltFrauMannPathFollow" instance=ExtResource("7_jceo7")]
+position = Vector2(0.910339, 0.413818)
+rotation = -1.14417
+dialog_name = "Grandma"
+sprite = ExtResource("12_rbvln")
 
 [node name="WaisenPath" type="Path2D" parent="PathHolder"]
 curve = SubResource("Curve2D_a4dkb")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="PathHolder/WaisenPath"]
+[node name="WaisenPathFollow" type="PathFollow2D" parent="PathHolder/WaisenPath"]
 position = Vector2(935, 446)
 rotation = 1.31203
+rotates = false
 
 [node name="OmaKindPath" type="Path2D" parent="PathHolder"]
 curve = SubResource("Curve2D_xlm87")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="PathHolder/OmaKindPath"]
+[node name="OmaKindPathFollow" type="PathFollow2D" parent="PathHolder/OmaKindPath"]
 position = Vector2(573, 257)
 rotation = 1.63736
+rotates = false
+
+[node name="Priest" parent="PathHolder/OmaKindPath/OmaKindPathFollow" instance=ExtResource("7_jceo7")]
+position = Vector2(1.06427, 0.931335)
+rotation = -1.63736
+scale = Vector2(1, 1)
+dialog_name = "Priest"
+sprite = ExtResource("15_ck6a3")
 
 [node name="2FrauenKindPath" type="Path2D" parent="PathHolder"]
 curve = SubResource("Curve2D_wbql4")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="PathHolder/2FrauenKindPath"]
+[node name="2FrauenKindPathFollow" type="PathFollow2D" parent="PathHolder/2FrauenKindPath"]
 position = Vector2(451, 451)
 rotation = -1.62788
+rotates = false
+
+[node name="Innkeeper" parent="PathHolder/2FrauenKindPath/2FrauenKindPathFollow" instance=ExtResource("7_jceo7")]
+position = Vector2(-0.0570068, 0.998352)
+rotation = 1.62788
+scale = Vector2(1, 1)
+dialog_name = "Innkeeper"
+sprite = ExtResource("13_37fgf")
 
 [node name="FamielieKindPath" type="Path2D" parent="PathHolder"]
 curve = SubResource("Curve2D_sy6nv")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="PathHolder/FamielieKindPath"]
+[node name="FamilieKindPathFollow" type="PathFollow2D" parent="PathHolder/FamielieKindPath"]
 position = Vector2(115, 553)
 rotation = 1.50595
+rotates = false
 
-[node name="CrazyMan" parent="PathHolder/FamielieKindPath/PathFollow2D" instance=ExtResource("7_jceo7")]
-position = Vector2(123.636, -52.0981)
+[node name="CrazyMan" parent="PathHolder/FamielieKindPath/FamilieKindPathFollow" instance=ExtResource("7_jceo7")]
+position = Vector2(0.997925, 0.0647583)
 rotation = -1.50595
 dialog_name = "Crazy Man"
 sprite = ExtResource("11_pc63l")
