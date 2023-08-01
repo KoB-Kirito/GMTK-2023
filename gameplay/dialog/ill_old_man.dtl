@@ -4,13 +4,13 @@ vampire: Life seems to have left its mark on you. What are you doing out here?
 Join old_man 2
 old_man: I like to come here and watch the forest. It is so peaceful out here.
 old_man: I used to play here when I was a kid. Unfortunately, I'm afraid I don't have much time left.
-old_man: I do not mind. However, my son is sick and I would have loved to still take care of him.
-vampire: I can help you!
+old_man: I do not mind though. However, my son is sick and I would have loved to still take care of him.
+vampire: I can aid you.
 old_man: Oh I'm just an old man. I can't be helped anymore.
-vampire: No, I can give you some of my life force.
-old_man: You would do that for me?
+vampire: Every life matters. Let me give you some of my blood, it will help you.
+old_man: Your blood? You would do that for me?
 vampire: Of course.
-You bite the old man and give him some of your life force. You feel cold, but the old man seems better.
+You bite the old man and give him some of your blood. You feel weaker as you loose blood, but the old man seems better.
 old_man: I.. How can I ever thank you.
 vampire: Just take good care of your son.
 old_man: I will. [pause=1.0]Thank you..
