@@ -29,4 +29,4 @@ func start(level: String = next_level) -> void:
 	# change scene
 	tween.tween_callback(func():
 			get_tree().paused = false
-			get_tree().change_scene_to_file(next_level))
+			get_tree().change_scene_to_file(level))

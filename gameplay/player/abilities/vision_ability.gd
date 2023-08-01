@@ -2,7 +2,7 @@ extends Node2D
 
 
 const COOLDOWN: float = 5.0
-const HINT_MARGIN: int = 30
+const HINT_MARGIN: float = 20.0
 
 @export var progress: TextureProgressBar
 @export var label: Label
@@ -59,7 +59,7 @@ func _physics_process(delta: float) -> void:
 	elif hint_position.y > canvas_position.y + viewport_size.y - HINT_MARGIN:
 		hint_position.y = canvas_position.y + viewport_size.y - HINT_MARGIN
 	
-	position = hint_position
+	%Hint.global_position = hint_position
 
 
 func get_targets() -> Array[Node]:

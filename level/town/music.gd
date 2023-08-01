@@ -21,6 +21,10 @@ func _ready() -> void:
 
 func on_hunter_saw_player() -> void:
 	hunters += 1
+
+	if hunter_playing:
+		return
+		
 	hunter_playing = true
 	fade(currently_playing, bgm_hunter, fade_duration, true)
 
