@@ -1,13 +1,13 @@
 Join woman_1 2
-woman_1: Oh who do we have here. Are you an angel who has come to take me?
-woman_1: I had no idea angels were so handsome.
+woman_1: Oh, who do we have here. Are you a demon who has come to take me?
+woman_1: I had no idea demons were this handsome.
 Join vampire
-vampire: So I've never been called that before. Why are you lying here in the plants?
-woman_1: Oh I'm just having a little conversation with them. They don't seem to like the weather today, you know? But you could help me up if you like.
-vampire: [i]She seems to be halucinating..
-vampire: Um, yeah. I'll help you, don't worry.
-When you bite her, you realize that she has a strong fever. It slowly subsides as you heal her.
+vampire: I've never been called that before. Why are you lying here surrounded by these plants?
+woman_1: Oh I'm just having a little conversation with them. They don't seem to like the weather today, you know? But you could help me up if you'd like.
+vampire: [i]She seems to be hallucinating..
+vampire: Of course. I'll help you.
+You take this opportunity to bite her, when you realize that she has a strong fever. It slowly subsides as you heal her.
 woman_1: Oh, I feel dizzy. Where am I?
-vampire: On the field. You didn't seem to be doing well. But now all is well. Maybe you should rest some more.
+vampire: On the field. You didn't seem to be doing well. But now all is well. Maybe you should rest.
 woman_1: A good idea. Thank you.
 
