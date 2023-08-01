@@ -8,6 +8,7 @@ baker: We don't need any trouble around here.
 	baker: Enough of your sweet talk. You expect me to trust you just because you compliment me and my bread?
 	baker: [pause=0.2].[pause=0.2].[pause=0.2]. ...maybe I will.
 	[color="#00ff00"]You made a good impression.
+	VAR {reputation} += 1
 - I noticed a strange smell coming from your bakery
 	Join vampire
 	vampire: I noticed a strange smell coming from your bakery and couldn’t help but to investigate.
@@ -15,3 +16,5 @@ baker: We don't need any trouble around here.
 	baker: Enough, you devilish brute! You insult me, my work, and my ancestors!
 	baker: I will not stand by and watch as your darkness engulfs everything that is good and delicious!
 	[color="#ff0000"]You made a bad impression.
+	VAR {reputation} += 1
+

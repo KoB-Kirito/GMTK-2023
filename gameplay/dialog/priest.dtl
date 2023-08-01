@@ -8,9 +8,11 @@ priest: What have you done that has the gods so displeased?
 	priest: You speak of delusions! I will pray to the gods and ask them for your forgiveness.
 	priest: Maybe one day your heart will be open to the possibility of redemption and understanding.
 	[color="#00ff00"]You made a good impression.
+	VAR {reputation} += 1
 - I am not a punishment. I am a gift, send to heal and unite humanity
 	Join vampire
 	vampire: Oh no, I am not a punishment. I am a gift, send to heal and unite humanity.
 	priest: You speak of union? I cannot fathom a union between the pure and the damned!
 	[color="#ff0000"]You made a bad impression.
+	VAR {reputation} -= 1
 

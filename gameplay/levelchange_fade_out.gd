@@ -12,7 +12,7 @@ func _ready() -> void:
 	%Fade.color = color
 
 
-func start() -> void:
+func start(level: String = next_level) -> void:
 	# catch inputs
 	%Fade.mouse_filter = Control.MOUSE_FILTER_STOP
 	get_tree().paused = true

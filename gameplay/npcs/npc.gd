@@ -3,6 +3,9 @@ class_name Npc
 extends CharacterBody2D
 
 
+## If true, will count as target for vision until talked to
+@export var vision_target: bool = false
+
 ## Timeline name used when interacted with
 @export var dialog_name: String:
 	set(value):
@@ -17,18 +20,39 @@ extends CharacterBody2D
 		if Engine.is_editor_hint():
 			%Sprite.texture = value
 
-@export_enum("Right", "Left", "Down", "Up") var look = 2:
+## If true, character sprite only contains one image and character will always look down
+@export var fixed: bool = false:
+	set(value):
+		fixed = value
+		if Engine.is_editor_hint():
+			if fixed:
+				%Sprite.frame = 0
+				%Sprite.hframes = 1
+				%Sprite.vframes = 1
+			else:
+				%Sprite.hframes = 3
+				%Sprite.vframes = 4
+				%Sprite.frame_coords.y = look
+
+@export_enum("Right", "Left", "Down", "Up") var look: int = 2:
 	set(value):
 		look = value
 		if Engine.is_editor_hint():
-			%Sprite.frame_coords.y = value
+			if not fixed:
+				%Sprite.frame_coords.y = value
+
+var last_position: Vector2
 
 var player: Player:
 	get:
-		if player:
-			return player
-		player = get_tree().get_first_node_in_group("player")
+		if player == null:
+			player = get_tree().get_first_node_in_group("player")
 		return player
+
+
+func _enter_tree() -> void:
+	if vision_target:
+		add_to_group("vision_target")
 
 
 func _ready() -> void:
@@ -36,9 +60,17 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 	
+	last_position = global_position
 	%DebugLabel.visible = false
 	%Sprite.texture = sprite
-	%Sprite.frame_coords.y = look
+	
+	if fixed:
+		%Sprite.frame = 0
+		%Sprite.hframes = 1
+		%Sprite.vframes = 1
+		
+	else:
+		%Sprite.frame_coords.y = look
 
 
 func _physics_process(delta: float) -> void:
@@ -51,12 +83,19 @@ func _physics_process(delta: float) -> void:
 
 ## Handles animation based on current movement
 func animation():
-	# stop animation if not moving
-	var current_speed = velocity.length_squared()
-	if current_speed == 0.0:
+	if fixed:
+		return
+	
+	if last_position == global_position:
 		%AnimationTimer.stop()
 		%Sprite.frame_coords.x = 1
 		return
+	
+	var fake_velocity := global_position - last_position
+	last_position = global_position
+	
+	# stop animation if not moving
+	var current_speed = fake_velocity.length_squared()
 	
 	# set animation tempo based on current speed
 	%AnimationTimer.wait_time = 0.9 - sqrt(current_speed) / 125.0
@@ -66,7 +105,7 @@ func animation():
 	
 	# change direction based on current movement direction
 	# assumes that the sprite has a column for each direction: 0 = right, 1 = left, 2 = down, 3 = up
-	match velocity.normalized().snapped(Vector2.ONE):
+	match fake_velocity.normalized().snapped(Vector2.ONE):
 		Vector2.RIGHT:
 			%Sprite.frame_coords.y = 0
 			
@@ -123,6 +162,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func face_player():
+	if fixed:
+		return
+	
 	match global_position.direction_to(player.global_position).snapped(Vector2.ONE):
 		Vector2.RIGHT:
 			%Sprite.frame_coords.y = 0
@@ -140,6 +182,16 @@ func face_player():
 func on_dialog_ended():
 	Dialogic.timeline_ended.disconnect(on_dialog_ended)
 	# reset look
-	%Sprite.frame_coords.y = look
-	# ToDo: continue with path here, if npc is walking
+	if not fixed:
+		%Sprite.frame_coords.y = look
 	
+	# only allow dialog one time
+	%InteractionArea.body_entered.disconnect(_on_interaction_area_body_entered)
+	%InteractionArea.body_exited.disconnect(_on_interaction_area_body_exited)
+	can_interact = false
+	Globals.interacting = false
+	
+	# healed
+	if vision_target:
+		remove_from_group("vision_target")
+		Globals.npc_healed.emit()

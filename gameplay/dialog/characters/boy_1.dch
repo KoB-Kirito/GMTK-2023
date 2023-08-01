@@ -15,7 +15,7 @@
 "offset": Vector2(0, 0),
 "portraits": {
 "placeholder": {
-"image": "res://assets/characters/portraits/boy_2.png",
+"image": "res://assets/characters/portraits/boy_1.png",
 "mirror": false,
 "offset": Vector2(0, 12),
 "scale": 1.8,

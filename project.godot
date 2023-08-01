@@ -41,7 +41,9 @@ layout/mode=1
 layout/layout_scene="res://gameplay/dialog/style/DialogicLayout.tscn"
 animations/join_default="res://addons/dialogic/Modules/Character/DefaultAnimations/fade_in_up.gd"
 animations/leave_default="res://addons/dialogic/Modules/Character/DefaultAnimations/fade_out_down.gd"
-variables={}
+variables={
+"reputation": "0"
+}
 glossary/default_case_sensitive=true
 
 [display]

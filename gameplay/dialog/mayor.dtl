@@ -8,6 +8,7 @@ mayor: What do you want, vampire?
 	mayor: I've seen the fear in my town, the fear that vampires instill. You have one chance, vampire.
 	mayor: If you betray my trust, there will be dire consequences.
 	[color="#00ff00"]You made a good impression.
+	VAR {reputation} += 1
 - A Mayor that doesn’t care about the ill, is not a good mayor
 	Join vampire
 	vampire: A Mayor that doesn’t care about the ill, is not a good mayor.
@@ -16,4 +17,5 @@ mayor: What do you want, vampire?
 	mayor: I've heard stories of your kind attacking unsuspecting victims, draining them of their lifeblood!
 	mayor: You can’t fool me!
 	[color="#ff0000"]You made a bad impression.
+	VAR {reputation} -= 1
 

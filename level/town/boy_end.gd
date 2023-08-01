@@ -8,11 +8,11 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			return
 		oneshot = true
 		
-		Dialogic.signal_event.connect(on_signal)
+		Dialogic.timeline_ended.connect(on_signal)
 		
 		Dialogic.start("ending")
 
 
 func on_signal(argument: String):
 	if argument == "end":
-		get_tree().change_scene_to_file("res://menu/end_screen.tscn")
+		Globals.person_healed.emit()

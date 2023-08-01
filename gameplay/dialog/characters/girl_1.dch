@@ -9,13 +9,13 @@
 },
 "default_portrait": "placeholder",
 "description": "",
-"display_name": "Boy",
+"display_name": "Girl",
 "mirror": false,
 "nicknames": [""],
 "offset": Vector2(0, 0),
 "portraits": {
 "placeholder": {
-"image": "res://assets/characters/portraits/boy_2.png",
+"image": "res://assets/characters/portraits/girl_1.png",
 "mirror": false,
 "offset": Vector2(0, 12),
 "scale": 1.8,

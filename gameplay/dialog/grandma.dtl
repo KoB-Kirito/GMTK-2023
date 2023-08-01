@@ -6,9 +6,11 @@ grandma: Are you here to take my life?
 	grandma: You flatter me, young vampire. Do you want to hear a story from my life when I was just as young as you are now?
 	vampire: I apologize, but I have to attend business. I wish you the best.
 	[color="#00ff00"]You made a good impression.
+	VAR {reputation} += 1
 - Why would I take a life that is already over?
 	Join vampire
 	vampire: Why would I take a life that is already over?
 	grandma: Rude.
 	[color="#ff0000"]You made a bad impression.
+	VAR {reputation} -= 1
 

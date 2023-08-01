@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cljgqpmumhyl"]
+
+[ext_resource type="Script" path="res://gameplay/quest_manager.gd" id="1_ypk10"]
+
+[node name="QuestManager" type="Node"]
+process_mode = 3
+script = ExtResource("1_ypk10")

@@ -4,7 +4,10 @@ extends Node
 
 signal hunter_saw_player
 signal hunter_lost_player
+
+signal npc_healed
 signal game_over
+
 
 var interacting: bool = false
 

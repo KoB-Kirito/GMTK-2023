@@ -12,10 +12,12 @@ What do you reply?
 	blacksmith: Your words... they carry a weight I hadn't considered before. Perhaps there's more to this than meets the eye.
 	blacksmith: But I still can't say I trust vampires completely.
 	[color="#00ff00"]You made a good impression.
+	VAR {reputation} += 1
 - I heal people by infusing them with my blood..
 	Join vampire
 	vampire: Don’t accuse me of acts, you haven’t witnessed yourself! I heal people by infusing them with my blood, granting them strength and vitality.
 	blacksmith: Infusing them with your blood? That's even worse! The burden you force on them by giving them your blood is too great!
 	blacksmith: You pronounce their death sentence.
 	[color="#ff0000"]You made a bad impression.
+	VAR {reputation} -= 1
 
